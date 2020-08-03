@@ -1,5 +1,5 @@
 import Container from './container'
-import { SITE_GIT_URL } from '../lib/constants'
+import { EXAMPLE_PATH } from '../lib/constants'
 
 const Footer = () => {
   return (
@@ -17,7 +17,7 @@ const Footer = () => {
               Read Documentation
             </a>
             <a
-              href={`${SITE_GIT_URL}`}
+              href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
               className="mx-3 font-bold hover:underline"
             >
               View on GitHub
