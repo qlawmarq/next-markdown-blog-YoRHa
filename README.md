@@ -1,4 +1,6 @@
-## Next.js Playground
+## Next.js Blog
+
+Next.js blog
 
 ### Setup
 
