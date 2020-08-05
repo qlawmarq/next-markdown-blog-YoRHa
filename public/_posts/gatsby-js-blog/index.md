@@ -1,13 +1,9 @@
 ---
 title: "Gatsby を使ってブログを作ってみた"
-cover: 'gatsby-js-blog/header.png'
+cover: '2019-09-09-gatsby-js-blog/header.png'
 category: "Tech"
 date: "2019/09/09"
 slug: "gatsby-js-blog"
-coverImage: '_posts/gatsby-js-blog/header.png'
-author:
-  name: YopiNoji
-  picture: '/assets/blog/authors/wanisan.png'
 tags:
     - Gatsby
     - Blog
