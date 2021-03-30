@@ -1,34 +1,25 @@
-
+import { GetServerSidePropsContext } from 'next';
 import { getAllPosts } from '../lib/api'
 import Post from '../types/post'
+import RSS from 'rss';
 
-type Props = {
-  allPosts: Post[]
-}
+export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
+  const xml = await generateFeedXml(); // フィードのXMLを生成する（後述）
 
-const Index = ({ allPosts }: Props) => {
-  return `
-    <?xml version="1.0"?>
-        <rss version="2.0">
-        <channel>
-        <title>データフィードの名前</title>
-        <link>http://www.example.com</link>
-        <description>商品の説明</description>
-        ${ allPosts.map(element => {
-            return `
-            <item> 
-                <title>${element.title}</title>
-                <link>${element.slug}</link>
-                <description>${element.content}</description>
-            </item>`
-        })}
-        </channel>
-        </rss>`;
-}
+  res.statusCode = 200;
+  res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate'); // 24時間キャッシュする
+  res.setHeader('Content-Type', 'text/xml');
+  res.end(xml);
 
-export default Index
+  return {
+    props: {},
+  };
+};
 
-export const getStaticProps = async () => {
+const Page = () => null;
+export default Page;
+
+const generateFeedXml = () => {
   const allPosts = getAllPosts([
     'title',
     'date',
@@ -36,8 +27,22 @@ export const getStaticProps = async () => {
     'author',
     'content',
   ])
+  const feed = new RSS({
+    title: "Title",
+    description: "Description",
+    site_url: "Site URL",
+    feed_url: "/rss",
+    language: 'ja',
+  });
+  allPosts?.forEach((post) => {
+    feed.item({
+      title: post.title,
+      description: post.excerpt,
+      date: new Date(post.date),
+      url: `https://yourblog/${post.slug}`,
+    });
+  })
+  
 
-  return {
-    props: { allPosts },
-  }
+  return feed.xml();
 }
