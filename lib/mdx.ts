@@ -8,13 +8,9 @@ import getAllFilesRecursively from './utils/files'
 import remarkGfm from 'remark-gfm'
 import remarkFootnotes from 'remark-footnotes'
 import remarkMath from 'remark-math'
-import remarkCodeTitles from './remark-code-title'
-import remarkTocHeadings from './remark-toc-headings'
-import remarkImgToJsx from './remark-img-to-jsx'
 // Rehype packages
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeKatex from 'rehype-katex'
 import rehypePrismPlus from 'rehype-prism-plus'
 
 const root = process.cwd()
@@ -62,33 +58,29 @@ export async function getFileBySlug(type, slug) {
   }
 
   let toc = []
-  console.log(source)
 
   const { frontmatter, code } = await bundleMDX(source, {
     // mdx imports can be automatically source from the components directory
     cwd: path.join(process.cwd(), 'components'),
-    // xdmOptions(options) {
-    //   // this is the recommended way to add custom remark/rehype plugins:
-    //   // The syntax might look weird, but it protects you in case we add/remove
-    //   // plugins in the future.
-    //   options.remarkPlugins = [
-    //     ...(options.remarkPlugins ?? []),
-    //     [remarkTocHeadings, { exportRef: toc }],
-    //     remarkGfm,
-    //     remarkCodeTitles,
-    //     [remarkFootnotes, { inlineNotes: true }],
-    //     remarkMath,
-    //     remarkImgToJsx,
-    //   ]
-    //   options.rehypePlugins = [
-    //     ...(options.rehypePlugins ?? []),
-    //     rehypeSlug,
-    //     rehypeAutolinkHeadings,
-    //     rehypeKatex,
-    //     [rehypePrismPlus, { ignoreMissing: true }],
-    //   ]
-    //   return options
-    // },
+    xdmOptions(options) {
+      // this is the recommended way to add custom remark/rehype plugins:
+      // The syntax might look weird, but it protects you in case we add/remove
+      // plugins in the future.
+      options.remarkPlugins = [
+        ...(options.remarkPlugins ?? []),
+        remarkGfm,
+        [remarkFootnotes, { inlineNotes: true }],
+        remarkMath,
+        // remarkImgToJsx,
+      ]
+      options.rehypePlugins = [
+        ...(options.rehypePlugins ?? []),
+        rehypeSlug,
+        rehypeAutolinkHeadings,
+        [rehypePrismPlus, { ignoreMissing: true }],
+      ]
+      return options
+    },
     esbuildOptions: (options) => {
       options.loader = {
         ...options.loader,
