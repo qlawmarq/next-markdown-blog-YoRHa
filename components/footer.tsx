@@ -1,32 +1,32 @@
-import Container from './container'
-import { EXAMPLE_PATH } from '../lib/constants'
+import Link from './Link'
+import { siteMetadata } from '@/data/siteMetadata'
+import SocialIcon from '@/components/social-icons'
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="bg-accent-1 border-t border-accent-2">
-      <Container>
-        <div className="py-28 flex flex-col lg:flex-row items-center">
-          <h3 className="text-4xl lg:text-5xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
-            This site is made by Next.js.
-          </h3>
-          <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">
-            <a
-              href="https://nextjs.org/docs/basic-features/pages"
-              className="mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-200 transition-colors mb-6 lg:mb-0"
-            >
-              Read Documentation
-            </a>
-            <a
-              href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
-              className="mx-3 font-bold hover:underline"
-            >
-              View on GitHub
-            </a>
-          </div>
+    <footer>
+      <div className="flex flex-col items-center mt-16">
+        <div className="flex mb-3 space-x-4">
+          <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
+          <SocialIcon kind="github" href={siteMetadata.github} size={6} />
+          <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
+          <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
+          <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
+          <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
         </div>
-      </Container>
+        <div className="flex mb-2 space-x-2 text-sm text-gray-500 dark:text-gray-400">
+          <div>{siteMetadata.author}</div>
+          <div>{` • `}</div>
+          <div>{`© ${new Date().getFullYear()}`}</div>
+          <div>{` • `}</div>
+          <Link href="/">{siteMetadata.title}</Link>
+        </div>
+        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
+          <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
+            Tailwind Nextjs Theme
+          </Link>
+        </div>
+      </div>
     </footer>
   )
 }
-
-export default Footer

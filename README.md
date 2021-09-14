@@ -6,14 +6,12 @@ Next.js blog
 
 ### Setup
 
-```bash
-# Check Node.js installed
-$ node -v
-v12.17.0
+Please install Node.js in your local.
 
+```bash
 # Install dependecies
-$ yarn
+$ npm i
 
 # Start develop server
-$ yarn dev
+$ npm run dev
 ```
