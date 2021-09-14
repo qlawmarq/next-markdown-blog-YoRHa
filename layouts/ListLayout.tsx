@@ -4,6 +4,7 @@ import Tag from '@/components/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
 import { useState } from 'react'
 import Pagination from '@/components/Pagination'
+import formatDateString from '@/lib/utils/formatDateString'
 
 type PropsType = {
   posts: any
@@ -69,7 +70,7 @@ const ListLayout: React.FC<PropsType> = ({
                   <dl>
                     <dt className="sr-only">Published on</dt>
                     <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                      <time dateTime={date}>{date}</time>
+                      <time dateTime={date}>{formatDateString(date)}</time>
                     </dd>
                   </dl>
                   <div className="space-y-3 xl:col-span-3">

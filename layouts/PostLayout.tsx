@@ -2,9 +2,9 @@ import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import { BlogSEO } from '@/components/SEO'
-import Image from '@/components/Image'
 import Tag from '@/components/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
+import formatDateString from '@/lib/utils/formatDateString'
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
 const discussUrl = (slug) =>
@@ -28,9 +28,7 @@ export default function PostLayout({ frontMatter, next, prev, children }) {
                 <div>
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                    {/* <time dateTime={date}>
-                      {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
-                    </time> */}
+                    <time dateTime={date}>{formatDateString(date)}</time>
                   </dd>
                 </div>
               </dl>

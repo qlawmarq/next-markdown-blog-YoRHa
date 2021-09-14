@@ -3,6 +3,7 @@ import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import { BlogSEO } from '@/components/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
+import formatDateString from '@/lib/utils/formatDateString'
 
 export default function PostLayout({ frontMatter, next, prev, children }) {
   const { date, title } = frontMatter
@@ -18,7 +19,7 @@ export default function PostLayout({ frontMatter, next, prev, children }) {
                 <div>
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                    <time dateTime={date}>{date}</time>
+                    <time dateTime={date}>{formatDateString(date)}</time>
                   </dd>
                 </div>
               </dl>
