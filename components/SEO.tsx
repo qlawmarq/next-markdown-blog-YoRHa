@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { siteMetadata } from '@/data/siteMetadata'
 
-const CommonSEO: React.FC = ({ title, description, ogType, ogImage, twImage }) => {
+const CommonSEO = ({ title, description, ogType, ogImage, twImage }) => {
   const router = useRouter()
   return (
     <Head>
