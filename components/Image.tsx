@@ -1,5 +1,10 @@
+import React from 'react'
 import NextImage from 'next/image'
 
-const Image = ({ src, ...rest }) => <NextImage src={src} {...rest} />
+type PropsType = {
+  src: string
+}
+
+const Image: React.FC<PropsType> = ({ src, ...rest }) => <NextImage src={src} {...rest} />
 
 export default Image

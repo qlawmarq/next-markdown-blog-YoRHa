@@ -1,3 +1,4 @@
+import React from 'react'
 import { siteMetadata } from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Logo from '@/data/logo.svg'
@@ -7,7 +8,7 @@ import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 
-const LayoutWrapper = ({ children }) => {
+const LayoutWrapper: React.FC = ({ children }) => {
   return (
     <SectionContainer>
       <div className="flex flex-col justify-between h-screen">
