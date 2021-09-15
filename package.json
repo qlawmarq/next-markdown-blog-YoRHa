@@ -1,6 +1,15 @@
 {
-  "name": "tailwind-nextjs-starter-blog",
-  "version": "1.1.2",
+  "name": "next-js-blog-template",
+  "version": "0.0.1",
+  "description": "Blog template with Next.js.",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yopinoji/next-js-blog-template.git"
+  },
+  "homepage": "https://next-playground.vercel.app",
   "private": true,
   "scripts": {
     "dev": "next",
