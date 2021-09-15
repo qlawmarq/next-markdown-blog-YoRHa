@@ -1,6 +1,6 @@
 import { TagSEO } from '@/components/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
-import ListLayout from '@/layouts/ListLayout'
+import ListLayout from '@/components/layouts/ListLayout'
 import generateRss from '@/lib/generate-rss'
 import { getAllFilesFrontMatter } from '@/lib/mdx'
 import { getAllTags } from '@/lib/tags'
