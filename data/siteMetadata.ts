@@ -5,7 +5,7 @@ export const siteMetadata = {
   description: 'A blog created with Next.js and Tailwind.css',
   language: 'en-us',
   siteUrl: 'https://next-playground.vercel.app',
-  siteRepo: 'https://github.com/yopinoji/next-js-blog',
+  siteRepo: 'https://github.com/yopinoji/next-js-blog-template',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
