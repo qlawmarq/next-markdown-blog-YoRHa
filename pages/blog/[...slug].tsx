@@ -1,6 +1,4 @@
-import fs from 'fs'
 import PageTitle from '@/components/PageTitle'
-import generateRss from '@/lib/generate-rss'
 import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
 
@@ -24,10 +22,6 @@ export async function getStaticProps({ params }) {
   const prev = allPosts[postIndex + 1] || null
   const next = allPosts[postIndex - 1] || null
   const post = await getFileBySlug('blog', params.slug.join('/'))
-
-  // rss
-  const rss = generateRss(allPosts)
-  fs.writeFileSync('./public/feed.xml', rss)
 
   return { props: { post, prev, next } }
 }
