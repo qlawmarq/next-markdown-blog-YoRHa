@@ -102,7 +102,7 @@ export async function getFileBySlug(type, slug) {
   }
 }
 
-export async function getAllFilesFrontMatter(folder) {
+export async function getAllFilesFrontMatter(folder: string) {
   const prefixPaths = path.join(root, 'contents', folder)
 
   const files = getAllFilesRecursively(prefixPaths)
