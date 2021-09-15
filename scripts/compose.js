@@ -6,7 +6,7 @@ const dedent = require('dedent')
 const root = process.cwd()
 
 const getAuthors = () => {
-  const authorPath = path.join(root, 'data', 'authors')
+  const authorPath = path.join(root, 'contents', 'authors')
   const authorList = fs.readdirSync(authorPath).map((filename) => path.parse(filename).name)
   return authorList
 }
@@ -101,7 +101,7 @@ inquirer
       .replace(/ /g, '-')
       .replace(/-+/g, '-')
     const frontMatter = genFrontMatter(answers)
-    const filePath = `data/blog/${fileName ? fileName : 'untitled'}.${
+    const filePath = `contents/blog/${fileName ? fileName : 'untitled'}.${
       answers.extension ? answers.extension : 'md'
     }`
     fs.writeFile(filePath, frontMatter, { flag: 'wx' }, (err) => {

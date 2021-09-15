@@ -6,7 +6,7 @@ import Tag from '@/components/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
 import formatDateString from '@/lib/utils/formatDateString'
 
-const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
+const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/contents/blog/${fileName}`
 const discussUrl = (slug) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
     `${siteMetadata.siteUrl}/blog/${slug}`
