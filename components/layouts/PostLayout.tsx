@@ -6,7 +6,6 @@ import Tag from '@/components/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
 import formatDateString from '@/lib/utils/formatDateString'
 
-const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/contents/blog/${fileName}`
 const discussUrl = (slug) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
     `${siteMetadata.siteUrl}/blog/${slug}`
@@ -47,8 +46,6 @@ export default function PostLayout({ frontMatter, next, prev, children }) {
                 <Link href={discussUrl(slug)} rel="nofollow">
                   {'Discuss on Twitter'}
                 </Link>
-                {` • `}
-                <Link href={editUrl(fileName)}>{'View on GitHub'}</Link>
               </div>
             </div>
             <footer>

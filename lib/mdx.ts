@@ -1,8 +1,8 @@
+import { BlogFrontmatter } from '@/types/blog'
 import { bundleMDX } from 'mdx-bundler'
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
-import readingTime from 'reading-time'
 import getAllFilesRecursively from './utils/files'
 // Remark packages
 import remarkGfm from 'remark-gfm'
@@ -32,7 +32,7 @@ export function dateSortDesc(a, b) {
   return 0
 }
 
-export async function getFileBySlug(folder: string, slug: string[]) {
+export async function getFileBySlug(folder: string, slug: string) {
   const mdxPath = path.join(root, 'contents', folder, `${slug}.mdx`)
   const mdPath = path.join(root, 'contents', folder, `${slug}.md`)
   const source = fs.existsSync(mdxPath)
@@ -94,11 +94,9 @@ export async function getFileBySlug(folder: string, slug: string[]) {
     mdxSource: code,
     toc,
     frontMatter: {
-      readingTime: readingTime(code),
-      slug: slug || null,
-      fileName: fs.existsSync(mdxPath) ? `${slug}.mdx` : `${slug}.md`,
-      date: frontmatter.date ? new Date(frontmatter.date).toISOString() : null,
-    },
+      slug: slug,
+      date: frontmatter.date,
+    } as BlogFrontmatter,
   }
 }
 
@@ -107,7 +105,7 @@ export async function getAllFilesFrontMatter(folder: string) {
 
   const files = getAllFilesRecursively(prefixPaths)
 
-  const allFrontMatter = []
+  const allFrontMatter = [] as BlogFrontmatter[]
 
   files.forEach((file: string) => {
     // Replace is needed to work on Windows
@@ -122,7 +120,7 @@ export async function getAllFilesFrontMatter(folder: string) {
       allFrontMatter.push({
         ...frontmatter,
         slug: formatSlug(fileName),
-        date: frontmatter.date ? new Date(frontmatter.date).toISOString() : null,
+        date: frontmatter.date,
       })
     }
   })
