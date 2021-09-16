@@ -37,7 +37,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "scripts/compose.js", "scripts/generate-sitemap.js"  ],
+  ],
   "exclude": [
     "node_modules"
   ]
