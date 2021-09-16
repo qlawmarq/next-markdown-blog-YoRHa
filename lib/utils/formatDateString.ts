@@ -1,7 +1,7 @@
 import { siteMetadata } from '@/data/siteMetadata'
 
 const formatDateString = (dateString: string) =>
-  new Date(dateString).toLocaleDateString(siteMetadata.locale, {
+  new Date(dateString).toLocaleDateString(siteMetadata.language, {
     weekday: 'long',
     year: 'numeric',
     month: 'long',

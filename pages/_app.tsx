@@ -1,3 +1,4 @@
+import { AppProps } from 'next/app'
 import '@/css/tailwind.css'
 import '@/css/prism.css'
 
@@ -5,7 +6,7 @@ import { ThemeProvider } from 'next-themes'
 import Head from 'next/head'
 import LayoutWrapper from '@/components/LayoutWrapper'
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class">
       <Head>

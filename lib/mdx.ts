@@ -15,8 +15,8 @@ import rehypePrismPlus from 'rehype-prism-plus'
 
 const root = process.cwd()
 
-export function getFiles(type) {
-  const prefixPaths = path.join(root, 'contents', type)
+export function getFiles(folder: string) {
+  const prefixPaths = path.join(root, 'contents', folder)
   const files = getAllFilesRecursively(prefixPaths)
   // Only want to return blog/path and ignore root, replace is needed to work on Windows
   return files.map((file) => file.slice(prefixPaths.length + 1).replace(/\\/g, '/'))
@@ -32,9 +32,9 @@ export function dateSortDesc(a, b) {
   return 0
 }
 
-export async function getFileBySlug(type, slug) {
-  const mdxPath = path.join(root, 'contents', type, `${slug}.mdx`)
-  const mdPath = path.join(root, 'contents', type, `${slug}.md`)
+export async function getFileBySlug(folder: string, slug: string[]) {
+  const mdxPath = path.join(root, 'contents', folder, `${slug}.mdx`)
+  const mdPath = path.join(root, 'contents', folder, `${slug}.md`)
   const source = fs.existsSync(mdxPath)
     ? fs.readFileSync(mdxPath, 'utf8')
     : fs.readFileSync(mdPath, 'utf8')
@@ -109,7 +109,7 @@ export async function getAllFilesFrontMatter(folder: string) {
 
   const allFrontMatter = []
 
-  files.forEach((file) => {
+  files.forEach((file: string) => {
     // Replace is needed to work on Windows
     const fileName = file.slice(prefixPaths.length + 1).replace(/\\/g, '/')
     // Remove Unexpected File

@@ -11,7 +11,10 @@ const MDXComponents = {
   a: CustomLink,
   pre: Pre,
   wrapper: ({ components, layout, ...rest }) => {
-    const Layout = require(`./layouts/${layout}`).default
+    let Layout = require(`./layouts/PostSimple`).default
+    if (layout) {
+      Layout = require(`./layouts/${layout}`).default
+    }
     return <Layout {...rest} />
   },
 }

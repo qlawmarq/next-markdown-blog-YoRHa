@@ -16,7 +16,7 @@ const Card: React.FC<PropsType> = ({ title, description, imgSrc, href }) => (
         <Link href={href} aria-label={`Link to ${title}`}>
           <Image
             alt={title}
-            src={imgSrc}
+            src={String(imgSrc)}
             className="object-cover object-center lg:h-48 md:h-36"
             width={544}
             height={306}
@@ -25,7 +25,7 @@ const Card: React.FC<PropsType> = ({ title, description, imgSrc, href }) => (
       ) : (
         <Image
           alt={title}
-          src={imgSrc}
+          src={String(imgSrc)}
           className="object-cover object-center lg:h-48 md:h-36"
           width={544}
           height={306}

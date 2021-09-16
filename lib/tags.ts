@@ -6,16 +6,16 @@ import kebabCase from './utils/kebabCase'
 
 const root = process.cwd()
 
-export async function getAllTags(type) {
-  const files = await getFiles(type)
+export async function getAllTags(folder: string) {
+  const files = await getFiles(folder)
 
   let tagCount = {}
   // Iterate through each post, putting all found tags into `tags`
-  files.forEach((file) => {
-    const source = fs.readFileSync(path.join(root, 'contents', type, file), 'utf8')
+  files.forEach((file: string) => {
+    const source = fs.readFileSync(path.join(root, 'contents', folder, file), 'utf8')
     const { data } = matter(source)
     if (data.tags && data.draft !== true) {
-      data.tags.forEach((tag) => {
+      data.tags.forEach((tag: string) => {
         const formattedTag = kebabCase(tag)
         if (formattedTag in tagCount) {
           tagCount[formattedTag] += 1
