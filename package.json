@@ -38,7 +38,7 @@
     "remark-gfm": "2.0.0",
     "remark-math": "5.1.0",
     "rss": "1.2.2",
-    "tailwindcss": "2.2.7"
+    "tailwindcss": "2.2.15"
   },
   "devDependencies": {
     "@types/react": "17.0.21",
