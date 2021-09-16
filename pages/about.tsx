@@ -2,7 +2,7 @@ import { MDXLayoutRenderer } from '@/components/MDXComponents'
 import { getFileBySlug } from '@/lib/mdx'
 
 export async function getStaticProps() {
-  const authorDetails = await getFileBySlug('pages', ['about'])
+  const authorDetails = await getFileBySlug('pages', 'about')
   return { props: { authorDetails } }
 }
 

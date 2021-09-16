@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 
 const Pre = (props) => {
-  const textInput = useRef(null)
+  const textInput = useRef<any>(null)
   const [hovered, setHovered] = useState(false)
   const [copied, setCopied] = useState(false)
 

@@ -32,9 +32,9 @@ const generateFeedXml = async () => {
   console.log(blog)
   blog?.forEach((post) => {
     feed.item({
-      title: post?.title,
-      description: post?.summary,
-      date: new Date(post?.date),
+      title: String(post?.title),
+      description: String(post?.summary),
+      date: new Date(String(post?.date)),
       url: `${siteMetadata.siteUrl}/${post?.slug}`,
     })
   })
