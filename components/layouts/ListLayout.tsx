@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
-import { siteMetadata } from '@/data/siteMetadata'
 import { useState } from 'react'
 import Pagination from '@/components/Pagination'
 import formatDateString from '@/lib/utils/formatDateString'

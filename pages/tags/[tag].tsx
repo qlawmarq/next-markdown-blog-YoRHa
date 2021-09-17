@@ -20,7 +20,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export const getStaticProps = async ({ params }) => {
   const allPosts = await getAllFilesFrontMatter('blog')
   const filteredPosts = allPosts.filter(
     (post) => post.draft !== true && post.tags?.map((t) => kebabCase(t)).includes(params.tag)

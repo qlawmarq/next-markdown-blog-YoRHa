@@ -1,19 +1,25 @@
+import React from 'react'
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import Tag from '@/components/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
 import formatDateString from '@/lib/utils/formatDateString'
+import { BlogFrontmatter } from '@/types/blog'
+
+type PropsType = {
+  frontMatter: BlogFrontmatter
+  next: BlogFrontmatter
+  prev: BlogFrontmatter
+}
 
 const discussUrl = (slug) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(
     `${siteMetadata.siteUrl}/blog/${slug}`
   )}`
 
-const postDateTemplate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-
-export default function PostLayout({ frontMatter, next, prev, children }) {
-  const { slug, fileName, date, title, tags } = frontMatter
+const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) => {
+  const { slug, date, title, tags } = frontMatter
 
   return (
     <SectionContainer>
@@ -25,7 +31,7 @@ export default function PostLayout({ frontMatter, next, prev, children }) {
                 <div>
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                    <time dateTime={date}>{formatDateString(date)}</time>
+                    <time dateTime={date}>{formatDateString(String(date))}</time>
                   </dd>
                 </div>
               </dl>
@@ -100,3 +106,4 @@ export default function PostLayout({ frontMatter, next, prev, children }) {
     </SectionContainer>
   )
 }
+export default PostLayout

@@ -4,8 +4,6 @@ import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/l
 import { BlogSEO } from '@/components/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
 
-const DEFAULT_LAYOUT = 'PostLayout'
-
 export async function getStaticPaths() {
   const posts = getFiles('blog')
   return {
@@ -17,27 +15,24 @@ export async function getStaticPaths() {
     fallback: false,
   }
 }
-
-export async function getStaticProps({ params }) {
+export const getStaticProps = async ({ params }) => {
   const allPosts = await getAllFilesFrontMatter('blog')
   const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === params.slug.join('/'))
   const prev = allPosts[postIndex + 1] || null
   const next = allPosts[postIndex - 1] || null
-  const post = await getFileBySlug('blog', params.slug.join('/'))
+  const post = await getFileBySlug('blog', params.slug?.join('/'))
 
   return { props: { post, prev, next } }
 }
 
 export default function Blog({ post, prev, next }) {
-  const { mdxSource, toc, frontMatter } = post
+  const { mdxSource, frontMatter } = post
   return (
     <>
       {frontMatter.draft !== true ? (
         <>
           <BlogSEO url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`} {...frontMatter} />
           <MDXLayoutRenderer
-            layout={frontMatter.layout || DEFAULT_LAYOUT}
-            toc={toc}
             mdxSource={mdxSource}
             frontMatter={frontMatter}
             prev={prev}
