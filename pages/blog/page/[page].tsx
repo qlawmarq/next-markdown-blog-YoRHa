@@ -16,8 +16,7 @@ export async function getStaticPaths() {
     fallback: false,
   }
 }
-
-export async function getStaticProps(context) {
+export const getStaticProps = async (context) => {
   const {
     params: { page },
   } = context

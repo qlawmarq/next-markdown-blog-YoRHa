@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next'
 import Link from '@/components/Link'
 import { PageSEO } from '@/components/SEO'
 import Tag from '@/components/Tag'
@@ -7,7 +8,7 @@ import formatDateString from '@/lib/utils/formatDateString'
 
 const MAX_DISPLAY = 5
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const posts = await getAllFilesFrontMatter('blog')
   return { props: { posts } }
 }
