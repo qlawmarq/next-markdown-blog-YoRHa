@@ -94,6 +94,7 @@ export async function getFileBySlug(folder: string, slug: string) {
     mdxSource: code,
     toc,
     frontMatter: {
+      ...frontmatter,
       slug: slug,
       date: frontmatter.date,
     } as BlogFrontmatter,

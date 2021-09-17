@@ -1,8 +1,6 @@
 import Link from '@/components/Link'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
-import { BlogSEO } from '@/components/SEO'
-import { siteMetadata } from '@/data/siteMetadata'
 import formatDateString from '@/lib/utils/formatDateString'
 
 export default function PostLayout({ frontMatter, next, prev, children }) {
@@ -10,7 +8,6 @@ export default function PostLayout({ frontMatter, next, prev, children }) {
 
   return (
     <SectionContainer>
-      <BlogSEO url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`} {...frontMatter} />
       <article>
         <div>
           <header>
