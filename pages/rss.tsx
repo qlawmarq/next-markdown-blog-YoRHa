@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext } from 'next'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
+import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
 import { siteMetadata } from '@/data/siteMetadata'
 
 import RSS from 'rss'

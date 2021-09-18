@@ -1,24 +1,30 @@
+import React from 'react'
 import { GetStaticProps } from 'next'
-import Link from '@/components/Link'
-import { PageSEO } from '@/components/SEO'
-import Tag from '@/components/Tag'
+import { Link } from '@/components/atoms/Link'
+import { PageSEO } from '@/lib/SEO'
+import Tag from '@/lib/tags/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
-import { getAllTags } from '@/lib/tags'
+import { getAllTags } from '@/lib/tags/tags'
 import kebabCase from '@/lib/utils/kebabCase'
+import { H1 } from '@/components/atoms/Typography'
+
+type PropsType = {
+  tags: {}
+}
 
 export const getStaticProps: GetStaticProps = async () => {
   const tags = await getAllTags('blog')
   return { props: { tags } }
 }
 
-export default function Tags({ tags }) {
+const Tags: React.FC<PropsType> = ({ tags }) => {
   const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a])
   return (
     <>
       <PageSEO title={`${siteMetadata.title} - Tags`} description="Things I blog about" />
       <div>
         <div>
-          <h1>Tags</h1>
+          <H1>Tags</H1>
         </div>
         <div>
           {Object.keys(tags).length === 0 && 'No tags found.'}
@@ -35,3 +41,4 @@ export default function Tags({ tags }) {
     </>
   )
 }
+export default Tags

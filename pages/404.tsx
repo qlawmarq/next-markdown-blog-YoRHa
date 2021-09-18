@@ -1,14 +1,15 @@
-import Link from '@/components/Link'
+import { Link } from '@/components/atoms/Link'
+import { H1, Paragraph } from '@/components/atoms/Typography'
 
 export default function FourZeroFour() {
   return (
     <div>
       <div>
-        <h1>404</h1>
+        <H1>404</H1>
       </div>
       <div>
-        <p>Sorry we couldn't find this page.</p>
-        <p>But dont worry, you can find plenty of other things on our homepage.</p>
+        <Paragraph>Sorry we couldn't find this page.</Paragraph>
+        <Paragraph>But dont worry, you can find plenty of other things on our homepage.</Paragraph>
         <Link href="/">Back to homepage</Link>
       </div>
     </div>

@@ -1,9 +1,10 @@
 import { AppProps } from 'next/app'
 import '@/css/prism.css'
+import '@/css/reset.css'
 
 import { ThemeProvider } from 'next-themes'
 import Head from 'next/head'
-import LayoutWrapper from '@/components/LayoutWrapper'
+import BaseLayout from '@/components/templates/BaseLayout'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -11,9 +12,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
-      <LayoutWrapper>
+      <BaseLayout>
         <Component {...pageProps} />
-      </LayoutWrapper>
+      </BaseLayout>
     </ThemeProvider>
   )
 }

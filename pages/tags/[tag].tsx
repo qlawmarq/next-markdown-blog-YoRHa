@@ -1,8 +1,8 @@
-import { TagSEO } from '@/components/SEO'
+import { TagSEO } from '@/lib/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
-import ListLayout from '@/components/layouts/ListLayout'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
-import { getAllTags } from '@/lib/tags'
+import ListLayout from '@/components/templates/layouts/ListLayout'
+import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
+import { getAllTags } from '@/lib/tags/tags'
 import kebabCase from '@/lib/utils/kebabCase'
 
 const root = process.cwd()

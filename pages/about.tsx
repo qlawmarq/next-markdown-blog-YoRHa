@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
-import { MDXLayoutRenderer } from '@/components/MDXComponents'
-import { getFileBySlug } from '@/lib/mdx'
-import { BlogSEO } from '@/components/SEO'
+import { MDXLayoutRenderer } from '@/lib/markdown/MDXComponents'
+import { getFileBySlug } from '@/lib/markdown/mdx'
+import { BlogSEO } from '@/lib/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
 
 export const getStaticProps: GetStaticProps = async () => {
