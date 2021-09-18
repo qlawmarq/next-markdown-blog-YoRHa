@@ -1,8 +1,16 @@
+import React from 'react'
 import { GetStaticProps } from 'next'
-import { getAllFilesFrontMatter } from '@/lib/mdx'
+import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
 import { siteMetadata } from '@/data/siteMetadata'
-import ListLayout from '@/components/layouts/ListLayout'
-import { PageSEO } from '@/components/SEO'
+import ListLayout from '@/components/templates/layouts/ListLayout'
+import { PageSEO } from '@/lib/SEO'
+import { BlogFrontmatter } from '@/types/blog'
+
+type PropsType = {
+  posts: BlogFrontmatter[]
+  initialDisplayPosts?: []
+  pagination?: any
+}
 
 export const POSTS_PER_PAGE = 5
 
@@ -17,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { initialDisplayPosts, posts, pagination } }
 }
 
-export default function Blog({ posts, initialDisplayPosts, pagination }) {
+const Blog: React.FC<PropsType> = ({ posts, initialDisplayPosts, pagination }) => {
   return (
     <>
       <PageSEO title={`${siteMetadata.title} - Blog`} description={siteMetadata.description} />
@@ -30,3 +38,4 @@ export default function Blog({ posts, initialDisplayPosts, pagination }) {
     </>
   )
 }
+export default Blog

@@ -18,24 +18,28 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "jsxImportSource": "@emotion/react",
     "baseUrl": "./",
     "paths": {
-        "@/components/*": [
-            "components/*"
-        ],
-        "@/data/*": [
-            "data/*"
-        ],
-        "@/lib/*": [
-            "lib/*"
-        ],
-        "@/css/*": [
-            "css/*"
-        ],
-        "@/types/*": [
-            "types/*"
-        ]
-    },
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/data/*": [
+        "data/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/css/*": [
+        "css/*"
+      ],
+      "@/constants/*": [
+        "constants/*"
+      ],
+      "@/types/*": [
+        "types/*"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",

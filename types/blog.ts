@@ -1,8 +1,8 @@
 export type BlogFrontmatter = {
-  title?: string
-  date?: string
+  title: string
+  date: string
   tags?: string[]
-  draft?: boolean
+  draft: boolean
   summary?: string
-  slug?: string
+  slug: string
 }

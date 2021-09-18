@@ -1,8 +1,19 @@
-import PageTitle from '@/components/PageTitle'
-import { MDXLayoutRenderer } from '@/components/MDXComponents'
-import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/mdx'
-import { BlogSEO } from '@/components/SEO'
+import React from 'react'
+import { H1 } from '@/components/atoms/Typography'
+import { MDXLayoutRenderer } from '@/lib/markdown/MDXComponents'
+import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/markdown/mdx'
+import { BlogSEO } from '@/lib/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
+import { BlogFrontmatter } from '@/types/blog'
+
+type PropsType = {
+  post: {
+    mdxSource: string
+    frontMatter: BlogFrontmatter
+  }
+  prev?: BlogFrontmatter
+  next?: BlogFrontmatter
+}
 
 export async function getStaticPaths() {
   const posts = getFiles('blog')
@@ -25,13 +36,18 @@ export const getStaticProps = async ({ params }) => {
   return { props: { post, prev, next } }
 }
 
-export default function Blog({ post, prev, next }) {
+const Blog: React.FC<PropsType> = ({ post, prev, next }) => {
   const { mdxSource, frontMatter } = post
   return (
     <>
       {frontMatter.draft !== true ? (
         <>
-          <BlogSEO url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`} {...frontMatter} />
+          <BlogSEO
+            title={frontMatter.title}
+            summary={frontMatter.summary}
+            date={frontMatter.date}
+            url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`}
+          />
           <MDXLayoutRenderer
             mdxSource={mdxSource}
             frontMatter={frontMatter}
@@ -40,15 +56,16 @@ export default function Blog({ post, prev, next }) {
           />
         </>
       ) : (
-        <div className="mt-24 text-center">
-          <PageTitle>
+        <div>
+          <H1>
             Under Construction{' '}
             <span role="img" aria-label="roadwork sign">
               🚧
             </span>
-          </PageTitle>
+          </H1>
         </div>
       )}
     </>
   )
 }
+export default Blog
