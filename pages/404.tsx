@@ -1,7 +1,8 @@
+import React from 'react'
 import { Link } from '@/components/atoms/Link'
 import { H1, Paragraph } from '@/components/atoms/Typography'
 
-export default function FourZeroFour() {
+const FourZeroFour: React.FC = () => {
   return (
     <div>
       <div>
@@ -15,3 +16,4 @@ export default function FourZeroFour() {
     </div>
   )
 }
+export default FourZeroFour

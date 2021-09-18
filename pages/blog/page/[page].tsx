@@ -1,8 +1,16 @@
+import React from 'react'
 import { PageSEO } from '@/lib/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
 import ListLayout from '@/components/templates/layouts/ListLayout'
 import { POSTS_PER_PAGE } from '../../blog'
+import { BlogFrontmatter } from '@/types/blog'
+
+type PropsType = {
+  posts: BlogFrontmatter[]
+  initialDisplayPosts?: []
+  pagination?: any
+}
 
 export async function getStaticPaths() {
   const totalPosts = await getAllFilesFrontMatter('blog')
@@ -40,7 +48,7 @@ export const getStaticProps = async (context) => {
   }
 }
 
-export default function PostPage({ posts, initialDisplayPosts, pagination }) {
+const PostPage: React.FC<PropsType> = ({ posts, initialDisplayPosts, pagination }) => {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
@@ -53,3 +61,4 @@ export default function PostPage({ posts, initialDisplayPosts, pagination }) {
     </>
   )
 }
+export default PostPage
