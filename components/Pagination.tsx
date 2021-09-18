@@ -5,13 +5,9 @@ export default function Pagination({ totalPages, currentPage }) {
   const nextPage = parseInt(currentPage) + 1 <= parseInt(totalPages)
 
   return (
-    <div className="pt-6 pb-8 space-y-2 md:space-y-5">
-      <nav className="flex justify-between">
-        {!prevPage && (
-          <button className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
-            Previous
-          </button>
-        )}
+    <div>
+      <nav>
+        {!prevPage && <button disabled={!prevPage}>Previous</button>}
         {prevPage && (
           <Link href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`}>
             <button>Previous</button>
@@ -20,11 +16,7 @@ export default function Pagination({ totalPages, currentPage }) {
         <span>
           {currentPage} of {totalPages}
         </span>
-        {!nextPage && (
-          <button className="cursor-auto disabled:opacity-50" disabled={!nextPage}>
-            Next
-          </button>
-        )}
+        {!nextPage && <button disabled={!nextPage}>Next</button>}
         {nextPage && (
           <Link href={`/blog/page/${currentPage + 1}`}>
             <button>Next</button>

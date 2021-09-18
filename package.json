@@ -19,14 +19,12 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "autoprefixer": "10.3.4",
     "esbuild": "0.12.28",
     "github-slugger": "1.4.0",
     "gray-matter": "4.0.3",
     "mdx-bundler": "6.0.1",
     "next": "11.1.2",
     "next-themes": "0.0.15",
-    "postcss": "8.3.6",
     "preact": "10.5.14",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -36,17 +34,16 @@
     "remark-footnotes": "4.0.1",
     "remark-gfm": "2.0.0",
     "remark-math": "5.1.0",
-    "rss": "1.2.2",
-    "tailwindcss": "2.2.15"
+    "rss": "1.2.2"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "11.1.2",
+    "@svgr/webpack": "5.5.0",
     "@types/react": "17.0.21",
     "@types/react-dom": "17.0.9",
     "@types/rss": "0.0.29",
     "@typescript-eslint/eslint-plugin": "4.31.1",
     "@typescript-eslint/parser": "4.31.1",
-    "@next/bundle-analyzer": "11.1.2",
-    "@svgr/webpack": "5.5.0",
     "dedent": "0.7.0",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
@@ -54,11 +51,8 @@
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-prettier": "4.0.0",
     "file-loader": "6.2.0",
-    "globby": "12.0.2",
     "husky": "7.0.2",
-    "inquirer": "8.1.5",
     "lint-staged": "11.1.2",
-    "next-remote-watch": "1.0.0",
     "prettier": "2.4.1",
     "typescript": "4.4.3"
   },

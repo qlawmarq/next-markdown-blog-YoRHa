@@ -40,7 +40,7 @@ export default function Blog({ post, prev, next }) {
           />
         </>
       ) : (
-        <div className="mt-24 text-center">
+        <div>
           <PageTitle>
             Under Construction{' '}
             <span role="img" aria-label="roadwork sign">

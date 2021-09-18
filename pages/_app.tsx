@@ -1,5 +1,4 @@
 import { AppProps } from 'next/app'
-import '@/css/tailwind.css'
 import '@/css/prism.css'
 
 import { ThemeProvider } from 'next-themes'

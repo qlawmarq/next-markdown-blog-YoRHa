@@ -21,24 +21,14 @@ const Pre = (props) => {
   }
 
   return (
-    <div ref={textInput} onMouseEnter={onEnter} onMouseLeave={onExit} className="relative">
+    <div ref={textInput} onMouseEnter={onEnter} onMouseLeave={onExit}>
       {hovered && (
-        <button
-          aria-label="Copy code"
-          type="button"
-          className={`absolute right-2 top-2 w-8 h-8 p-1 rounded border-2 bg-gray-700 dark:bg-gray-800 ${
-            copied
-              ? 'focus:outline-none focus:border-green-400 border-green-400'
-              : 'border-gray-300'
-          }`}
-          onClick={onCopy}
-        >
+        <button aria-label="Copy code" type="button" onClick={onCopy}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             stroke="currentColor"
             fill="none"
-            className={copied ? 'text-green-400' : 'text-gray-300'}
           >
             {copied ? (
               <>
