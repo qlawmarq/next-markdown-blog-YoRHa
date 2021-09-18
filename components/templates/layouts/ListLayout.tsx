@@ -51,7 +51,7 @@ const ListLayout: React.FC<PropsType> = ({
               <li key={slug}>
                 <article>
                   <dl>
-                    <dt>Published on</dt>
+                    {/* <dt>Published on</dt> */}
                     <dd>
                       <time dateTime={date}>{formatDateString(date)}</time>
                     </dd>

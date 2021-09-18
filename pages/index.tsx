@@ -26,7 +26,7 @@ const Index: React.FC<PropsType> = ({ posts }) => {
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
       <div>
         <div>
-          <H1>Posts</H1>
+          <H1>{siteMetadata.title}</H1>
           <Paragraph>{siteMetadata.description}</Paragraph>
         </div>
         <ul>
@@ -38,7 +38,7 @@ const Index: React.FC<PropsType> = ({ posts }) => {
                 <article>
                   <div>
                     <dl>
-                      <dt>Published on</dt>
+                      {/* <dt>Published on</dt> */}
                       <dd>
                         <time dateTime={date}>{formatDateString(String(date))}</time>
                       </dd>

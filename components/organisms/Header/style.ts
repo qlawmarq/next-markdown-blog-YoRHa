@@ -8,14 +8,6 @@ export const HeaderStyle = css`
   padding: 1rem 0;
 `
 
-export const MenuAreaStyle = css`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`
-
-export const IconStyle = css`
-  padding: 0.25rem;
-  width: 1.2rem;
-  fill: ${colors.Gray100};
+export const IconAreaStyle = css`
+  margin-left: 1rem;
 `

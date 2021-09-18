@@ -1,14 +1,15 @@
 import React from 'react'
 import { Header } from '@/components/organisms/Header'
 import { Footer } from '@/components/organisms/Footer'
+import { InnerStyle, OuterStyle } from './style'
 
 const BaseLayout: React.FC = ({ children }) => {
   return (
-    <>
+    <div css={OuterStyle}>
       <Header />
-      <main>{children}</main>
+      <main css={InnerStyle}>{children}</main>
       <Footer />
-    </>
+    </div>
   )
 }
 

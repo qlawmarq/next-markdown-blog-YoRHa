@@ -4,7 +4,6 @@ import { colors } from '@/constants/styles'
 export const FooterStyle = css`
   position: relative;
   color: ${colors.Gray100};
-  background-color: ${colors.Gray700};
   margin: auto;
   padding: 1rem 0;
   display: flex;

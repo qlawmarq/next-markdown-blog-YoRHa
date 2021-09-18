@@ -7,7 +7,9 @@ const Footer: React.FC = () => {
   return (
     <footer css={FooterStyle}>
       <div>
-        <Paragraph>{siteMetadata.author + `© ${new Date().getFullYear()}`}</Paragraph>
+        <Paragraph>{`© ${new Date().getFullYear()} ${
+          siteMetadata.author
+        }, All Rights Reserved.`}</Paragraph>
       </div>
     </footer>
   )

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from '@/components/atoms/Link'
+import { blogStyle } from './style'
 import { H1, H2 } from '@/components/atoms/Typography'
 import Tag from '@/lib/tags/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
@@ -21,12 +22,12 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
   const { slug, date, title, tags } = frontMatter
 
   return (
-    <article>
-      <div>
+    <article css={blogStyle}>
+      <div className="post-contents">
         <header>
           <div>
             <dl>
-              <dt>Published on</dt>
+              {/* <dt>Published on</dt> */}
               <dd>
                 <time dateTime={date}>{formatDateString(String(date))}</time>
               </dd>

@@ -31,8 +31,7 @@ const Tags: React.FC<PropsType> = ({ tags }) => {
           {sortedTags.map((t) => {
             return (
               <div key={t}>
-                <Tag text={t} />
-                <Link href={`/tags/${kebabCase(t)}`}>{` (${tags[t]})`}</Link>
+                <Tag text={`${t} (${tags[t]})`} />
               </div>
             )
           })}
