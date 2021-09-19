@@ -1,0 +1,11 @@
+/* https://github.com/pacocoursey/next-themes */
+[data-theme='light'] {
+  /* Your default theme */
+  background-color: #b8a597;
+  color: white;
+}
+
+[data-theme='dark'] {
+  background-color: #a79895;
+  color: white;
+}

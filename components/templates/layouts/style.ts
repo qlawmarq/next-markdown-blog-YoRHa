@@ -2,9 +2,8 @@ import { css } from '@emotion/react'
 import { colors, fontSize } from '@/constants/styles'
 
 export const blogStyle = css`
-  padding: 1rem;
   .post-contents {
-    color: ${colors.Gray700};
+    padding: 1rem;
   }
 
   .post-contents img {
@@ -22,7 +21,7 @@ export const blogStyle = css`
     font-weight: bold;
     padding-top: 1rem;
     margin-bottom: 0.5rem;
-    border-bottom: solid 0.3rem ${colors.Blue};
+    border-bottom: solid 0.3rem ${colors.Orange};
   }
 
   .post-contents h2 {
@@ -31,7 +30,7 @@ export const blogStyle = css`
     padding-top: 1rem;
     padding-left: 0.5rem;
     margin-bottom: 0.5rem;
-    border-bottom: solid 0.25rem ${colors.Blue};
+    border-bottom: solid 0.25rem ${colors.Orange};
   }
 
   .post-contents h3 {
@@ -40,7 +39,7 @@ export const blogStyle = css`
     padding-left: 0.25rem;
     padding-top: 1rem;
     margin-bottom: 0.25rem;
-    border-bottom: solid 0.1rem ${colors.Blue};
+    border-bottom: solid 0.1rem ${colors.Orange};
   }
 
   .post-contents h4 {
@@ -60,7 +59,7 @@ export const blogStyle = css`
     padding: 1rem 2.2rem;
     box-sizing: border-box;
     font-style: italic;
-    background: ${colors.Gray80};
+    background: ${colors.Gray100};
     color: #555;
   }
 
@@ -69,7 +68,7 @@ export const blogStyle = css`
     position: absolute;
     left: 0;
     content: '“';
-    color: ${colors.Gray50};
+    color: ${colors.Gray100};
     font-size: ${fontSize.XL};
   }
 
