@@ -1,8 +1,8 @@
 export const siteMetadata = {
-  title: 'Next.js Starter Blog',
+  title: 'Next.js Blog',
   author: 'Masaki Yoshiiwa',
   headerTitle: 'Next.js Blog',
-  description: 'A blog created with Next.js and Tailwind.css',
+  description: 'A blog created with Next.js',
   language: 'en',
   siteUrl: 'https://next-playground.vercel.app',
   siteRepo: 'https://github.com/yopinoji/next-js-blog-template',

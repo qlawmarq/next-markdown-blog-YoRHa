@@ -17,11 +17,11 @@ export const blogStyle = css`
   }
 
   .post-contents h1 {
-    font-size: ${fontSize.L};
+    font-size: ${fontSize.XL};
     font-weight: bold;
     padding-top: 1rem;
     margin-bottom: 0.5rem;
-    border-bottom: solid 0.3rem ${colors.Orange};
+    border-bottom: solid 0.3rem ${colors.Gray400};
   }
 
   .post-contents h2 {
@@ -30,7 +30,7 @@ export const blogStyle = css`
     padding-top: 1rem;
     padding-left: 0.5rem;
     margin-bottom: 0.5rem;
-    border-bottom: solid 0.25rem ${colors.Orange};
+    border-bottom: solid 0.25rem ${colors.Gray400};
   }
 
   .post-contents h3 {
@@ -39,7 +39,7 @@ export const blogStyle = css`
     padding-left: 0.25rem;
     padding-top: 1rem;
     margin-bottom: 0.25rem;
-    border-bottom: solid 0.1rem ${colors.Orange};
+    border-bottom: solid 0.1rem ${colors.Gray400};
   }
 
   .post-contents h4 {
@@ -90,7 +90,7 @@ export const blogStyle = css`
   }
 
   .post-contents table th {
-    background-color: ${colors.Gray300};
+    background-color: ${colors.Gray600};
   }
 
   .post-contents table th,
@@ -99,7 +99,10 @@ export const blogStyle = css`
     text-align: center;
   }
 
-  .post-contents table tr:nth-of-type(even) {
+  .post-contents table tr:nth-of-type(odd) {
     background-color: ${colors.Gray100};
+  }
+  .post-contents table tr:nth-of-type(even) {
+    background-color: ${colors.Gray300};
   }
 `

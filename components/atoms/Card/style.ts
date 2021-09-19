@@ -245,7 +245,7 @@ export const style = css`
     left: calc(0.25rem * -1);
     right: calc(0.25rem * -1);
     bottom: calc(0.25rem * -1);
-    background: ${colors.Orange};
+    background: ${colors.Gray400};
     clip-path: polygon(
       0 0,
       100% 0,

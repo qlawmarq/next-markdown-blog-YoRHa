@@ -3,10 +3,12 @@ import { colors } from '@/constants/styles'
 
 export const HeaderStyle = css`
   position: relative;
-  margin: auto;
-  padding: 1rem 0;
+  margin: 1rem;
 `
 
 export const IconAreaStyle = css`
-  margin-left: 1rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  color: ${colors.Gray400};
 `

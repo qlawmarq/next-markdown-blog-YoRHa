@@ -7,5 +7,4 @@ export const colors = {
   Gray700: '#2f3438',
   Gray800: '#161c20',
   Black: '#040b0e',
-  Orange: '#EB5928',
 }
