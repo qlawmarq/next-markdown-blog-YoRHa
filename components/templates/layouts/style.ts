@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import { colors, fontSize } from '@/constants/styles'
 
-export const blogStyle = css`
+export const PostLayoutStyle = css`
   .post-contents {
     padding: 1rem;
   }
@@ -112,5 +112,15 @@ export const blogStyle = css`
   }
   .post-contents table tr:nth-of-type(even) {
     background-color: ${colors.Gray300};
+  }
+`
+
+export const ListLayoutStyle = css`
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    list-style-type: none;
   }
 `
