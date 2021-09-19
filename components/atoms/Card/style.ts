@@ -232,12 +232,11 @@ const glitch = keyframes`
 `
 
 export const style = css`
-  box-shadow: 0 0 1rem 1rem ${colors.Gray50} inset;
+  box-shadow: 0 0 1rem 1rem ${colors.Gray100} inset;
   position: relative;
   margin: 1rem;
   padding: 1rem;
   opacity: 0.9;
-  background-color: ${colors.Gray20};
   clip-path: polygon(0 0, 100% 0, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 12% 100%, 0 70%);
 
   .glitch {
@@ -246,7 +245,7 @@ export const style = css`
     left: calc(0.25rem * -1);
     right: calc(0.25rem * -1);
     bottom: calc(0.25rem * -1);
-    background: ${colors.Blue};
+    background: ${colors.Gray400};
     clip-path: polygon(
       0 0,
       100% 0,
@@ -285,7 +284,7 @@ export const style = css`
       12% 100%,
       0 70%
     );
-    background: ${colors.Gray50};
+    background: ${colors.Gray100};
     opacity: 0.75;
     z-index: -1;
   }
