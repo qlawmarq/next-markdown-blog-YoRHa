@@ -6,9 +6,9 @@ export const HeaderStyle = css`
   margin: 1rem;
 `
 
-export const IconAreaStyle = css`
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1rem;
+export const InnerStyle = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: ${colors.Gray400};
 `
