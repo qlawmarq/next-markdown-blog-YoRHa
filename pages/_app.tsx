@@ -2,6 +2,7 @@ import { AppProps } from 'next/app'
 import '@/css/prism.css'
 import '@/css/reset.css'
 import '@/css/theme.css'
+import '@/css/fonts.css'
 
 import { ThemeProvider } from 'next-themes'
 import Head from 'next/head'

@@ -9,7 +9,7 @@ const Header: React.FC = () => {
     <header css={HeaderStyle}>
       <div css={IconAreaStyle}>
         <Link href="/">Home</Link>
-        <Link href="/">About</Link>
+        <Link href="/about">About</Link>
         {siteMetadata.twitter && <TwitterIcon href={siteMetadata.twitter} />}
         {siteMetadata.email && <MailIcon href={`mailto:${siteMetadata.email}`} />}
       </div>
