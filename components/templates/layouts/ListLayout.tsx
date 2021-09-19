@@ -2,13 +2,14 @@ import React from 'react'
 import { Link } from '@/components/atoms/Link'
 import Tag from '@/lib/tags/Tag'
 import { useState } from 'react'
-import { Pagination } from '@/components/atoms/Pagination'
+import { Pagination } from '@/components/molecules/Pagination'
 import formatDateString from '@/lib/utils/formatDateString'
-import { H1, H3 } from '@/components/atoms/Typography'
+import { H1, H3, Paragraph } from '@/components/atoms/Typography'
 
 type PropsType = {
   posts: any
   title: string
+  description?: string
   initialDisplayPosts?: any[]
   pagination?: any
 }
@@ -16,6 +17,7 @@ type PropsType = {
 const ListLayout: React.FC<PropsType> = ({
   posts,
   title,
+  description,
   initialDisplayPosts = [],
   pagination,
 }) => {
@@ -34,6 +36,7 @@ const ListLayout: React.FC<PropsType> = ({
       <div>
         <div>
           <H1>{title}</H1>
+          <Paragraph>{description}</Paragraph>
           <div>
             <input
               aria-label="Search articles"
