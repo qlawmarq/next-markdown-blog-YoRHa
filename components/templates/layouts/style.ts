@@ -50,6 +50,14 @@ export const blogStyle = css`
     margin-bottom: 0.25rem;
   }
 
+  .post-contents a {
+    color: ${colors.Gray600};
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
   .post-contents strong {
     font-weight: bold;
   }
