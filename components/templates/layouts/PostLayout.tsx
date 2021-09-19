@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from '@/components/atoms/Link'
-import { blogStyle } from './style'
+import { PostLayoutStyle } from './style'
 import { H1, H2 } from '@/components/atoms/Typography'
 import Tag from '@/lib/tags/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
@@ -22,7 +22,7 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
   const { slug, date, title, tags } = frontMatter
 
   return (
-    <article css={blogStyle}>
+    <article css={PostLayoutStyle}>
       <div className="post-contents">
         <header>
           <div>
