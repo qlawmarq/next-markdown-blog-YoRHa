@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react'
 import { getMDXComponent } from 'mdx-bundler/client'
-import Image from './Image'
 import { Anchor } from '@/components/atoms/Typography'
 import Pre from './Pre'
 import PostLayout from '@/components/templates/layouts/PostLayout'
 import { BlogFrontmatter } from '@/types/blog'
+import NextImage from 'next/image'
 
 type PropsType = {
   mdxSource: string
@@ -14,7 +14,7 @@ type PropsType = {
 }
 
 const MDXComponents = {
-  Image,
+  image: NextImage,
   a: Anchor,
   pre: Pre,
   wrapper: ({ frontMatter, next, prev, children }) => {

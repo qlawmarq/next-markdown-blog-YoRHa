@@ -12,6 +12,7 @@ export const style = css`
   background-color: #bab5a1;
   border: 0.05rem solid #454138;
   border-left: 0.25rem solid #454138;
+  transition: all 0.2s ease-out;
   &:hover {
     background-color: #dcd8c0;
   }
