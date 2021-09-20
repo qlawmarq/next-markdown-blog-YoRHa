@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-import { colors } from '@/constants/styles'
 
 export const HeaderStyle = css`
   position: relative;
@@ -10,5 +9,4 @@ export const InnerStyle = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${colors.Gray400};
 `

@@ -5,90 +5,95 @@
  * https://github.com/PrismJS/prism-themes
  */
 
-/* Token styles */
-/**
- * MIT License
- * Copyright (c) 2018 Sarah Drasner
- * Sarah Drasner's[@sdras] Night Owl
- * Ported by Sara vieria [@SaraVieira]
- * Added by Souvik Mandal [@SimpleIndian]
- */
+code[class*='language-'],
+pre {
+  background-color: #dcd8c0;
+  font-family: monospace;
+  width: 100%;
+  overflow: scroll;
+}
+
 .token.comment,
 .token.prolog,
+.token.doctype,
 .token.cdata {
-  color: rgb(99, 119, 119);
-  font-style: italic;
+  color: #586e75;
 }
 
 .token.punctuation {
-  color: rgb(199, 146, 234);
+  color: #93a1a1;
 }
 
 .namespace {
-  color: rgb(178, 204, 214);
+  opacity: 0.7;
 }
 
-.token.deleted {
-  color: rgba(239, 83, 80, 0.56);
-  font-style: italic;
+.token.property,
+.token.keyword,
+.token.tag {
+  color: #268bd2;
+}
+
+.token.class-name {
+  color: #586e75;
+  text-decoration: underline;
+}
+
+.token.boolean,
+.token.constant {
+  color: #b58900;
 }
 
 .token.symbol,
-.token.property {
-  color: rgb(128, 203, 196);
-}
-
-.token.tag,
-.token.operator,
-.token.keyword {
-  color: rgb(127, 219, 202);
-}
-
-.token.boolean {
-  color: rgb(255, 88, 116);
+.token.deleted {
+  color: #dc322f;
 }
 
 .token.number {
-  color: rgb(247, 140, 108);
-}
-
-.token.constant,
-.token.function,
-.token.builtin,
-.token.char {
-  color: rgb(130, 170, 255);
+  color: #859900;
 }
 
 .token.selector,
-.token.doctype {
-  color: rgb(199, 146, 234);
-  font-style: italic;
-}
-
 .token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
 .token.inserted {
-  color: rgb(173, 219, 103);
-  font-style: italic;
+  color: #859900;
 }
 
-.token.string,
-.token.url,
-.token.entity,
+.token.variable {
+  color: #268bd2;
+}
+
+.token.operator {
+  color: #586e75;
+}
+
+.token.function {
+  color: #268bd2;
+}
+
+.token.regex {
+  color: #e9c062;
+}
+
+.token.important {
+  color: #fd971f;
+}
+
+.token.entity {
+  color: #586e75;
+  cursor: help;
+}
+
+.token.url {
+  color: #96cbfe;
+}
+
 .language-css .token.string,
 .style .token.string {
-  color: rgb(173, 219, 103);
-}
-
-.token.class-name,
-.token.atrule,
-.token.attr-value {
-  color: rgb(255, 203, 139);
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-  color: rgb(214, 222, 235);
+  color: #87c38a;
 }
 
 .token.important,
@@ -98,4 +103,9 @@
 
 .token.italic {
   font-style: italic;
+}
+
+.token.atrule,
+.token.attr-value {
+  color: #f9ee98;
 }

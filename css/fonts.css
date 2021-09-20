@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap');
 html {
-  font-family: 'Kaisei Decol', serif;
+  font-family: helvetica, sans-serif;
+  letter-spacing: 0.03rem;
 }

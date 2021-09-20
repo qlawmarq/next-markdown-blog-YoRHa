@@ -1,11 +1,9 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
-import { Link } from '@/components/atoms/Link'
 import { PageSEO } from '@/lib/SEO'
 import Tag from '@/lib/tags/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
 import { getAllTags } from '@/lib/tags/tags'
-import kebabCase from '@/lib/utils/kebabCase'
 import { H1 } from '@/components/atoms/Typography'
 
 type PropsType = {

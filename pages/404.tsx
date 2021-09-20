@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from '@/components/atoms/Link'
-import { H1, Paragraph } from '@/components/atoms/Typography'
+import { H1, Paragraph, Anchor } from '@/components/atoms/Typography'
 
 const FourZeroFour: React.FC = () => {
   return (
@@ -11,7 +10,7 @@ const FourZeroFour: React.FC = () => {
       <div>
         <Paragraph>Sorry we couldn't find this page.</Paragraph>
         <Paragraph>But dont worry, you can find plenty of other things on our homepage.</Paragraph>
-        <Link href="/">Back to homepage</Link>
+        <Anchor href="/">Back to homepage</Anchor>
       </div>
     </div>
   )

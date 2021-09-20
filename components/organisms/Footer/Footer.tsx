@@ -1,7 +1,7 @@
 import React from 'react'
 import { Paragraph } from '@/components/atoms/Typography'
 import { siteMetadata } from '@/data/siteMetadata'
-import { TwitterIcon, MailIcon } from '@/components/atoms/SocialIcons'
+import { TwitterIcon, MailIcon } from '@/components/atoms/Icon'
 import { FooterStyle } from './style'
 
 const Footer: React.FC = () => {

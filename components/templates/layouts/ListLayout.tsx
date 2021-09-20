@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from '@/components/atoms/Link'
 import Tag from '@/lib/tags/Tag'
 import { useState } from 'react'
 import { Pagination } from '@/components/molecules/Pagination'
-import { Card } from '@/components/molecules/Card'
+import { Section } from '@/components/atoms/Section'
 import formatDateString from '@/lib/utils/formatDateString'
-import { H1, H3, Paragraph } from '@/components/atoms/Typography'
+import { H1, H2, Paragraph, Anchor } from '@/components/atoms/Typography'
+import { Input } from '@/components/atoms/Input'
 import { ListLayoutStyle } from './style'
 
 type PropsType = {
@@ -14,6 +14,7 @@ type PropsType = {
   description?: string
   initialDisplayPosts?: any[]
   pagination?: any
+  onClickListItem: (item: string) => void
 }
 
 const ListLayout: React.FC<PropsType> = ({
@@ -22,6 +23,7 @@ const ListLayout: React.FC<PropsType> = ({
   description,
   initialDisplayPosts = [],
   pagination,
+  onClickListItem,
 }) => {
   const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((frontMatter) => {
@@ -40,7 +42,7 @@ const ListLayout: React.FC<PropsType> = ({
           <H1>{title}</H1>
           <Paragraph>{description}</Paragraph>
           <div>
-            <input
+            <Input
               aria-label="Search articles"
               type="text"
               onChange={(e) => setSearchValue(e.target.value)}
@@ -54,8 +56,9 @@ const ListLayout: React.FC<PropsType> = ({
             const { slug, date, title, summary, tags } = frontMatter
             return (
               <li key={slug}>
-                <Card>
-                  <article>
+                <Section onClick={() => onClickListItem(slug)}>
+                  <div>
+                    <H2>{title}</H2>
                     <dl>
                       {/* <dt>Published on</dt> */}
                       <dd>
@@ -63,20 +66,13 @@ const ListLayout: React.FC<PropsType> = ({
                       </dd>
                     </dl>
                     <div>
-                      <div>
-                        <H3>
-                          <Link href={`/blog/${slug}`}>{title}</Link>
-                        </H3>
-                        <div>
-                          {tags.map((tag) => (
-                            <Tag key={tag} text={tag} />
-                          ))}
-                        </div>
-                      </div>
-                      <div>{summary}</div>
+                      {tags.map((tag) => (
+                        <Tag key={tag} text={tag} />
+                      ))}
                     </div>
-                  </article>
-                </Card>
+                  </div>
+                  <div>{summary}</div>
+                </Section>
               </li>
             )
           })}
