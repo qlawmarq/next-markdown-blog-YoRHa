@@ -1,5 +1,4 @@
 import { css, keyframes } from '@emotion/react'
-import { colors } from '@/constants//styles'
 
 export const style = css`
   flex-direction: column;

@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-import { colors, fontSize } from '@/constants//styles'
 
 export const style = css`
   &[type='text'],

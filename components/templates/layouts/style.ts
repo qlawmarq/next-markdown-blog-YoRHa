@@ -1,8 +1,22 @@
-import { css } from '@emotion/react'
-import { colors, fontSize } from '@/constants/styles'
+import { css, keyframes } from '@emotion/react'
+import { fontSize } from '@/constants/styles'
 import { H1Style, H2Style, H3Style, AnchorStyle } from '@/components/atoms/Typography'
 
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
+const commonLayoutStyle = css`
+  animation: ${fadeIn} 0.5s ease-in-out 0s 1 normal;
+`
+
 export const PostLayoutStyle = css`
+  ${commonLayoutStyle}
   .post-contents {
     padding: 1rem;
   }
@@ -95,6 +109,7 @@ export const PostLayoutStyle = css`
 `
 
 export const ListLayoutStyle = css`
+  ${commonLayoutStyle}
   ul {
     margin: 0;
     padding: 0;

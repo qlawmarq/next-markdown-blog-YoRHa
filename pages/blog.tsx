@@ -1,5 +1,6 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
 import { siteMetadata } from '@/data/siteMetadata'
 import ListLayout from '@/components/templates/layouts/ListLayout'
@@ -26,6 +27,10 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 const Blog: React.FC<PropsType> = ({ posts, initialDisplayPosts, pagination }) => {
+  const router = useRouter()
+  const handleClick = (href: string) => {
+    router.push(`/blog/${href}`)
+  }
   return (
     <>
       <PageSEO title={`${siteMetadata.title} - Blog`} description={siteMetadata.description} />
@@ -33,6 +38,7 @@ const Blog: React.FC<PropsType> = ({ posts, initialDisplayPosts, pagination }) =
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
+        onClickListItem={handleClick}
         title="All Posts"
       />
     </>

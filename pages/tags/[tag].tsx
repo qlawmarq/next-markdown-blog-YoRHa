@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import { TagSEO } from '@/lib/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
 import ListLayout from '@/components/templates/layouts/ListLayout'
@@ -35,6 +36,11 @@ export const getStaticProps = async ({ params }) => {
 }
 
 const Tag: React.FC<PropsType> = ({ posts, tag }) => {
+  const router = useRouter()
+  const handleClick = (href: string) => {
+    router.push(`/blog/${href}`)
+  }
+
   // Capitalize first letter and convert space to dash
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   return (
@@ -43,7 +49,7 @@ const Tag: React.FC<PropsType> = ({ posts, tag }) => {
         title={`${tag} - ${siteMetadata.author}`}
         description={`${tag} tags - ${siteMetadata.author}`}
       />
-      <ListLayout posts={posts} title={title} />
+      <ListLayout posts={posts} title={title} onClickListItem={handleClick} />
     </>
   )
 }

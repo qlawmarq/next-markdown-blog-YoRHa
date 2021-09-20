@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { colors, fontSize } from '@/constants//styles'
+import { fontSize } from '@/constants//styles'
 
 export const style = css`
   cursor: pointer;
@@ -9,12 +9,10 @@ export const style = css`
   line-height: 1;
   text-decoration: none;
   font-size: ${fontSize.S};
-  color: ${colors.Gray600};
-  background-color: ${colors.Gray100};
-  border: 0.05rem solid ${colors.Gray600};
-  border-left: 0.25rem solid ${colors.Gray700};
+  background-color: #bab5a1;
+  border: 0.05rem solid #454138;
+  border-left: 0.25rem solid #454138;
   &:hover {
-    color: ${colors.Gray100};
-    background-color: ${colors.Gray700};
+    background-color: #dcd8c0;
   }
 `

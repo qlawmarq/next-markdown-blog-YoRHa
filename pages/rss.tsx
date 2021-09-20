@@ -29,7 +29,6 @@ const generateFeedXml = async () => {
     feed_url: '/rss',
     language: siteMetadata.language,
   })
-  console.log(blog)
   blog?.forEach((post) => {
     feed.item({
       title: String(post?.title),

@@ -14,6 +14,7 @@ type PropsType = {
   description?: string
   initialDisplayPosts?: any[]
   pagination?: any
+  onClickListItem: (item: string) => void
 }
 
 const ListLayout: React.FC<PropsType> = ({
@@ -22,6 +23,7 @@ const ListLayout: React.FC<PropsType> = ({
   description,
   initialDisplayPosts = [],
   pagination,
+  onClickListItem,
 }) => {
   const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((frontMatter) => {
@@ -54,24 +56,22 @@ const ListLayout: React.FC<PropsType> = ({
             const { slug, date, title, summary, tags } = frontMatter
             return (
               <li key={slug}>
-                <Section>
-                  <Anchor href={`/blog/${slug}`}>
+                <Section onClick={() => onClickListItem(slug)}>
+                  <div>
+                    <H2>{title}</H2>
+                    <dl>
+                      {/* <dt>Published on</dt> */}
+                      <dd>
+                        <time dateTime={date}>{formatDateString(date)}</time>
+                      </dd>
+                    </dl>
                     <div>
-                      <H2>{title}</H2>
-                      <dl>
-                        {/* <dt>Published on</dt> */}
-                        <dd>
-                          <time dateTime={date}>{formatDateString(date)}</time>
-                        </dd>
-                      </dl>
-                      <div>
-                        {tags.map((tag) => (
-                          <Tag key={tag} text={tag} />
-                        ))}
-                      </div>
+                      {tags.map((tag) => (
+                        <Tag key={tag} text={tag} />
+                      ))}
                     </div>
-                    <div>{summary}</div>
-                  </Anchor>
+                  </div>
+                  <div>{summary}</div>
                 </Section>
               </li>
             )

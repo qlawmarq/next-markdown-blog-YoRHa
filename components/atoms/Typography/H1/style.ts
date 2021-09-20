@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import { css, keyframes } from '@emotion/react'
 import { fontSize } from '@/constants/styles'
 
 export const style = css`
