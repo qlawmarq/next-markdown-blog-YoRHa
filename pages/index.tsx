@@ -1,12 +1,8 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
-import { Link } from '@/components/atoms/Link'
 import { PageSEO } from '@/lib/SEO'
-import { H1, H2, Paragraph } from '@/components/atoms/Typography'
-import Tag from '@/lib/tags/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
-import formatDateString from '@/lib/utils/formatDateString'
 import { BlogFrontmatter } from '@/types/blog'
 import ListLayout from '@/components/templates/layouts/ListLayout'
 

@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from '@/components/atoms/Link'
 import { PostLayoutStyle } from './style'
-import { H1, H2 } from '@/components/atoms/Typography'
+import { H1, H2, Anchor } from '@/components/atoms/Typography'
 import Tag from '@/lib/tags/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
 import formatDateString from '@/lib/utils/formatDateString'
@@ -41,9 +40,9 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
           <div>
             <div>{children}</div>
             <div>
-              <Link href={discussUrl(slug)} rel="nofollow">
+              <Anchor href={discussUrl(slug)} rel="nofollow">
                 {'Discuss on Twitter'}
-              </Link>
+              </Anchor>
             </div>
           </div>
           <footer>
@@ -64,7 +63,7 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
                     <div>
                       <H2>Previous Article</H2>
                       <div>
-                        <Link href={`/blog/${prev.slug}`}>{prev.title}</Link>
+                        <Anchor href={`/blog/${prev.slug}`}>{prev.title}</Anchor>
                       </div>
                     </div>
                   )}
@@ -72,7 +71,7 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
                     <div>
                       <H2>Next Article</H2>
                       <div>
-                        <Link href={`/blog/${next.slug}`}>{next.title}</Link>
+                        <Anchor href={`/blog/${next.slug}`}>{next.title}</Anchor>
                       </div>
                     </div>
                   )}
@@ -80,7 +79,7 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
               )}
             </div>
             <div>
-              <Link href="/blog">&larr; Back to the blog</Link>
+              <Anchor href="/blog">&larr; Back to the blog</Anchor>
             </div>
           </footer>
         </div>

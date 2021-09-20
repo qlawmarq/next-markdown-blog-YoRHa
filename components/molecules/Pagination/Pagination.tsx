@@ -1,4 +1,4 @@
-import { Link } from '@/components/atoms/Link'
+import { Anchor } from '@/components/atoms/Typography'
 
 export const Pagination = ({ totalPages, currentPage }) => {
   const prevPage = parseInt(currentPage) - 1 > 0
@@ -9,18 +9,18 @@ export const Pagination = ({ totalPages, currentPage }) => {
       <nav>
         {!prevPage && <button disabled={!prevPage}>Previous</button>}
         {prevPage && (
-          <Link href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`}>
+          <Anchor href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`}>
             <button>Previous</button>
-          </Link>
+          </Anchor>
         )}
         <span>
           {currentPage} of {totalPages}
         </span>
         {!nextPage && <button disabled={!nextPage}>Next</button>}
         {nextPage && (
-          <Link href={`/blog/page/${currentPage + 1}`}>
+          <Anchor href={`/blog/page/${currentPage + 1}`}>
             <button>Next</button>
-          </Link>
+          </Anchor>
         )}
       </nav>
     </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from '@/components/atoms/Link'
+import { Anchor } from '@/components/atoms/Typography'
 import { HeaderStyle, InnerStyle } from './style'
 import Logo from './moon_logo.svg'
 
@@ -7,9 +7,9 @@ const Header: React.FC = () => {
   return (
     <header css={HeaderStyle}>
       <div css={InnerStyle}>
-        <Link href="/">
+        <Anchor href="/">
           <Logo width="120" height="120" />
-        </Link>
+        </Anchor>
       </div>
     </header>
   )

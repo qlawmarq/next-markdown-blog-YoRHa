@@ -2,7 +2,7 @@ import React, { AnchorHTMLAttributes } from 'react'
 import Link from 'next/link'
 import { style } from './style'
 
-export const CustomLink: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
+export const Anchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
   href,
   children,
   ...rest
