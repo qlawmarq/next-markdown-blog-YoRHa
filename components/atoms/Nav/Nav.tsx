@@ -17,12 +17,18 @@ export const Nav: React.FC<HtmlHTMLAttributes<HTMLElement> & PropsType> = ({
   onClickItem,
   ...props
 }) => {
+  if (typeof location !== 'undefined') {
+    // windowを使う処理を記述
+    console.log(location)
+  }
   return (
     <nav css={style} {...props}>
       <ul>
         {Items.map((item, idx) => (
           <li key={idx}>
-            <Button onClick={() => onClickItem(item.href)}>{item.title}</Button>
+            <Button className="nav_button" onClick={() => onClickItem(item.href)}>
+              {item.title}
+            </Button>
           </li>
         ))}
       </ul>
