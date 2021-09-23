@@ -3,10 +3,10 @@ import { Anchor } from '@/components/atoms/Typography'
 import kebabCase from '@/lib/utils/kebabCase'
 import { Label } from '@/components/atoms/Label'
 
-const Tag: React.FC<{ text: string }> = ({ text }) => {
+const Tag: React.FC<{ href: string; text: string }> = ({ href, text }) => {
   return (
     <Label>
-      <Anchor href={`/tags/${kebabCase(text)}`}>{text.split(' ').join('-')}</Anchor>
+      <Anchor href={href}>{text}</Anchor>
     </Label>
   )
 }
