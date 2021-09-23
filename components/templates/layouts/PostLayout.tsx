@@ -52,7 +52,7 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
                   <H2>Tags</H2>
                   <div>
                     {tags.map((tag) => (
-                      <Tag key={tag} text={tag} />
+                      <Tag key={tag} href={`/tags/${tag}`} text={tag} />
                     ))}
                   </div>
                 </div>
