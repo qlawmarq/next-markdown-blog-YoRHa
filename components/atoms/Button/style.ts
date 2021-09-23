@@ -32,7 +32,6 @@ export const style = css`
     transition-duration: 0.2s;
     transition-property: color, background-color, box-shadow;
     position: relative;
-    z-index: 1;
   }
   &:not(:disabled):before,
   :before {

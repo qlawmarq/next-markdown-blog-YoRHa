@@ -1,4 +1,4 @@
-import React, { useEffect, useState, HtmlHTMLAttributes } from 'react'
+import React, { HtmlHTMLAttributes } from 'react'
 import { style } from './style'
 import { Button } from '@/components/atoms/Button'
 
