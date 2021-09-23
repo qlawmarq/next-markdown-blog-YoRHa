@@ -2,7 +2,8 @@ import { css } from '@emotion/react'
 import { breakpoints } from '@/constants/styles'
 export const InnerStyle = css`
   position: relative;
-  margin: 1rem auto;
+  margin: auto;
+  padding: 1rem;
   max-width: 700px;
 
   @media (${breakpoints.TABLET}) {
