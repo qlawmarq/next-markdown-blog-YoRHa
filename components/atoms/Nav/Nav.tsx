@@ -17,10 +17,6 @@ export const Nav: React.FC<HtmlHTMLAttributes<HTMLElement> & PropsType> = ({
   onClickItem,
   ...props
 }) => {
-  if (typeof location !== 'undefined') {
-    // windowを使う処理を記述
-    console.log(location)
-  }
   return (
     <nav css={style} {...props}>
       <ul>
