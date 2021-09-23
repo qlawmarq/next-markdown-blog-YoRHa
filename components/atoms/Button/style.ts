@@ -32,10 +32,7 @@ export const style = css`
     transition-duration: 0.2s;
     transition-property: color, background-color, box-shadow;
     position: relative;
-  }
-  &:not(:disabled):hover,
-  :hover {
-    box-shadow: 0.2em 0.2em 0.1em 0 #bab5a1;
+    z-index: 1;
   }
   &:not(:disabled):before,
   :before {

@@ -16,6 +16,11 @@ export const style = css`
         margin: auto;
         font-size: ${fontSize.S};
         width: 4.8rem;
+        &:hover:before {
+          bottom: -0.5rem;
+          border: solid #454138;
+          border-width: 0.5rem 0;
+        }
       }
     }
   }
