@@ -67,7 +67,7 @@ const ListLayout: React.FC<PropsType> = ({
                     </dl>
                     <div>
                       {tags.map((tag) => (
-                        <Tag key={tag} text={tag} />
+                        <Tag key={tag} href={`/tags/${tag}`} text={tag} />
                       ))}
                     </div>
                   </div>
