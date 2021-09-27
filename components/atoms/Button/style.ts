@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import { theme } from '@/theme/index'
 
 export const style = css`
   &:disabled {
@@ -8,12 +9,12 @@ export const style = css`
     outline: none;
     appearance: none;
     border-radius: 0;
-    background-color: #dcd8c0;
+    background-color: ${theme.colors.primaryColor};
     color: inherit;
     font-family: inherit;
     letter-spacing: inherit;
     font-weight: inherit;
-    color: #bab5a1;
+    color: ${theme.colors.tertiaryColor};
     cursor: not-allowed;
   }
   &:not(:disabled) {
@@ -23,7 +24,7 @@ export const style = css`
     outline: none;
     appearance: none;
     border-radius: 0;
-    background-color: #bab5a1;
+    background-color: ${theme.colors.tertiaryColor};
     color: inherit;
     font-family: inherit;
     letter-spacing: inherit;
@@ -54,19 +55,19 @@ export const style = css`
     bottom: 0;
     left: 0;
     width: 0;
-    background-color: #454138;
+    background-color: ${theme.colors.secondaryColor};
     z-index: -1;
   }
   &:not(:disabled):hover,
   :hover {
     background-color: transparent;
-    color: #dcd8c0;
+    color: ${theme.colors.primaryColor};
   }
   &:not(:disabled):hover:before,
   :hover:before {
     top: -0.2rem;
     bottom: -0.2rem;
-    border: solid #454138;
+    border: solid ${theme.colors.secondaryColor};
     border-width: 0.1rem 0;
   }
   &:not(:disabled):hover:after,
@@ -75,10 +76,10 @@ export const style = css`
   }
   &:not(:disabled):active,
   :active {
-    color: #454138;
+    color: ${theme.colors.secondaryColor};
   }
   &:not(:disabled):active:after,
   :active:after {
-    background-color: #dcd8c0;
+    background-color: ${theme.colors.primaryColor};
   }
 `

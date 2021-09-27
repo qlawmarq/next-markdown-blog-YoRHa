@@ -1,4 +1,5 @@
 import { css, keyframes } from '@emotion/react'
+import { theme } from '@/theme/theme'
 
 const slideIn = keyframes`
     0% {
@@ -15,10 +16,10 @@ export const style = css`
   position: relative;
   flex-direction: column;
   margin: 1rem;
-  background-color: #dcd8c0;
+  background-color: ${theme.colors.primaryColor};
   padding: 0.5rem;
   padding-left: 1.5rem;
-  box-shadow: 0.2em 0.2em #bab5a1;
+  box-shadow: 0.2em 0.2em ${theme.colors.tertiaryColor};
   animation: ${slideIn} 0.5s ease-in-out 0s 1 normal;
   &:before {
     content: '';
@@ -28,12 +29,12 @@ export const style = css`
     bottom: 0;
     width: 0.3rem;
     padding: 0.15rem;
-    border: solid #454138;
+    border: solid ${theme.colors.secondaryColor};
     border-width: 0 0.2rem 0 0.6rem;
     transition: all 0.2s ease-out;
   }
   &:hover:before {
-    border: solid #bab5a1;
+    border: solid ${theme.colors.tertiaryColor};
     border-width: 0 0.2rem 0 0.6rem;
   }
 `

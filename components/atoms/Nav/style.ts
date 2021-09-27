@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
-import { fontSize } from '@/constants//styles'
+
+import { theme } from '@/theme/index'
 
 export const style = css`
   ul {
@@ -14,11 +15,11 @@ export const style = css`
       .nav_button {
         display: block;
         margin: auto;
-        font-size: ${fontSize.S};
+        font-size: ${theme.fontSizes.S};
         width: 4.8rem;
         &:hover:before {
           bottom: -0.5rem;
-          border: solid #454138;
+          border: solid ${theme.colors.secondaryColor};
           border-width: 0.5rem 0;
         }
       }

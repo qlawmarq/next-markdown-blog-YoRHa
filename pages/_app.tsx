@@ -1,10 +1,6 @@
 import { AppProps } from 'next/app'
-import '@/css/reset.css'
-import '@/css/prism.css'
-import '@/css/theme.css'
-import '@/css/fonts.css'
+import { ThemeProvider } from '@/theme/index'
 
-import { ThemeProvider } from 'next-themes'
 import Head from 'next/head'
 import BaseLayout from '@/components/templates/BaseLayout'
 

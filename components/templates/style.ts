@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { breakpoints } from '@/constants/styles'
+import { breakpoints } from '@/theme/index'
 export const InnerStyle = css`
   position: relative;
   margin: auto;

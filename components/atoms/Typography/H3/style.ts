@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
-import { fontSize } from '@/constants//styles'
+import { theme } from '@/theme/theme'
 
 export const style = css`
-  font-size: ${fontSize.M};
+  font-size: ${theme.fontSizes.M};
   font-weight: bold;
   padding-left: 0.5rem;
   padding-top: 1rem;

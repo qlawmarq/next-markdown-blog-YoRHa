@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import { theme } from '@/theme/index'
 
 export const style = css`
   &[type='text'],
@@ -22,7 +23,7 @@ export const style = css`
     -moz-appearance: none;
     appearance: none;
     border-radius: 0;
-    background-color: #dcd8c0;
+    background-color: ${theme.colors.primaryColor};
     color: inherit;
     font-family: inherit;
     letter-spacing: inherit;
@@ -37,7 +38,7 @@ export const style = css`
     outline: none;
     appearance: none;
     border-radius: 0;
-    background-color: #bab5a1;
+    background-color: ${theme.colors.tertiaryColor};
     color: inherit;
     font-family: inherit;
     letter-spacing: inherit;
@@ -49,20 +50,20 @@ export const style = css`
   &[type='submit']:not(:disabled):hover,
   &[type='button']:not(:disabled):hover,
   &[type='reset']:not(:disabled):hover {
-    -webkit-box-shadow: 0.2em 0.2em 0.1em 0 #bab5a1;
-    box-shadow: 0.2em 0.2em 0.1em 0 #bab5a1;
+    -webkit-box-shadow: 0.2em 0.2em 0.1em 0 ${theme.colors.tertiaryColor};
+    box-shadow: 0.2em 0.2em 0.1em 0 ${theme.colors.tertiaryColor};
   }
   &[type='submit']:not(:disabled):hover,
   &[type='button']:not(:disabled):hover,
   &[type='reset']:not(:disabled):hover {
-    background-color: #454138;
-    color: #dcd8c0;
+    background-color: ${theme.colors.secondaryColor};
+    color: ${theme.colors.primaryColor};
   }
   &[type='submit']:not(:disabled):active,
   &[type='button']:not(:disabled):active,
   &[type='reset']:not(:disabled):active {
-    background-color: #dcd8c0;
-    color: #454138;
+    background-color: ${theme.colors.primaryColor};
+    color: ${theme.colors.secondaryColor};
   }
   &:disabled {
     padding: 0.5rem;
@@ -73,12 +74,12 @@ export const style = css`
     -moz-appearance: none;
     appearance: none;
     border-radius: 0;
-    background-color: #dcd8c0;
+    background-color: ${theme.colors.primaryColor};
     color: inherit;
     font-family: inherit;
     letter-spacing: inherit;
     font-weight: inherit;
-    color: #bab5a1;
+    color: ${theme.colors.tertiaryColor};
     cursor: not-allowed;
   }
 `
