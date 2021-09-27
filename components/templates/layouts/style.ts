@@ -1,5 +1,6 @@
 import { css, keyframes } from '@emotion/react'
-import { fontSize } from '@/constants/styles'
+import { theme } from '@/theme/index'
+
 import {
   H1Style,
   H2Style,
@@ -33,7 +34,7 @@ export const PostLayoutStyle = css`
   }
 
   .post-contents p {
-    font-size: ${fontSize.M};
+    font-size: ${theme.fontSizes.M};
     margin: 1rem 0;
   }
 
@@ -50,7 +51,7 @@ export const PostLayoutStyle = css`
   }
 
   .post-contents h4 {
-    font-size: ${fontSize.M};
+    font-size: ${theme.fontSizes.M};
     font-weight: bold;
     padding-left: 0.5rem;
     padding-top: 1rem;
@@ -88,7 +89,7 @@ export const PostLayoutStyle = css`
 
   .post-contents table th {
     font-weight: normal;
-    border-bottom: 0.1rem solid #454138;
+    border-bottom: 0.1rem solid ${theme.colors.secondaryColor};
   }
 
   .post-contents table th,

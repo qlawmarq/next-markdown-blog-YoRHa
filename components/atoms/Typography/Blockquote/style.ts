@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import { theme } from '@/theme/theme'
 
 export const style = css`
   position: relative;
@@ -15,7 +16,7 @@ export const style = css`
     height: 100%;
     width: 0.3rem;
     padding: 0.15rem;
-    border: solid #bab5a1;
+    border: solid ${theme.colors.tertiaryColor};
     border-width: 0 0.2rem 0 0.6rem;
   }
 `

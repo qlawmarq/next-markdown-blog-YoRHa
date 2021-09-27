@@ -30,11 +30,8 @@
       "@/lib/*": [
         "lib/*"
       ],
-      "@/css/*": [
-        "css/*"
-      ],
-      "@/constants/*": [
-        "constants/*"
+      "@/theme/*": [
+        "theme/*"
       ],
       "@/types/*": [
         "types/*"
