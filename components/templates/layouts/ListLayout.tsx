@@ -2,7 +2,7 @@ import React from 'react'
 import Tag from '@/lib/tags/Tag'
 import { useState } from 'react'
 import { Pagination } from '@/components/molecules/Pagination'
-import { Section } from '@/components/atoms/Section'
+import { Card } from '@/components/molecules/Card'
 import formatDateString from '@/lib/utils/formatDateString'
 import { H1, H2, Paragraph, Anchor } from '@/components/atoms/Typography'
 import { Input } from '@/components/atoms/Input'
@@ -56,7 +56,7 @@ const ListLayout: React.FC<PropsType> = ({
             const { slug, date, title, summary, tags } = frontMatter
             return (
               <li key={slug}>
-                <Section onClick={() => onClickListItem(slug)}>
+                <Card onClick={() => onClickListItem(slug)}>
                   <div>
                     <H2>{title}</H2>
                     <dl>
@@ -72,7 +72,7 @@ const ListLayout: React.FC<PropsType> = ({
                     </div>
                   </div>
                   <div>{summary}</div>
-                </Section>
+                </Card>
               </li>
             )
           })}

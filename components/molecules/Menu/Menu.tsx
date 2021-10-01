@@ -12,7 +12,7 @@ interface Item {
   title: string
 }
 
-export const Nav: React.FC<HtmlHTMLAttributes<HTMLElement> & PropsType> = ({
+export const Menu: React.FC<HtmlHTMLAttributes<HTMLElement> & PropsType> = ({
   Items,
   onClickItem,
   ...props
