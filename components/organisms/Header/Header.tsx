@@ -1,10 +1,10 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { Anchor } from '@/components/atoms/Typography'
-import { Nav } from '@/components/atoms/Nav'
+import { Menu } from '@/components/molecules/Menu'
 import headerNavLinks from '@/data/headerNavLinks'
 import { HeaderStyle, InnerStyle } from './style'
-import Logo from './moon_logo.svg'
+import Logo from './header_logo.svg'
 
 const Header: React.FC = () => {
   const router = useRouter()
@@ -13,8 +13,11 @@ const Header: React.FC = () => {
   }
   return (
     <header css={HeaderStyle}>
+      <div>
+        <Logo height={64} width={`100%`} />
+      </div>
       <div css={InnerStyle}>
-        <Nav Items={headerNavLinks} onClickItem={handleClick} />
+        <Menu Items={headerNavLinks} onClickItem={handleClick} />
       </div>
     </header>
   )
