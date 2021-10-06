@@ -1,5 +1,4 @@
-import { css, keyframes } from '@emotion/react'
-
+import { css } from '@emotion/react'
 import { theme } from '@/theme/theme'
 
 export const style = css`

@@ -3,10 +3,14 @@ import { Header } from '@/components/organisms/Header'
 import { Footer } from '@/components/organisms/Footer'
 import { InnerStyle, OuterStyle } from './style'
 
-const BaseLayout: React.FC = ({ children }) => {
+type PropsType = {
+  onClickMenuItem: (item: string) => void
+}
+
+const BaseLayout: React.FC<PropsType> = ({ children, onClickMenuItem }) => {
   return (
     <div css={OuterStyle}>
-      <Header />
+      <Header onClickMenuItem={onClickMenuItem} />
       <main css={InnerStyle}>{children}</main>
       <Footer />
     </div>
