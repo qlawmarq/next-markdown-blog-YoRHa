@@ -33,6 +33,8 @@ export const ResetStyle = css`
     min-height: 100vh;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
+    // disable html bounce
+    overscroll-behavior: none;
   }
 
   a:not([class]) {
