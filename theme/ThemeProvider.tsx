@@ -18,7 +18,6 @@ export const ThemeProvider: React.FC = ({ children }) => {
             background-size: 0.3rem 0.3rem;
             background-image: linear-gradient(to right, #ccc8b1 1px, rgba(204, 200, 177, 0) 1px),
               linear-gradient(to bottom, #ccc8b1 1px, rgba(204, 200, 177, 0) 1px);
-            box-shadow: inset 0 0 150px rgba(77, 73, 62, 0.4), inset 0 0 150px rgba(77, 73, 62, 0.3);
           }
         `}
       />
