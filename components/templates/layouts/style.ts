@@ -1,5 +1,5 @@
 import { css, keyframes } from '@emotion/react'
-import { theme } from '@/theme/index'
+import { theme, breakpoints } from '@/theme/index'
 
 import {
   H1Style,
@@ -24,6 +24,24 @@ const commonLayoutStyle = css`
 
 export const PostLayoutStyle = css`
   ${commonLayoutStyle}
+  display: flex;
+  article {
+    width: 75%;
+  }
+  aside {
+    width: 25%;
+  }
+
+  @media (${breakpoints.TABLET}) {
+    display: block;
+    article {
+      width: 100%;
+    }
+    aside {
+      width: 100%;
+    }
+  }
+
   .post-contents {
     padding: 1rem;
   }
