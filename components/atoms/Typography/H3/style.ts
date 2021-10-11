@@ -6,6 +6,6 @@ export const style = css`
   font-weight: bold;
   padding-left: 0.5rem;
   padding-top: 1rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 0.15rem;
 `

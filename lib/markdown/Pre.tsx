@@ -22,7 +22,12 @@ const Pre: React.FC = (props) => {
   }
 
   return (
-    <div ref={textInput} onMouseEnter={onEnter} onMouseLeave={onExit}>
+    <div
+      ref={textInput}
+      onMouseEnter={onEnter}
+      onMouseLeave={onExit}
+      style={{ position: 'relative' }}
+    >
       {hovered && (
         <Button
           aria-label="Copy code"
