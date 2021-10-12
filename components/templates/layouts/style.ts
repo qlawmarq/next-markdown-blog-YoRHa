@@ -81,6 +81,11 @@ export const PostLayoutStyle = css`
     ${AnchorStyle}
   }
 
+  .post-contents code {
+    background-color: ${theme.colors.primaryColor};
+    padding: 0.25rem;
+  }
+
   .post-contents strong {
     font-weight: bold;
   }
@@ -113,6 +118,12 @@ export const PostLayoutStyle = css`
   .post-contents table th,
   .post-contents table td {
     padding: 0.5rem;
+  }
+
+  .post-contents hr {
+    margin: 1rem 0;
+    border-top: solid ${theme.colors.tertiaryColor};
+    border-width: 0.1rem 0 0 0;
   }
 `
 
