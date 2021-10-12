@@ -9,10 +9,6 @@ export const style = css`
   background-color: ${theme.colors.primaryColor};
   padding: 0.5rem;
 
-  &:not(figcaption) {
-    margin: 0.5rem;
-  }
-
   figcaption {
     order: -1;
     margin: -0.5rem;

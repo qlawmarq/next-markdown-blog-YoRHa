@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { PageSEO } from '@/lib/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
-import ListLayout from '@/components/templates/layouts/ListLayout'
+import PostListingLayout from '@/components/templates/layouts/PostListingLayout'
 import { POSTS_PER_PAGE } from '../../blog'
 import { BlogFrontmatter } from '@/types/blog'
 
@@ -58,7 +58,7 @@ const PostPage: React.FC<PropsType> = ({ posts, initialDisplayPosts, pagination 
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      <ListLayout
+      <PostListingLayout
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}

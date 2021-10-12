@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
 import { siteMetadata } from '@/data/siteMetadata'
-import ListLayout from '@/components/templates/layouts/ListLayout'
+import PostListingLayout from '@/components/templates/layouts/PostListingLayout'
 import { PageSEO } from '@/lib/SEO'
 import { BlogFrontmatter } from '@/types/blog'
 
@@ -34,7 +34,7 @@ const Blog: React.FC<PropsType> = ({ posts, initialDisplayPosts, pagination }) =
   return (
     <>
       <PageSEO title={`${siteMetadata.title} - Blog`} description={siteMetadata.description} />
-      <ListLayout
+      <PostListingLayout
         posts={posts}
         initialDisplayPosts={initialDisplayPosts}
         pagination={pagination}
