@@ -5,6 +5,7 @@ import Tag from '@/lib/tags/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
 import { getAllTags } from '@/lib/tags/tags'
 import { H1 } from '@/components/atoms/Typography'
+import OtherLayout from '@/components/templates/layouts/OtherLayout'
 
 type PropsType = {
   tags: {}
@@ -18,7 +19,7 @@ export const getStaticProps: GetStaticProps = async () => {
 const Tags: React.FC<PropsType> = ({ tags }) => {
   const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a])
   return (
-    <>
+    <OtherLayout>
       <PageSEO title={`${siteMetadata.title} - Tags`} description="Things I blog about" />
       <div>
         <div>
@@ -35,7 +36,7 @@ const Tags: React.FC<PropsType> = ({ tags }) => {
           })}
         </div>
       </div>
-    </>
+    </OtherLayout>
   )
 }
 export default Tags

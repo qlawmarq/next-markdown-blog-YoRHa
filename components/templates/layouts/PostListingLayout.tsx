@@ -17,7 +17,7 @@ type PropsType = {
   onClickListItem: (item: string) => void
 }
 
-const ListLayout: React.FC<PropsType> = ({
+const PostListingLayout: React.FC<PropsType> = ({
   posts,
   title,
   description,
@@ -85,4 +85,4 @@ const ListLayout: React.FC<PropsType> = ({
   )
 }
 
-export default ListLayout
+export default PostListingLayout

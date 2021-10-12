@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import { TagSEO } from '@/lib/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
-import ListLayout from '@/components/templates/layouts/ListLayout'
+import PostListingLayout from '@/components/templates/layouts/PostListingLayout'
 import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
 import { getAllTags } from '@/lib/tags/tags'
 import kebabCase from '@/lib/utils/kebabCase'
@@ -49,7 +49,7 @@ const Tag: React.FC<PropsType> = ({ posts, tag }) => {
         title={`${tag} - ${siteMetadata.author}`}
         description={`${tag} tags - ${siteMetadata.author}`}
       />
-      <ListLayout posts={posts} title={title} onClickListItem={handleClick} />
+      <PostListingLayout posts={posts} title={title} onClickListItem={handleClick} />
     </>
   )
 }

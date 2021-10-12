@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { ThemeProvider } from '@/theme/index'
 
 import Head from 'next/head'
-import BaseLayout from '@/components/templates/BaseLayout'
+import Base from '@/components/templates/Base'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -15,9 +15,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
-      <BaseLayout onClickMenuItem={handleClick}>
+      <Base onClickMenuItem={handleClick}>
         <Component {...pageProps} />
-      </BaseLayout>
+      </Base>
     </ThemeProvider>
   )
 }

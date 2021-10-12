@@ -5,7 +5,7 @@ import { PageSEO } from '@/lib/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
 import { BlogFrontmatter } from '@/types/blog'
-import ListLayout from '@/components/templates/layouts/ListLayout'
+import PostListingLayout from '@/components/templates/layouts/PostListingLayout'
 
 type PropsType = {
   posts: BlogFrontmatter[]
@@ -26,7 +26,7 @@ const Index: React.FC<PropsType> = ({ posts }) => {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      <ListLayout
+      <PostListingLayout
         posts={posts}
         title={siteMetadata.title}
         description={siteMetadata.description}
