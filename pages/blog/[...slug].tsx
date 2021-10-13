@@ -44,7 +44,7 @@ const Blog: React.FC<PropsType> = ({ post, prev, next }) => {
         <>
           <BlogSEO
             title={frontMatter.title}
-            summary={frontMatter.summary}
+            description={frontMatter.description}
             date={frontMatter.date}
             url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`}
           />

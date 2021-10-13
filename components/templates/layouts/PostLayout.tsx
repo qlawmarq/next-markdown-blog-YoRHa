@@ -45,7 +45,7 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
         </div>
       </article>
       <aside>
-        {tags && (
+        {!!tags?.length && (
           <Figure figcaption={'Tags'}>
             <div>
               {tags.map((tag) => (
