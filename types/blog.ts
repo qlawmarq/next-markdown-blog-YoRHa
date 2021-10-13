@@ -3,6 +3,6 @@ export type BlogFrontmatter = {
   date: string
   tags?: string[]
   draft: boolean
-  summary?: string
+  description?: string
   slug: string
 }

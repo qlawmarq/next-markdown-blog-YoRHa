@@ -120,7 +120,7 @@ export async function getAllFilesFrontMatter(folder: string) {
         date: matterResult.data.date,
         tags: matterResult.data.tags,
         draft: matterResult.data.draft,
-        summary: matterResult.data.summary,
+        description: matterResult.data.description,
         slug: formatSlug(fileName),
       })
     }

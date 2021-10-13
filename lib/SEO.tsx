@@ -70,7 +70,7 @@ export const TagSEO = ({ title, description }) => {
 
 type BlogSEOPropsType = {
   title: string
-  summary?: string
+  description?: string
   date: string
   lastmod?: string
   url: string
@@ -79,7 +79,7 @@ type BlogSEOPropsType = {
 
 export const BlogSEO: React.FC<BlogSEOPropsType> = ({
   title,
-  summary,
+  description,
   date,
   lastmod,
   url,
@@ -127,7 +127,7 @@ export const BlogSEO: React.FC<BlogSEOPropsType> = ({
         url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
       },
     },
-    description: summary,
+    description: description,
   }
 
   const twImageUrl = featuredImages[0].url
@@ -136,7 +136,7 @@ export const BlogSEO: React.FC<BlogSEOPropsType> = ({
     <>
       <CommonSEO
         title={title}
-        description={summary}
+        description={description}
         ogType="article"
         ogImage={featuredImages}
         twImage={twImageUrl}

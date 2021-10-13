@@ -2,7 +2,7 @@ import React from 'react'
 import { GetStaticProps } from 'next'
 import { MDXLayoutRenderer } from '@/lib/markdown/MDXComponents'
 import { getFileBySlug } from '@/lib/markdown/mdx'
-import { BlogSEO } from '@/lib/SEO'
+import { PageSEO } from '@/lib/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
 import { BlogFrontmatter } from '@/types/blog'
 
@@ -23,10 +23,9 @@ const About: React.FC<PropsType> = ({ about }) => {
 
   return (
     <>
-      <BlogSEO
+      <PageSEO
         title={`${siteMetadata.title} - ${frontMatter.title}`}
-        date={frontMatter.date}
-        url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`}
+        description={frontMatter.description}
       />
       <MDXLayoutRenderer mdxSource={mdxSource} frontMatter={frontMatter} />
     </>

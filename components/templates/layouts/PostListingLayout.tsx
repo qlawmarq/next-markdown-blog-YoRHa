@@ -27,7 +27,7 @@ const PostListingLayout: React.FC<PropsType> = ({
 }) => {
   const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((frontMatter) => {
-    const searchContent = frontMatter.title + frontMatter.summary + frontMatter.tags.join(' ')
+    const searchContent = frontMatter.title + frontMatter.description + frontMatter.tags.join(' ')
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
 
@@ -53,7 +53,7 @@ const PostListingLayout: React.FC<PropsType> = ({
         <ul>
           {!filteredBlogPosts.length && 'No posts found.'}
           {displayPosts.map((frontMatter) => {
-            const { slug, date, title, summary, tags } = frontMatter
+            const { slug, date, title, description, tags } = frontMatter
             return (
               <li key={slug}>
                 <Card onClick={() => onClickListItem(slug)}>
@@ -71,7 +71,7 @@ const PostListingLayout: React.FC<PropsType> = ({
                       ))}
                     </div>
                   </div>
-                  <div>{summary}</div>
+                  <div>{description}</div>
                 </Card>
               </li>
             )
