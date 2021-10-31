@@ -21,7 +21,7 @@
   "dependencies": {
     "@emotion/babel-preset-css-prop": "11.2.0",
     "@emotion/react": "11.5.0",
-    "esbuild": "0.13.10",
+    "esbuild": "0.13.12",
     "github-slugger": "1.4.0",
     "gray-matter": "4.0.3",
     "mdx-bundler": "6.0.2",
