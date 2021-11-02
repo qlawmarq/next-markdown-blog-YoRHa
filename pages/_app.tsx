@@ -8,7 +8,7 @@ import Base from '@/components/templates/Base'
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const handleClick = (href: string) => {
-    router.push(`/${href}`)
+    router.push(href)
   }
   return (
     <ThemeProvider>
