@@ -36,8 +36,7 @@
       "@/types/*": [
         "types/*"
       ]
-    },
-    "incremental": true
+    }
   },
   "include": [
     "next-env.d.ts",
