@@ -15,20 +15,17 @@ const expand = keyframes`
 export const FooterStyle = css`
   position: relative;
   margin: auto;
+  height: 6rem;
   padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   position: relative;
-  &:after {
-    content: '';
-    background: ${theme.colors.secondaryColor};
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    animation: ${expand} 0.5s ease-in-out 0s 1 normal;
-  }
+`
+export const BorderStyle = css`
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
 `
