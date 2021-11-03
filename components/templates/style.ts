@@ -20,3 +20,15 @@ export const OuterStyle = css`
   position: relative;
   width: 100%;
 `
+
+export const UpLeftCircleStyle = css`
+  position: absolute;
+  left: 0;
+  top:0;
+`
+
+export const DownRightCircleStyle = css`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+`

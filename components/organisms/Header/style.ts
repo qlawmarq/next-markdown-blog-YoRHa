@@ -14,16 +14,12 @@ const expand = keyframes`
 
 export const HeaderStyle = css`
   position: relative;
-  &:after {
-    content: '';
-    background: ${theme.colors.secondaryColor};
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    animation: ${expand} 0.5s ease-in-out 0s 1 normal;
-  }
+  height: 5rem;
 `
 
-export const InnerStyle = css``
+export const borderStyle = css`
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+`
