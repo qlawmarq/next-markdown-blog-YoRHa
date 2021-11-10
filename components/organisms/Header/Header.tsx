@@ -12,9 +12,7 @@ type PropsType = {
 const Header: React.FC<PropsType> = ({ onClickMenuItem }) => {
   return (
     <header css={HeaderStyle}>
-      <div>
-        <Menu Items={headerNavLinks} onClickItem={onClickMenuItem} />
-      </div>
+      <Menu Items={headerNavLinks} onClickItem={onClickMenuItem} />
       <div css={borderStyle}>
         <Line/>
       </div>

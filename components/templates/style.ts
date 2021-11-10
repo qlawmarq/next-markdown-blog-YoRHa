@@ -5,6 +5,7 @@ export const InnerStyle = css`
   margin: auto;
   padding: 1rem;
   max-width: 70%;
+  min-height: calc(100vh - 12rem);
 
   @media (${breakpoints.TABLET}) {
     max-width: 500px;

@@ -14,7 +14,13 @@ const expand = keyframes`
 
 export const HeaderStyle = css`
   position: relative;
-  height: 5rem;
+  margin: auto;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 `
 
 export const borderStyle = css`

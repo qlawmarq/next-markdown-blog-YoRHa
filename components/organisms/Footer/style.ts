@@ -16,7 +16,6 @@ export const FooterStyle = css`
   position: relative;
   margin: auto;
   height: 6rem;
-  padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
