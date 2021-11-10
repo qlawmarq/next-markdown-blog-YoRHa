@@ -3,6 +3,7 @@ import { css } from '@emotion/react'
 import { theme } from '@/theme/index'
 
 export const style = css`
+  width: 100%;
   ul {
     display: flex;
     justify-content: space-around;
