@@ -15,7 +15,7 @@ const slideIn = keyframes`
 export const style = css`
   position: relative;
   flex-direction: column;
-  margin: 1rem;
+  margin: 1rem 0;
   background-color: ${theme.colors.primaryColor};
   padding: 0.5rem;
   padding-left: 1.5rem;

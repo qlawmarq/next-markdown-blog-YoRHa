@@ -29,6 +29,7 @@ export const PostLayoutStyle = css`
     width: 75%;
   }
   aside {
+    padding-top: 1rem;
     width: 25%;
   }
 
@@ -43,7 +44,7 @@ export const PostLayoutStyle = css`
   }
 
   .post-contents {
-    padding: 1rem;
+    //
   }
 
   .post-contents img {
