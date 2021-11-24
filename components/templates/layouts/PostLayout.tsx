@@ -25,17 +25,16 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
     <div css={PostLayoutStyle}>
       <article>
         <div className="post-contents">
+          <div>
+            <H1>{title}</H1>
+          </div>
           <dl>
-            {/* <dt>Published on</dt> */}
             <dd>
               <time dateTime={date}>{formatDateString(String(date))}</time>
             </dd>
           </dl>
           <div>
-            <H1>{title}</H1>
-          </div>
-          <div>
-            <div>{children}</div>
+            <div className="post-contents">{children}</div>
             <div>
               <Anchor href={discussUrl(slug)} rel="nofollow">
                 {'Discuss on Twitter'}
