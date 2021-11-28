@@ -1,5 +1,5 @@
 import { css, keyframes } from '@emotion/react'
-import { theme } from '@/theme/index'
+import { breakpoints } from '@/theme/index'
 
 const expand = keyframes`
     0% {
@@ -20,7 +20,7 @@ export const HeaderStyle = css`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: relative;
+  width: 100%;
 `
 
 export const borderStyle = css`

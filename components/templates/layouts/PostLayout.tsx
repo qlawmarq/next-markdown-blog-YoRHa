@@ -35,6 +35,7 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
               </dd>
             </dl>
           )}
+          <hr />
           <div>
             <div className="post-contents">{children}</div>
             <div>

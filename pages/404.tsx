@@ -1,18 +1,25 @@
 import React from 'react'
+import { PageSEO } from '@/lib/SEO'
+import { siteMetadata } from '@/data/siteMetadata'
 import { H1, Paragraph, Anchor } from '@/components/atoms/Typography'
 
 const FourZeroFour: React.FC = () => {
   return (
-    <div>
+    <>
+      <PageSEO
+        title={`${siteMetadata.title} - 404 NOT FOUND`}
+        description={`404 NOT FOUND`}
+      />
       <div>
-        <H1>404</H1>
+        <div>
+          <H1>404 NOT FOUND</H1>
+        </div>
+        <div>
+          <Paragraph>Sorry we couldn't find this page.</Paragraph>
+          <Anchor href="/">Back to Home</Anchor>
+        </div>
       </div>
-      <div>
-        <Paragraph>Sorry we couldn't find this page.</Paragraph>
-        <Paragraph>But dont worry, you can find plenty of other things on our homepage.</Paragraph>
-        <Anchor href="/">Back to homepage</Anchor>
-      </div>
-    </div>
+    </>
   )
 }
 export default FourZeroFour
