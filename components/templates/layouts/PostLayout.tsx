@@ -28,11 +28,14 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
           <div>
             <H1>{title}</H1>
           </div>
-          <dl>
-            <dd>
-              <time dateTime={date}>{formatDateString(String(date))}</time>
-            </dd>
-          </dl>
+          {date && (
+            <dl>
+              <dd>
+                <time dateTime={date}>{formatDateString(String(date))}</time>
+              </dd>
+            </dl>
+          )}
+          <hr />
           <div>
             <div className="post-contents">{children}</div>
             <div>
@@ -70,7 +73,7 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
           </div>
         )}
         <div>
-          <Anchor href="/blog">&larr; Back to the blog</Anchor>
+          <Anchor href="/">&larr; Back to the Home</Anchor>
         </div>
       </aside>
     </div>

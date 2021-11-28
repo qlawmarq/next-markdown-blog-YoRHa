@@ -46,8 +46,8 @@ const Tag: React.FC<PropsType> = ({ posts, tag }) => {
   return (
     <>
       <TagSEO
-        title={`${tag} - ${siteMetadata.author}`}
-        description={`${tag} tags - ${siteMetadata.author}`}
+        title={`${siteMetadata.title} - ${tag}`}
+        description={`${tag} tags - ${siteMetadata.title}`}
       />
       <PostListingLayout posts={posts} title={title} onClickListItem={handleClick} />
     </>
