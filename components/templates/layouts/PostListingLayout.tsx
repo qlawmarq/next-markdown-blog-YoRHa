@@ -1,7 +1,6 @@
 import React from 'react'
 import Tag from '@/lib/tags/Tag'
 import { useState } from 'react'
-import { Pagination } from '@/components/molecules/Pagination'
 import { Card } from '@/components/molecules/Card'
 import formatDateString from '@/lib/utils/formatDateString'
 import { H1, H2, Paragraph, Anchor } from '@/components/atoms/Typography'
@@ -12,8 +11,6 @@ type PropsType = {
   posts: any
   title: string
   description?: string
-  initialDisplayPosts?: any[]
-  pagination?: any
   onClickListItem: (item: string) => void
 }
 
@@ -21,8 +18,6 @@ const PostListingLayout: React.FC<PropsType> = ({
   posts,
   title,
   description,
-  initialDisplayPosts = [],
-  pagination,
   onClickListItem,
 }) => {
   const [searchValue, setSearchValue] = useState('')
@@ -30,10 +25,6 @@ const PostListingLayout: React.FC<PropsType> = ({
     const searchContent = frontMatter.title + frontMatter.description + frontMatter.tags.join(' ')
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
-
-  // If initialDisplayPosts exist, display it if no searchValue is specified
-  const displayPosts =
-    initialDisplayPosts.length > 0 && !searchValue ? initialDisplayPosts : filteredBlogPosts
 
   return (
     <>
@@ -52,7 +43,7 @@ const PostListingLayout: React.FC<PropsType> = ({
         </div>
         <ul>
           {!filteredBlogPosts.length && 'No posts found.'}
-          {displayPosts.map((frontMatter) => {
+          {filteredBlogPosts.map((frontMatter) => {
             const { slug, date, title, description, tags } = frontMatter
             return (
               <li key={slug}>
@@ -78,9 +69,6 @@ const PostListingLayout: React.FC<PropsType> = ({
           })}
         </ul>
       </div>
-      {pagination && pagination.totalPages > 1 && !searchValue && (
-        <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
-      )}
     </>
   )
 }
