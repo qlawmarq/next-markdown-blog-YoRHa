@@ -1,9 +1,13 @@
 import React from 'react'
-import { Anchor } from '@/components/atoms/Typography'
-import kebabCase from '@/lib/utils/kebabCase'
+import { Anchor, Paragraph } from '@/components/atoms/Typography'
 import { Label } from '@/components/atoms/Label'
 
-const Tag: React.FC<{ href: string; text: string }> = ({ href, text }) => {
+const Tag: React.FC<{ href?: string; text: string }> = ({ href, text }) => {
+  if(!href){
+    <Label>
+      <Paragraph>{text}</Paragraph>
+    </Label>
+  }
   return (
     <Label>
       <Anchor href={href}>{text}</Anchor>

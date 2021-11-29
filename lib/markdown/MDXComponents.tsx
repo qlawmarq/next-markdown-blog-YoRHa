@@ -9,17 +9,16 @@ import NextImage from 'next/image'
 type PropsType = {
   mdxSource: string
   frontMatter: BlogFrontmatter
-  next?: BlogFrontmatter
-  prev?: BlogFrontmatter
+  relatedPosts?: BlogFrontmatter[]
 }
 
 const MDXComponents = {
   image: NextImage,
   a: Anchor,
   pre: Pre,
-  wrapper: ({ frontMatter, next, prev, children }) => {
+  wrapper: ({ frontMatter, relatedPosts, children }) => {
     return (
-      <PostLayout frontMatter={frontMatter} next={next} prev={prev}>
+      <PostLayout frontMatter={frontMatter} relatedPosts={relatedPosts}>
         {children}
       </PostLayout>
     )

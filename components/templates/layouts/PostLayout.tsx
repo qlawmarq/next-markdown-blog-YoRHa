@@ -1,7 +1,8 @@
 import React from 'react'
 import { PostLayoutStyle } from './style'
-import { H1, H2, Anchor } from '@/components/atoms/Typography'
+import { H1, H2, Anchor, Paragraph } from '@/components/atoms/Typography'
 import { Figure } from '@/components/molecules/Figure'
+import { UnorderedList } from '@/components/molecules/UnorderedList'
 import Tag from '@/lib/tags/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
 import formatDateString from '@/lib/utils/formatDateString'
@@ -9,16 +10,15 @@ import { BlogFrontmatter } from '@/types/blog'
 
 type PropsType = {
   frontMatter: BlogFrontmatter
-  next?: BlogFrontmatter
-  prev?: BlogFrontmatter
+  relatedPosts?: BlogFrontmatter[]
 }
 
-const discussUrl = (slug) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `${siteMetadata.siteUrl}/blog/${slug}`
-  )}`
+// const discussUrl = (slug) =>
+//   `https://mobile.twitter.com/search?q=${encodeURIComponent(
+//     `${siteMetadata.siteUrl}/blog/${slug}`
+//   )}`
 
-const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) => {
+const PostLayout: React.FC<PropsType> = ({ frontMatter, relatedPosts, children }) => {
   const { slug, date, title, tags } = frontMatter
 
   return (
@@ -29,20 +29,13 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
             <H1>{title}</H1>
           </div>
           {date && (
-            <dl>
-              <dd>
+            <Paragraph>
                 <time dateTime={date}>{formatDateString(String(date))}</time>
-              </dd>
-            </dl>
+            </Paragraph>
           )}
           <hr />
           <div>
             <div className="post-contents">{children}</div>
-            <div>
-              <Anchor href={discussUrl(slug)} rel="nofollow">
-                {'Discuss on Twitter'}
-              </Anchor>
-            </div>
           </div>
         </div>
       </article>
@@ -56,21 +49,12 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, next, prev, children }) 
             </div>
           </Figure>
         )}
-        {(next || prev) && (
-          <div>
-            <Figure figcaption={'Next & Previous Article'}>
-              {prev && (
-                <div>
-                  <Anchor href={`/blog/${prev.slug}`}>{prev.title}</Anchor>
-                </div>
-              )}
-              {next && (
-                <div>
-                  <Anchor href={`/blog/${next.slug}`}>{next.title}</Anchor>
-                </div>
-              )}
-            </Figure>
-          </div>
+        {!!relatedPosts?.length && (
+          <Figure figcaption={'Related Posts'}>
+            <UnorderedList items={relatedPosts.map((rPost, idx) => (
+                  <Anchor key={idx} href={`/blog/${rPost.slug}`}>{rPost.title}</Anchor>
+              ))} />
+          </Figure>
         )}
         <div>
           <Anchor href="/">&larr; Back to the Home</Anchor>

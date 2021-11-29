@@ -1,12 +1,15 @@
 import { css, keyframes } from '@emotion/react'
 import { theme, breakpoints } from '@/theme/index'
-
+import { unorderedListStyle } from '@/components/molecules/UnorderedList'
+import { orderedListStyle } from '@/components/molecules/OrderedList'
 import {
   H1Style,
   H2Style,
   H3Style,
+  H4Style,
   AnchorStyle,
   BlockquoteStyle,
+  ParagraphStyle
 } from '@/components/atoms/Typography'
 
 const fadeIn = keyframes`
@@ -53,8 +56,7 @@ export const PostLayoutStyle = css`
   }
 
   .post-contents p {
-    font-size: ${theme.fontSizes.M};
-    margin: 1rem 0;
+    ${ParagraphStyle}
   }
 
   .post-contents h1 {
@@ -70,12 +72,7 @@ export const PostLayoutStyle = css`
   }
 
   .post-contents h4 {
-    font-size: ${theme.fontSizes.M};
-    font-weight: bold;
-    padding-left: 0.5rem;
-    padding-top: 1rem;
-    margin-bottom: 0.25rem;
-    letter-spacing: 0.15rem;
+    ${H4Style}
   }
 
   .post-contents a {
@@ -95,15 +92,12 @@ export const PostLayoutStyle = css`
     ${BlockquoteStyle}
   }
 
-  .post-contents ul,
-  .post-contents ol {
-    padding: 0.5em 0 0.5em 1.5em;
+  .post-contents ul {
+    ${unorderedListStyle}
   }
 
-  .post-contents ul li,
-  .post-contents ol li {
-    line-height: 1.5;
-    padding: 0.5em 0;
+  .post-contents ol {
+    ${orderedListStyle}
   }
 
   .post-contents table {
@@ -130,11 +124,4 @@ export const PostLayoutStyle = css`
 
 export const ListLayoutStyle = css`
   ${commonLayoutStyle}
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-  li {
-    list-style-type: none;
-  }
 `
