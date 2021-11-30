@@ -52,10 +52,10 @@ const PostListingLayout: React.FC<PropsType> = ({
                   <Paragraph>
                     <time dateTime={date}>{formatDateString(date)}</time>
                   </Paragraph>
-                  <Paragraph>{description}</Paragraph>
                   {tags.map((tag) => (
                     <Tag key={tag} text={tag} />
                   ))}
+                  <Paragraph>{description}</Paragraph>
                 </Card>
               </li>
             )
