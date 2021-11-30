@@ -26,7 +26,7 @@ const Pre: React.FC = (props) => {
       ref={textInput}
       onMouseEnter={onEnter}
       onMouseLeave={onExit}
-      style={{ position: 'relative' }}
+      style={{ position: 'relative', lineHeight: '1rem' }}
     >
       {hovered && (
         <Button

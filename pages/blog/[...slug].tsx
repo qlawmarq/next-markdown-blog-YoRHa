@@ -11,8 +11,7 @@ type PropsType = {
     mdxSource: string
     frontMatter: BlogFrontmatter
   }
-  prev?: BlogFrontmatter
-  next?: BlogFrontmatter
+  relatedPosts?: BlogFrontmatter[]
 }
 
 export async function getStaticPaths() {
@@ -28,15 +27,25 @@ export async function getStaticPaths() {
 }
 export const getStaticProps = async ({ params }) => {
   const allPosts = await getAllFilesFrontMatter('blog')
-  const postIndex = allPosts.findIndex((post) => formatSlug(post.slug) === params.slug.join('/'))
-  const prev = allPosts[postIndex + 1] || null
-  const next = allPosts[postIndex - 1] || null
   const post = await getFileBySlug('blog', params.slug?.join('/'))
-
-  return { props: { post, prev, next } }
+  const relatedPosts = allPosts.filter((p)=>{
+    let searchResult: boolean = false;
+    if(p.slug === post.frontMatter.slug){
+      return searchResult
+    }
+    p.tags?.forEach(tag => {
+      post.frontMatter.tags?.forEach((pt)=>{
+        if(tag == pt){
+          searchResult = true
+        }
+      })
+    });
+    return searchResult
+  })
+  return { props: { post, relatedPosts } }
 }
 
-const Blog: React.FC<PropsType> = ({ post, prev, next }) => {
+const Blog: React.FC<PropsType> = ({ post, relatedPosts }) => {
   const { mdxSource, frontMatter } = post
   return (
     <>
@@ -51,8 +60,7 @@ const Blog: React.FC<PropsType> = ({ post, prev, next }) => {
           <MDXLayoutRenderer
             mdxSource={mdxSource}
             frontMatter={frontMatter}
-            prev={prev}
-            next={next}
+            relatedPosts={relatedPosts}
           />
         </>
       ) : (

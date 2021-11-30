@@ -48,21 +48,14 @@ const PostListingLayout: React.FC<PropsType> = ({
             return (
               <li key={slug}>
                 <Card onClick={() => onClickListItem(slug)}>
-                  <div>
-                    <H2>{title}</H2>
-                    <dl>
-                      {/* <dt>Published on</dt> */}
-                      <dd>
-                        <time dateTime={date}>{formatDateString(date)}</time>
-                      </dd>
-                    </dl>
-                    <div>
-                      {tags.map((tag) => (
-                        <Tag key={tag} href={`/tags/${tag}`} text={tag} />
-                      ))}
-                    </div>
-                  </div>
-                  <div>{description}</div>
+                  <H2>{title}</H2>
+                  <Paragraph>
+                    <time dateTime={date}>{formatDateString(date)}</time>
+                  </Paragraph>
+                  {tags.map((tag) => (
+                    <Tag key={tag} text={tag} />
+                  ))}
+                  <Paragraph>{description}</Paragraph>
                 </Card>
               </li>
             )
