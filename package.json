@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@types/react": "17.0.40",
-    "@types/react-dom": "17.0.11",
+    "@types/react-dom": "17.0.13",
     "@types/rss": "0.0.29",
     "@typescript-eslint/eslint-plugin": "5.11.0",
     "@typescript-eslint/parser": "5.11.0",
