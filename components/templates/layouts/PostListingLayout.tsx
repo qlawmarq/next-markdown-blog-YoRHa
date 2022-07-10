@@ -5,7 +5,7 @@ import { Card } from '@/components/atoms/Card'
 import formatDateString from '@/lib/utils/formatDateString'
 import { H1, H2, Paragraph, Anchor } from '@/components/atoms/Typography'
 import { Input } from '@/components/atoms/Input'
-import { ListLayoutStyle } from './style'
+import { ListLayoutStyle } from './commonStyles'
 
 type PropsType = {
   posts: any

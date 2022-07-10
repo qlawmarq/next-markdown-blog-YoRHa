@@ -1,5 +1,5 @@
 import React from 'react'
-import { PostLayoutStyle } from './style'
+import { PostLayoutStyle } from './commonStyles'
 import { H1, Anchor, Paragraph } from '@/components/atoms/Typography'
 import { Figure } from '@/components/atoms/Figure'
 import { UnorderedList } from '@/components/atoms/UnorderedList'
