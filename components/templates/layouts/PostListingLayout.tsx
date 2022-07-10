@@ -14,12 +14,7 @@ type PropsType = {
   onClickListItem: (item: string) => void
 }
 
-const PostListingLayout: React.FC<PropsType> = ({
-  posts,
-  title,
-  description,
-  onClickListItem,
-}) => {
+const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onClickListItem }) => {
   const [searchValue, setSearchValue] = useState('')
   const filteredBlogPosts = posts.filter((frontMatter) => {
     const searchContent = frontMatter.title + frontMatter.description + frontMatter.tags.join(' ')

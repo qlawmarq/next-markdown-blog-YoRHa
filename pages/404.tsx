@@ -6,10 +6,7 @@ import { H1, Paragraph, Anchor } from '@/components/atoms/Typography'
 const FourZeroFour: React.FC = () => {
   return (
     <>
-      <PageSEO
-        title={`${siteMetadata.title} - 404 NOT FOUND`}
-        description={`404 NOT FOUND`}
-      />
+      <PageSEO title={`${siteMetadata.title} - 404 NOT FOUND`} description={`404 NOT FOUND`} />
       <div>
         <div>
           <H1>404 NOT FOUND</H1>

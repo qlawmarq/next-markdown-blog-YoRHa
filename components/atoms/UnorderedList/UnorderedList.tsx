@@ -11,8 +11,8 @@ export const UnorderedList: React.VFC<HTMLAttributes<HTMLUListElement> & PropsTy
 }) => {
   return (
     <ul css={unorderedListStyle} {...props}>
-      {items.map((item, idx)=>{
-        return (<li key={idx}>{item}</li>)
+      {items.map((item, idx) => {
+        return <li key={idx}>{item}</li>
       })}
     </ul>
   )

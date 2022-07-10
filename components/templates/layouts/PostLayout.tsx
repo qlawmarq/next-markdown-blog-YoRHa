@@ -30,7 +30,7 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, relatedPosts, children }
           </div>
           {date && (
             <Paragraph>
-                <time dateTime={date}>{formatDateString(String(date))}</time>
+              <time dateTime={date}>{formatDateString(String(date))}</time>
             </Paragraph>
           )}
           <hr />
@@ -51,9 +51,13 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, relatedPosts, children }
         )}
         {!!relatedPosts?.length && (
           <Figure figcaption={'Related Posts'}>
-            <UnorderedList items={relatedPosts.map((rPost, idx) => (
-                  <Anchor key={idx} href={`/blog/${rPost.slug}`}>{rPost.title}</Anchor>
-              ))} />
+            <UnorderedList
+              items={relatedPosts.map((rPost, idx) => (
+                <Anchor key={idx} href={`/blog/${rPost.slug}`}>
+                  {rPost.title}
+                </Anchor>
+              ))}
+            />
           </Figure>
         )}
         <div>

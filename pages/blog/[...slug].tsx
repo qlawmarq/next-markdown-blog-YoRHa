@@ -28,18 +28,18 @@ export async function getStaticPaths() {
 export const getStaticProps = async ({ params }) => {
   const allPosts = await getAllFilesFrontMatter('blog')
   const post = await getFileBySlug('blog', params.slug?.join('/'))
-  const relatedPosts = allPosts.filter((p)=>{
-    let searchResult: boolean = false;
-    if(p.slug === post.frontMatter.slug){
+  const relatedPosts = allPosts.filter((p) => {
+    let searchResult: boolean = false
+    if (p.slug === post.frontMatter.slug) {
       return searchResult
     }
-    p.tags?.forEach(tag => {
-      post.frontMatter.tags?.forEach((pt)=>{
-        if(tag == pt){
+    p.tags?.forEach((tag) => {
+      post.frontMatter.tags?.forEach((pt) => {
+        if (tag == pt) {
           searchResult = true
         }
       })
-    });
+    })
     return searchResult
   })
   return { props: { post, relatedPosts } }

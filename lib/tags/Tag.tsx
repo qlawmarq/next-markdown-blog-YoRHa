@@ -3,8 +3,8 @@ import { Anchor, Paragraph } from '@/components/atoms/Typography'
 import { Label } from '@/components/atoms/Label'
 
 const Tag: React.FC<{ href?: string; text: string }> = ({ href, text }) => {
-  if(!href){
-    <Label>
+  if (!href) {
+    ;<Label>
       <Paragraph>{text}</Paragraph>
     </Label>
   }

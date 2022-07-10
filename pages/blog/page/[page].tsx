@@ -44,11 +44,7 @@ const PostPage: React.FC<PropsType> = ({ posts }) => {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      <PostListingLayout
-        posts={posts}
-        title="All Posts"
-        onClickListItem={handleClick}
-      />
+      <PostListingLayout posts={posts} title="All Posts" onClickListItem={handleClick} />
     </>
   )
 }

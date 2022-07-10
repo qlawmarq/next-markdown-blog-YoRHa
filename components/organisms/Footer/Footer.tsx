@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
   return (
     <footer css={FooterStyle}>
       <div css={BorderStyle}>
-        <Line/>
+        <Line />
       </div>
       <div>
         {siteMetadata.twitter && <TwitterIcon href={siteMetadata.twitter} />}
