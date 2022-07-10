@@ -5,7 +5,7 @@ import { PageSEO } from '@/lib/SEO'
 import { siteMetadata } from '@/data/siteMetadata'
 import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
 import { BlogFrontmatter } from '@/types/blog'
-import PostListingLayout from '@/components/templates/layouts/PostListingLayout'
+import PostListingLayout from '@/components/templates/Layouts/PostListingLayout'
 
 type PropsType = {
   posts: BlogFrontmatter[]

@@ -1,7 +1,7 @@
 import { css, keyframes } from '@emotion/react'
 import { theme, breakpoints } from '@/theme/index'
-import { unorderedListStyle } from '@/components/molecules/UnorderedList'
-import { orderedListStyle } from '@/components/molecules/OrderedList'
+import { unorderedListStyle } from '@/components/atoms/UnorderedList'
+import { orderedListStyle } from '@/components/atoms/OrderedList'
 import {
   H1Style,
   H2Style,

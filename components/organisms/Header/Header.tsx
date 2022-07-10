@@ -1,6 +1,4 @@
 import React from 'react'
-import { Menu } from '@/components/molecules/Menu'
-import headerNavLinks from '@/data/headerNavLinks'
 import { HeaderStyle, borderStyle } from './style'
 import Logo from './header_logo.svg'
 import Line from '../line.svg'

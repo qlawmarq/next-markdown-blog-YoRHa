@@ -1,7 +1,7 @@
 import React from 'react'
 import Tag from '@/lib/tags/Tag'
 import { useState } from 'react'
-import { Card } from '@/components/molecules/Card'
+import { Card } from '@/components/atoms/Card'
 import formatDateString from '@/lib/utils/formatDateString'
 import { H1, H2, Paragraph, Anchor } from '@/components/atoms/Typography'
 import { Input } from '@/components/atoms/Input'
