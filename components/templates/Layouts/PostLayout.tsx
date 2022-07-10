@@ -1,5 +1,5 @@
 import React from 'react'
-import { PostLayoutStyle } from './style'
+import { PostLayoutStyle } from './lStyle'
 import { H1, H2, Anchor, Paragraph } from '@/components/atoms/Typography'
 import { Figure } from '@/components/molecules/Figure'
 import { UnorderedList } from '@/components/molecules/UnorderedList'
