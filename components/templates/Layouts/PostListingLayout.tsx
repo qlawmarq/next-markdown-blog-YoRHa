@@ -3,9 +3,9 @@ import Tag from '@/lib/tags/Tag'
 import { useState } from 'react'
 import { Card } from '@/components/molecules/Card'
 import formatDateString from '@/lib/utils/formatDateString'
-import { H1, H2, Paragraph, Anchor } from '@/components/atoms/Typography'
+import { H1, H2, Paragraph } from '@/components/atoms/Typography'
 import { Input } from '@/components/atoms/Input'
-import { ListLayoutStyle } from './lStyle'
+import { ListLayoutStyle } from '@/components/templates/Layouts/style'
 
 type PropsType = {
   posts: any
