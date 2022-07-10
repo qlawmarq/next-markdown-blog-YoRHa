@@ -1,7 +1,7 @@
 import React from 'react'
 import { Header } from '@/components/organisms/Header'
 import { Footer } from '@/components/organisms/Footer'
-import { InnerStyle, OuterStyle, UpLeftCircleStyle, DownRightCircleStyle } from '../style'
+import { InnerStyle, OuterStyle, UpLeftCircleStyle, DownRightCircleStyle } from './style'
 import DownRightCircle from './svg/down_right_circle.svg'
 import UpLeftCircle from './svg/up_left_circle.svg'
 

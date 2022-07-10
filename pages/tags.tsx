@@ -5,7 +5,7 @@ import Tag from '@/lib/tags/Tag'
 import { siteMetadata } from '@/data/siteMetadata'
 import { getAllTags } from '@/lib/tags/tags'
 import { H1 } from '@/components/atoms/Typography'
-import OtherLayout from '@/components/templates/layouts/OtherLayout'
+import OtherLayout from '@/components/templates/Layouts/OtherLayout'
 
 type PropsType = {
   tags: {}
