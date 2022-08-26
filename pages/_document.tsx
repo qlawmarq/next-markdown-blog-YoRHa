@@ -1,15 +1,9 @@
-import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document'
-import { siteMetadata } from '@/data/siteMetadata'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
-  }
-
   render() {
     return (
-      <Html lang={siteMetadata.language}>
+      <Html>
         <Head>
           {/* check here if you want to generate your own icon: https://realfavicongenerator.net/ */}
           <link
@@ -33,7 +27,7 @@ class MyDocument extends Document {
           <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#bab5a1" />
           <meta name="msapplication-TileColor" content="#d1cdb7" />
           <meta name="theme-color" content="#ffffff" />
-          <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+          <link rel="alternate" type="application/rss+xml" href="/rss" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         </Head>
         <body>

@@ -9,7 +9,7 @@ import {
   H4Style,
   AnchorStyle,
   BlockquoteStyle,
-  ParagraphStyle
+  ParagraphStyle,
 } from '@/components/atoms/Typography'
 
 const fadeIn = keyframes`

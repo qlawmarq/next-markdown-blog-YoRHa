@@ -1,7 +1,7 @@
 ---
 title: Introducing posts with nested routing
 date: '2021-09-22'
-tags: ['feature']
+tags: ['feature', 'test']
 draft: false
 description: 'The blog template supports articles in nested subfolders. This can be used to group together articles with similar content, such as a multi-part course. This article is an example of a nested route.'
 ---

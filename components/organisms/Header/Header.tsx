@@ -12,9 +12,12 @@ type PropsType = {
 const Header: React.FC<PropsType> = ({ onClickMenuItem }) => {
   return (
     <header css={HeaderStyle}>
-      <Logo onClick={()=>onClickMenuItem('/')} style={{height: '4rem', marginBottom: '1rem', cursor: 'pointer'}}/>
+      <Logo
+        onClick={() => onClickMenuItem('/')}
+        style={{ height: '4rem', marginBottom: '1rem', cursor: 'pointer' }}
+      />
       <div css={borderStyle}>
-        <Line/>
+        <Line />
       </div>
     </header>
   )

@@ -3,20 +3,14 @@ import { PostLayoutStyle } from './style'
 import { H1, H2, Anchor, Paragraph } from '@/components/atoms/Typography'
 import { Figure } from '@/components/molecules/Figure'
 import { UnorderedList } from '@/components/molecules/UnorderedList'
-import Tag from '@/lib/tags/Tag'
-import { siteMetadata } from '@/data/siteMetadata'
-import formatDateString from '@/lib/utils/formatDateString'
+import Tag from '@/components/molecules/Tag'
 import { BlogFrontmatter } from '@/types/blog'
+import formatDateString from '@/lib/utils/formatDateString'
 
 type PropsType = {
   frontMatter: BlogFrontmatter
   relatedPosts?: BlogFrontmatter[]
 }
-
-// const discussUrl = (slug) =>
-//   `https://mobile.twitter.com/search?q=${encodeURIComponent(
-//     `${siteMetadata.siteUrl}/blog/${slug}`
-//   )}`
 
 const PostLayout: React.FC<PropsType> = ({ frontMatter, relatedPosts, children }) => {
   const { slug, date, title, tags } = frontMatter
@@ -30,7 +24,7 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, relatedPosts, children }
           </div>
           {date && (
             <Paragraph>
-                <time dateTime={date}>{formatDateString(String(date))}</time>
+              <time dateTime={date}>{formatDateString(String(date))}</time>
             </Paragraph>
           )}
           <hr />
@@ -44,16 +38,20 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, relatedPosts, children }
           <Figure figcaption={'Tags'}>
             <div>
               {tags.map((tag) => (
-                <Tag key={tag} href={`/tags/${tag}`} text={tag} />
+                <Tag key={tag} href={`/tag/${tag}`} text={tag} />
               ))}
             </div>
           </Figure>
         )}
         {!!relatedPosts?.length && (
           <Figure figcaption={'Related Posts'}>
-            <UnorderedList items={relatedPosts.map((rPost, idx) => (
-                  <Anchor key={idx} href={`/blog/${rPost.slug}`}>{rPost.title}</Anchor>
-              ))} />
+            <UnorderedList
+              items={relatedPosts.map((rPost, idx) => (
+                <Anchor key={idx} href={`/${rPost.slug}`}>
+                  {rPost.title}
+                </Anchor>
+              ))}
+            />
           </Figure>
         )}
         <div>

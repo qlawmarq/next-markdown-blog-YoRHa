@@ -3,7 +3,7 @@ import { bundleMDX } from 'mdx-bundler'
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
-import getAllFilesRecursively from '../utils/files'
+import getAllFilesRecursively from '../utils/getAllFilesRecursively'
 // Remark packages
 import remarkGfm from 'remark-gfm'
 import remarkFootnotes from 'remark-footnotes'
@@ -26,7 +26,7 @@ export function formatSlug(slug: string) {
   return slug.replace(/\.(mdx|md)/, '')
 }
 
-export function dateSortDesc(a, b) {
+export function dateSortDesc(a: string | number, b: string | number) {
   if (a > b) return -1
   if (a < b) return 1
   return 0
@@ -37,7 +37,19 @@ export async function getFileBySlug(folder: string, slug: string) {
   const mdPath = path.join(root, 'contents', folder, `${slug}.md`)
   const source = fs.existsSync(mdxPath)
     ? fs.readFileSync(mdxPath, 'utf8')
-    : fs.readFileSync(mdPath, 'utf8')
+    : fs.existsSync(mdPath)
+    ? fs.readFileSync(mdPath, 'utf8')
+    : undefined
+
+  if (source === undefined) {
+    return {
+      mdxSource: '',
+      frontMatter: {
+        draft: true,
+        slug: slug,
+      } as BlogFrontmatter,
+    }
+  }
 
   // https://github.com/kentcdodds/mdx-bundler#nextjs-esbuild-enoent
   if (process.platform === 'win32') {
@@ -57,10 +69,11 @@ export async function getFileBySlug(folder: string, slug: string) {
     )
   }
 
-  const { frontmatter, code } = await bundleMDX(source, {
+  const { frontmatter, code } = await bundleMDX({
+    source: source,
     // mdx imports can be automatically source from the components directory
     cwd: path.join(process.cwd(), 'components'),
-    xdmOptions(options) {
+    mdxOptions(options) {
       // this is the recommended way to add custom remark/rehype plugins:
       // The syntax might look weird, but it protects you in case we add/remove
       // plugins in the future.
@@ -100,11 +113,8 @@ export async function getFileBySlug(folder: string, slug: string) {
 
 export async function getAllFilesFrontMatter(folder: string) {
   const prefixPaths = path.join(root, 'contents', folder)
-
   const files = getAllFilesRecursively(prefixPaths)
-
   const allFrontMatter = [] as BlogFrontmatter[]
-
   files.forEach((file: string) => {
     // Replace is needed to work on Windows
     const fileName = file.slice(prefixPaths.length + 1).replace(/\\/g, '/')
@@ -114,16 +124,14 @@ export async function getAllFilesFrontMatter(folder: string) {
     }
     const source = fs.readFileSync(file, 'utf8')
     const matterResult = matter(source)
-    if (matterResult.data?.draft !== true) {
-      allFrontMatter.push({
-        title: matterResult.data.title,
-        date: matterResult.data.date,
-        tags: matterResult.data.tags,
-        draft: matterResult.data.draft,
-        description: matterResult.data.description,
-        slug: formatSlug(fileName),
-      })
-    }
+    allFrontMatter.push({
+      title: matterResult.data.title,
+      date: matterResult.data.date,
+      tags: matterResult.data.tags,
+      draft: matterResult.data.draft,
+      description: matterResult.data.description,
+      slug: formatSlug(fileName),
+    })
   })
 
   return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))

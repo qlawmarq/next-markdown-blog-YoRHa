@@ -16,7 +16,15 @@ const MDXComponents = {
   image: NextImage,
   a: Anchor,
   pre: Pre,
-  wrapper: ({ frontMatter, relatedPosts, children }) => {
+  wrapper: ({
+    frontMatter,
+    relatedPosts,
+    children,
+  }: {
+    frontMatter: BlogFrontmatter
+    relatedPosts: BlogFrontmatter[]
+    children: React.ReactNode
+  }) => {
     return (
       <PostLayout frontMatter={frontMatter} relatedPosts={relatedPosts}>
         {children}
