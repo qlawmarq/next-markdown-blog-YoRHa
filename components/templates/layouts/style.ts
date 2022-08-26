@@ -11,6 +11,7 @@ import {
   BlockquoteStyle,
   ParagraphStyle,
 } from '@/components/atoms/Typography'
+import { CardStyle } from '@/components/molecules/Card'
 
 const fadeIn = keyframes`
   0% {
@@ -32,7 +33,7 @@ export const PostLayoutStyle = css`
     width: 75%;
   }
   aside {
-    padding-top: 1rem;
+    padding: 1rem 0 0 1rem;
     width: 25%;
   }
 
@@ -42,12 +43,14 @@ export const PostLayoutStyle = css`
       width: 100%;
     }
     aside {
+      padding: 1rem 0;
       width: 100%;
     }
   }
 
-  .post-contents {
-    //
+  .post-contents .table-of-contents {
+    margin: 1rem 0;
+    ${CardStyle}
   }
 
   .post-contents img {

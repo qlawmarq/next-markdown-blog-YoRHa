@@ -2,6 +2,7 @@ import React from 'react'
 import { Paragraph } from '@/components/atoms/Typography'
 import { FooterStyle, BorderStyle } from './style'
 import Line from '../line.svg'
+import { DEFAULT_SEO } from '@/data/siteMetadata'
 
 const Footer: React.FC = () => {
   return (
@@ -10,7 +11,9 @@ const Footer: React.FC = () => {
         <Line />
       </div>
       <div>
-        <Paragraph>{`© ${new Date().getFullYear()} YawnMonday, All Rights Reserved.`}</Paragraph>
+        <Paragraph>{`Copyright © ${new Date().getFullYear()} ${
+          DEFAULT_SEO.profile.username
+        }. All Rights Reserved.`}</Paragraph>
       </div>
     </footer>
   )

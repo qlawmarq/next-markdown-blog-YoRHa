@@ -10,8 +10,8 @@ import remarkFootnotes from 'remark-footnotes'
 import remarkMath from 'remark-math'
 // Rehype packages
 import rehypeSlug from 'rehype-slug'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrismPlus from 'rehype-prism-plus'
+import rehypeToc from '@jsdevtools/rehype-toc'
 
 const root = process.cwd()
 
@@ -86,9 +86,18 @@ export async function getFileBySlug(folder: string, slug: string) {
       ]
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
-        rehypeSlug,
-        rehypeAutolinkHeadings,
         [rehypePrismPlus, { ignoreMissing: true }],
+        rehypeSlug,
+        [
+          rehypeToc,
+          {
+            headings: ['h2'],
+            cssClasses: {
+              toc: 'table-of-contents',
+              link: 'page-link',
+            },
+          },
+        ],
       ]
       return options
     },
