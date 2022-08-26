@@ -1,16 +1,14 @@
 export const DEFAULT_SEO = {
   titleTemplate: 'Next.js Blog | %s',
   defaultTitle: 'Next.js Blog',
-  description:
-    'Blog template with Next.js.',
+  description: 'Blog template with Next.js.',
   canonical: 'https://next-playground.vercel.app/',
   openGraph: {
     type: 'website',
     locale: 'en',
     url: 'https://next-playground.vercel.app/',
     title: 'Next.js Blog',
-    description:
-      'Blog template with Next.js.',
+    description: 'Blog template with Next.js.',
     site_name: 'Next.js Blog',
     images: [
       {
@@ -24,5 +22,8 @@ export const DEFAULT_SEO = {
   twitter: {
     handle: '@cymagix',
     cardType: 'summary',
+  },
+  profile: {
+    username: 'cymagix',
   },
 }

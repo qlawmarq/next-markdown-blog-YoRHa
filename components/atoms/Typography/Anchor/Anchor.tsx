@@ -22,7 +22,7 @@ export const Anchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
 
   if (isAnchorLink) {
     return (
-      <a css={style} {...rest}>
+      <a css={style} href={href} {...rest}>
         {children}
       </a>
     )
