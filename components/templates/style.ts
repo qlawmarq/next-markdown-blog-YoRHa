@@ -25,7 +25,7 @@ export const OuterStyle = css`
 export const UpLeftCircleStyle = css`
   position: absolute;
   left: 0;
-  top:0;
+  top: 0;
 `
 
 export const DownRightCircleStyle = css`

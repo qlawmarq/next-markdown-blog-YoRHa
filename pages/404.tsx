@@ -1,14 +1,14 @@
 import React from 'react'
-import { PageSEO } from '@/lib/SEO'
-import { siteMetadata } from '@/data/siteMetadata'
 import { H1, Paragraph, Anchor } from '@/components/atoms/Typography'
+import { NextSeo } from 'next-seo'
 
 const FourZeroFour: React.FC = () => {
   return (
     <>
-      <PageSEO
-        title={`${siteMetadata.title} - 404 NOT FOUND`}
-        description={`404 NOT FOUND`}
+      <NextSeo
+        title={'404 NOT FOUND'}
+        description={'The link you followed may be broken, or the page may have been removed.'}
+        noindex
       />
       <div>
         <div>

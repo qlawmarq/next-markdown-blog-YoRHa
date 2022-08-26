@@ -13,7 +13,7 @@ const BaseLayout: React.FC<PropsType> = ({ children, onClickMenuItem }) => {
   return (
     <div css={OuterStyle}>
       <UpLeftCircle css={UpLeftCircleStyle} />
-      <DownRightCircle css={DownRightCircleStyle}/>
+      <DownRightCircle css={DownRightCircleStyle} />
       <Header onClickMenuItem={onClickMenuItem} />
       <main css={InnerStyle}>{children}</main>
       <Footer />

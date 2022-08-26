@@ -1,9 +1,9 @@
 import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { ThemeProvider } from '@/theme/index'
-
-import Head from 'next/head'
 import Base from '@/components/templates/Base'
+import { DefaultSeo } from 'next-seo'
+import { DEFAULT_SEO } from '@/data/siteMetadata'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -12,9 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }
   return (
     <ThemeProvider>
-      <Head>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-      </Head>
+      <DefaultSeo {...DEFAULT_SEO} />
       <Base onClickMenuItem={handleClick}>
         <Component {...pageProps} />
       </Base>

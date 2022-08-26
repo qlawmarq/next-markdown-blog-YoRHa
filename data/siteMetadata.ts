@@ -1,21 +1,28 @@
-export const siteMetadata = {
-  title: 'Next.js Blog',
-  author: 'Masaki Yoshiiwa',
-  headerTitle: 'Next.js Blog',
-  description: 'A blog created with Next.js',
-  language: 'en',
-  siteUrl: 'https://next-playground.vercel.app',
-  siteRepo: 'https://github.com/yopinoji/next-js-blog-template',
-  siteLogo: '/static/images/logo.png',
-  image: '/static/images/logo.png',
-  socialBanner: '/static/images/logo.png',
-  email: 'address@yoursite.com',
-  github: 'https://github.com',
-  twitter: 'https://twitter.com/Twitter',
-  facebook: 'https://facebook.com',
-  youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
-  analytics: {
-    googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX
+export const DEFAULT_SEO = {
+  titleTemplate: 'Next.js Blog | %s',
+  defaultTitle: 'Next.js Blog',
+  description:
+    'Blog template with Next.js.',
+  canonical: 'https://next-playground.vercel.app/',
+  openGraph: {
+    type: 'website',
+    locale: 'en',
+    url: 'https://next-playground.vercel.app/',
+    title: 'Next.js Blog',
+    description:
+      'Blog template with Next.js.',
+    site_name: 'Next.js Blog',
+    images: [
+      {
+        url: 'https://next-playground.vercel.app/static/images/logo.png',
+        width: 800,
+        height: 600,
+        alt: 'Og Image',
+      },
+    ],
+  },
+  twitter: {
+    handle: '@cymagix',
+    cardType: 'summary',
   },
 }

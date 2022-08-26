@@ -11,8 +11,8 @@ export const OrderedList: React.VFC<OlHTMLAttributes<HTMLOListElement> & PropsTy
 }) => {
   return (
     <ol css={orderedListStyle} {...props}>
-      {items.map((item, idx)=>{
-        return (<li key={idx}>{item}</li>)
+      {items.map((item, idx) => {
+        return <li key={idx}>{item}</li>
       })}
     </ol>
   )
