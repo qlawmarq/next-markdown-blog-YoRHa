@@ -10,6 +10,7 @@ import formatDateString from '@/lib/utils/formatDateString'
 type PropsType = {
   frontMatter: BlogFrontmatter
   relatedPosts?: BlogFrontmatter[]
+  children: React.ReactNode
 }
 
 const PostLayout: React.FC<PropsType> = ({ frontMatter, relatedPosts, children }) => {

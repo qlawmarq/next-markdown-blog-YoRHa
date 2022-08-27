@@ -6,6 +6,7 @@ import DownRightCircle from './svg/down_right_circle.svg'
 import UpLeftCircle from './svg/up_left_circle.svg'
 
 type PropsType = {
+  children: React.ReactNode
   onClickMenuItem: (item: string) => void
 }
 

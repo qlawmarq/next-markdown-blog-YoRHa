@@ -1,7 +1,11 @@
 import React, { useState, useRef } from 'react'
 import { Button } from '@/components/atoms/Button'
 
-const Pre: React.FC = (props) => {
+type PropsType = {
+  children: React.ReactNode
+}
+
+const Pre: React.FC<PropsType> = (props) => {
   const textInput = useRef<any>(null)
   const [hovered, setHovered] = useState(false)
   const [copied, setCopied] = useState(false)
