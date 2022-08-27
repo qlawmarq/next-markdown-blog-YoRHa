@@ -1,4 +1,4 @@
-import { getAllFilesFrontMatter, getFiles } from '../markdown/mdx'
+import { getAllFilesFrontMatter } from '../markdown'
 
 const root = process.cwd()
 

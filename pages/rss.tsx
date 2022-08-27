@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext, GetStaticProps } from 'next'
-import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
+import { getAllFilesFrontMatter } from '@/lib/markdown'
 import { DEFAULT_SEO } from '@/data/siteMetadata'
 
 import RSS from 'rss'

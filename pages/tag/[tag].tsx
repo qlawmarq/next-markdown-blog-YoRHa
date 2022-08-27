@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import PostListingLayout from '@/components/templates/layouts/PostListingLayout'
-import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
+import { getAllFilesFrontMatter } from '@/lib/markdown'
 import { getAllTags } from '@/lib/tags/tags'
 import { BlogFrontmatter } from '@/types/blog'
 import { NextSeo } from 'next-seo'

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Tag from '@/components/molecules/Tag'
 import { useState } from 'react'
 import { Card } from '@/components/molecules/Card'
@@ -17,10 +17,16 @@ type PropsType = {
 
 const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onClickListItem }) => {
   const [searchValue, setSearchValue] = useState('')
-  const filteredBlogPosts = posts?.filter((frontMatter) => {
-    const searchContent = frontMatter.title + frontMatter.description + frontMatter.tags?.join(' ')
-    return searchContent.toLowerCase().includes(searchValue.toLowerCase())
-  })
+  const [filteredPosts, setFilteredPosts] = useState<BlogFrontmatter[]>()
+
+  useEffect(() => {
+    const filteredPosts = posts?.filter((frontMatter) => {
+      const searchContent =
+        frontMatter.title + frontMatter.description + frontMatter.tags?.join(' ')
+      return searchContent.toLowerCase().includes(searchValue.toLowerCase())
+    })
+    setFilteredPosts(filteredPosts)
+  }, [posts, searchValue])
 
   return (
     <>
@@ -43,10 +49,10 @@ const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onC
                 onChange={(e) => setSearchValue(e.target.value)}
                 placeholder="Search articles"
               />
-              {!filteredBlogPosts?.length && <Paragraph>No posts found.</Paragraph>}
+              {!filteredPosts?.length && <Paragraph>No posts found.</Paragraph>}
             </div>
             <ul>
-              {filteredBlogPosts?.map((frontMatter) => {
+              {filteredPosts?.map((frontMatter) => {
                 const { slug, date, title, description, tags } = frontMatter
                 return (
                   <li key={slug}>
