@@ -5,7 +5,7 @@ type PropsType = {
   children: React.ReactNode
 }
 
-const Pre: React.FC<PropsType> = (props) => {
+export const Pre: React.FC<PropsType> = (props) => {
   const textInput = useRef<any>(null)
   const [hovered, setHovered] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -39,7 +39,7 @@ const Pre: React.FC<PropsType> = (props) => {
           onClick={onCopy}
           style={{ position: 'absolute', right: 0 }}
         >
-          Copy
+          {copied ? 'Copied!' : 'Copy'}
         </Button>
       )}
 
@@ -47,5 +47,3 @@ const Pre: React.FC<PropsType> = (props) => {
     </div>
   )
 }
-
-export default Pre

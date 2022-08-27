@@ -6,7 +6,7 @@ import { DEFAULT_SEO } from '@/data/siteMetadata'
 import { BlogFrontmatter } from '@/types/blog'
 import PostListingLayout from '@/components/templates/layouts/PostListingLayout'
 import { NextSeo } from 'next-seo'
-import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
+import { getAllFilesFrontMatter } from '@/lib/markdown'
 
 type PropsType = {
   posts: BlogFrontmatter[]

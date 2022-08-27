@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { MDXLayoutRenderer } from '@/lib/markdown/MDXComponents'
-import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/markdown/mdx'
+import { MDXLayoutRenderer } from '@/components/templates/layouts/MDXLayout'
+import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/markdown'
 import { BlogFrontmatter } from '@/types/blog'
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'

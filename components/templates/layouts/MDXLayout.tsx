@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { getMDXComponent } from 'mdx-bundler/client'
 import { Anchor } from '@/components/atoms/Typography'
-import Pre from './Pre'
+import { Pre } from '@/components/molecules/Pre'
 import PostLayout from '@/components/templates/layouts/PostLayout'
 import { BlogFrontmatter } from '@/types/blog'
 import NextImage from 'next/image'

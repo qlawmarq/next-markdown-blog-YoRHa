@@ -1,6 +1,6 @@
 import React from 'react'
 import { PostLayoutStyle } from './style'
-import { H1, H2, Anchor, Paragraph } from '@/components/atoms/Typography'
+import { H1, Anchor, Paragraph } from '@/components/atoms/Typography'
 import { Figure } from '@/components/molecules/Figure'
 import { UnorderedList } from '@/components/molecules/UnorderedList'
 import Tag from '@/components/molecules/Tag'
@@ -14,7 +14,7 @@ type PropsType = {
 }
 
 const PostLayout: React.FC<PropsType> = ({ frontMatter, relatedPosts, children }) => {
-  const { slug, date, title, tags } = frontMatter
+  const { date, title, tags } = frontMatter
 
   return (
     <div css={PostLayoutStyle}>

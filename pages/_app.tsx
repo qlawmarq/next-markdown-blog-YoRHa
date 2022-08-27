@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { ThemeProvider } from '@/theme/index'
-import Base from '@/components/templates/Base'
+import Base from '@/components/templates/common/Base'
 import { DefaultSeo } from 'next-seo'
 import { DEFAULT_SEO } from '@/data/siteMetadata'
 
