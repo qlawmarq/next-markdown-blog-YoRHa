@@ -1,7 +1,11 @@
 import React from 'react'
 import { commonLayoutStyle } from './style'
 
-const OtherLayout: React.FC = ({ children }) => {
+type PropsType = {
+  children: React.ReactNode
+}
+
+const OtherLayout: React.FC<PropsType> = ({ children }) => {
   return <div css={commonLayoutStyle}>{children}</div>
 }
 export default OtherLayout

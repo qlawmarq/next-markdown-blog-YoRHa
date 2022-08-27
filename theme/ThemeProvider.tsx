@@ -2,7 +2,11 @@ import React from 'react'
 import { ThemeProvider as EmotionThemeProvider, Global, css } from '@emotion/react'
 import { theme, ResetStyle, PrismStyle } from '@/theme/index'
 
-export const ThemeProvider: React.FC = ({ children }) => {
+type PropsType = {
+  children: React.ReactNode
+}
+
+export const ThemeProvider: React.FC<PropsType> = ({ children }) => {
   return (
     <EmotionThemeProvider theme={theme}>
       <Global
