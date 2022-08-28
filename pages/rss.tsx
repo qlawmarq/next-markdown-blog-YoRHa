@@ -6,7 +6,7 @@ import RSS from 'rss'
 import { BlogFrontmatter } from '@/types/blog'
 
 export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
-  const posts = await getAllFilesFrontMatter('')
+  const posts = await getAllFilesFrontMatter('blog')
   const xml = await generateFeedXml(posts)
   res.statusCode = 200
   res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate')

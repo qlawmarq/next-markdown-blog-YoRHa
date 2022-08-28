@@ -18,7 +18,7 @@ type PropsType = {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await getAllFilesFrontMatter('')
+  const allPosts = await getAllFilesFrontMatter('blog')
   const localizedPaths = allPosts.map((post) => ({
     params: { slug: post.slug },
     locale: post.language,
@@ -31,8 +31,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const allPosts = await getAllFilesFrontMatter('')
-  const post = await getMdxFrontMatterBySlug('', params?.slug as string)
+  const allPosts = await getAllFilesFrontMatter('blog')
+  const post = await getMdxFrontMatterBySlug('blog', params?.slug as string)
   const relatedPosts = allPosts?.filter((p) => {
     let searchResult: boolean = false
     if (p.slug === post.frontMatter.slug) {

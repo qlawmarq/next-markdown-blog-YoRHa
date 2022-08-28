@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { useRouter } from 'next/router'
 import PostListingLayout from '@/components/templates/layouts/PostListingLayout'
 import { getAllFilesFrontMatter } from '@/lib/markdown'
@@ -6,28 +6,27 @@ import { getAllTags } from '@/lib/tags/tags'
 import { BlogFrontmatter } from '@/types/blog'
 import { NextSeo } from 'next-seo'
 import kebabCase from '@/lib/utils/kebabCase'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticProps } from 'next'
 
 type PropsType = {
-  posts?: BlogFrontmatter[]
-  tag?: string
+  posts: BlogFrontmatter[]
+  tag: string
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const tags = await getAllTags('')
-  const originalPaths = tags.map((tag) => ({
-    params: {
-      tag,
-    },
-  }))
+export async function getStaticPaths() {
+  const tags = await getAllTags('blog')
   return {
-    paths: [...originalPaths],
+    paths: tags.map((tag) => ({
+      params: {
+        tag,
+      },
+    })),
     fallback: true,
   }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const allPosts = await getAllFilesFrontMatter('')
+  const allPosts = await getAllFilesFrontMatter('blog')
   const filteredPosts = allPosts?.filter(
     (post) => !post.draft && post.tags?.map((t) => kebabCase(t)).includes(params?.tag as string)
   )
@@ -36,22 +35,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 const Tag: React.FC<PropsType> = ({ posts, tag }) => {
-  if(!posts || !tag){
-    return null
-  }
   const router = useRouter()
   const handleClick = (href: string) => {
-    router.push(`/${href}`)
+    router.push(`/blog/${href}`)
   }
   const localizedPosts = useMemo(() => {
-    return posts?.filter((post) => post.language == router.locale)
+    return posts.filter((post) => post.language == router.locale)
   }, [router.locale, posts])
 
-  useEffect(() => {
-    if (!posts || !tag) {
-      router.push('/404')
-    }
-  }, [])
   return (
     <>
       <NextSeo title={tag} description={tag} noindex />
