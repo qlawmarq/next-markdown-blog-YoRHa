@@ -6,18 +6,18 @@ import {
 } from '@/lib/markdown'
 import { BlogFrontmatter } from '@/types/blog'
 import { NextSeo } from 'next-seo'
-import { GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 
 type PropsType = {
-  post: {
+  post?: {
     mdxSource: string
     frontMatter: BlogFrontmatter
   }
   relatedPosts?: BlogFrontmatter[]
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getAllFilesFrontMatter('')
   const localizedPaths = allPosts.map((post) => ({
     params: { slug: post.slug },
@@ -33,7 +33,7 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allPosts = await getAllFilesFrontMatter('')
   const post = await getMdxFrontMatterBySlug('', params?.slug as string)
-  const relatedPosts = allPosts.filter((p) => {
+  const relatedPosts = allPosts?.filter((p) => {
     let searchResult: boolean = false
     if (p.slug === post.frontMatter.slug) {
       return searchResult
@@ -53,19 +53,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 const Blog: React.FC<PropsType> = ({ post, relatedPosts }) => {
-  const { mdxSource, frontMatter } = post
+  if(!post){
+    return null
+  }
   const router = useRouter()
   useEffect(() => {
-    if (frontMatter.draft) {
+    if (post.frontMatter.draft) {
       router.push('/404')
     }
   }, [])
   return (
     <>
-      <NextSeo title={frontMatter.title} description={frontMatter.description} />
+      <NextSeo title={post.frontMatter.title} description={post.frontMatter.description} />
       <MDXLayoutRenderer
-        mdxSource={mdxSource}
-        frontMatter={frontMatter}
+        mdxSource={post.mdxSource}
+        frontMatter={post.frontMatter}
         relatedPosts={relatedPosts}
       />
     </>
