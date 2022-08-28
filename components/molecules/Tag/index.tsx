@@ -1,5 +1,5 @@
 import React from 'react'
-import { Anchor } from '@/components/atoms/Typography'
+import { Anchor } from '@/components/atoms/Anchor'
 import { Label } from '@/components/atoms/Label'
 
 const Tag: React.FC<{ href?: string; text: string }> = ({ href, text }) => {

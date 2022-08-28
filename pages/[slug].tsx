@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { MDXLayoutRenderer } from '@/components/templates/layouts/MDXLayout'
-import { formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles } from '@/lib/markdown'
+import {
+  getAllFilesFrontMatter,
+  getMdxFrontMatterBySlug,
+} from '@/lib/markdown'
 import { BlogFrontmatter } from '@/types/blog'
 import { NextSeo } from 'next-seo'
 import { GetStaticProps } from 'next'
@@ -15,19 +18,21 @@ type PropsType = {
 }
 
 export async function getStaticPaths() {
-  const posts = getFiles('')
+  const allPosts = await getAllFilesFrontMatter('')
+  const localizedPaths = allPosts.map((post) => ({
+    params: { slug: post.slug },
+    locale: post.language,
+  }))
+  const originalPaths = allPosts.map((post) => ({ params: { slug: post.slug } }))
+  const paths = [...localizedPaths, ...originalPaths]
   return {
-    paths: posts.map((p) => ({
-      params: {
-        slug: formatSlug(p).split('/'),
-      },
-    })),
-    fallback: false,
+    paths: paths,
+    fallback: true,
   }
 }
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allPosts = await getAllFilesFrontMatter('')
-  const post = await getFileBySlug('', (params?.slug as string[])?.join('/'))
+  const post = await getMdxFrontMatterBySlug('', params?.slug as string)
   const relatedPosts = allPosts.filter((p) => {
     let searchResult: boolean = false
     if (p.slug === post.frontMatter.slug) {
@@ -35,11 +40,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
     !p.draft &&
       p.tags?.forEach((tag) => {
-        post.frontMatter.tags?.forEach((pt) => {
-          if (tag == pt) {
-            searchResult = true
-          }
-        })
+        p.language == post.frontMatter.language &&
+          post.frontMatter.tags?.forEach((pt) => {
+            if (tag == pt) {
+              searchResult = true
+            }
+          })
       })
     return searchResult
   })

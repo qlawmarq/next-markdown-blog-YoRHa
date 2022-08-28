@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
 import Tag from '@/components/molecules/Tag'
 import { useState } from 'react'
-import { Card } from '@/components/molecules/Card'
+import { Card } from '@/components/atoms/Card'
 import formatDateString from '@/lib/utils/formatDateString'
-import { H1, H2, Paragraph, Anchor } from '@/components/atoms/Typography'
+import { H1, H2, Paragraph } from '@/components/atoms/Typography'
+// import { Anchor } from '@/components/atoms/Anchor'
 import { Input } from '@/components/atoms/Input'
 import { ListLayoutStyle } from './style'
 import { BlogFrontmatter } from '@/types/blog'
+import { Select } from '@/components/atoms/Select'
+import { useRouter } from 'next/router'
 
 type PropsType = {
   posts: BlogFrontmatter[]
@@ -16,6 +19,7 @@ type PropsType = {
 }
 
 const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onClickListItem }) => {
+  const router = useRouter()
   const [searchValue, setSearchValue] = useState('')
   const [filteredPosts, setFilteredPosts] = useState<BlogFrontmatter[]>()
 
@@ -43,6 +47,16 @@ const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onC
         {posts?.length > 0 && (
           <>
             <div>
+              <Select
+                options={[
+                  { value: 'en', text: 'EN' },
+                  { value: 'ja', text: 'JP' },
+                ]}
+                value={router.locale}
+                onChange={(e) =>
+                  router.push(router.pathname, router.asPath, { locale: e.target.value })
+                }
+              />
               <Input
                 aria-label="Search articles"
                 type="text"

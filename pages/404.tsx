@@ -1,5 +1,6 @@
 import React from 'react'
-import { H1, Paragraph, Anchor } from '@/components/atoms/Typography'
+import { H1, Paragraph } from '@/components/atoms/Typography'
+import { Anchor } from '@/components/atoms/Anchor'
 import { NextSeo } from 'next-seo'
 
 const FourZeroFour: React.FC = () => {

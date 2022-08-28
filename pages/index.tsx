@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { DEFAULT_SEO } from '@/data/siteMetadata'
@@ -23,6 +23,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Index: React.FC<PropsType> = ({ posts }) => {
   const router = useRouter()
+  const localizedPosts = useMemo(() => {
+    return posts.filter((post) => post.language == router.locale)
+  }, [router.locale, posts])
   const handleClick = (href: string) => {
     router.push(`/${href}`)
   }
@@ -30,7 +33,7 @@ const Index: React.FC<PropsType> = ({ posts }) => {
     <>
       <NextSeo />
       <PostListingLayout
-        posts={posts}
+        posts={localizedPosts}
         title={DEFAULT_SEO.defaultTitle}
         description={DEFAULT_SEO.description}
         onClickListItem={handleClick}

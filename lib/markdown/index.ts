@@ -14,27 +14,21 @@ import rehypePrismPlus from 'rehype-prism-plus'
 import rehypeToc from '@jsdevtools/rehype-toc'
 
 const root = process.cwd()
+const contentsDir = 'contents'
 
-export function getFiles(folder: string) {
-  const prefixPaths = path.join(root, 'contents', folder)
-  const files = getAllFilesRecursively(prefixPaths)
-  // Only want to return blog/path and ignore root, replace is needed to work on Windows
-  return files.map((file) => file.slice(prefixPaths.length + 1).replace(/\\/g, '/'))
-}
-
-export function formatSlug(slug: string) {
+function formatSlug(slug: string) {
   return slug.replace(/\.(mdx|md)/, '')
 }
 
-export function dateSortDesc(a: string | number, b: string | number) {
+function dateSortDesc(a: string | number, b: string | number) {
   if (a > b) return -1
   if (a < b) return 1
   return 0
 }
 
-export async function getFileBySlug(folder: string, slug: string) {
-  const mdxPath = path.join(root, 'contents', folder, `${slug}.mdx`)
-  const mdPath = path.join(root, 'contents', folder, `${slug}.md`)
+export async function getMdxFrontMatterBySlug(folder: string, slug: string) {
+  const mdxPath = path.join(root, contentsDir, folder, `${slug}.mdx`)
+  const mdPath = path.join(root, contentsDir, folder, `${slug}.md`)
   const source = fs.existsSync(mdxPath)
     ? fs.readFileSync(mdxPath, 'utf8')
     : fs.existsSync(mdPath)
@@ -82,7 +76,6 @@ export async function getFileBySlug(folder: string, slug: string) {
         remarkGfm,
         [remarkFootnotes, { inlineNotes: true }],
         remarkMath,
-        // remarkImgToJsx,
       ]
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
@@ -121,7 +114,7 @@ export async function getFileBySlug(folder: string, slug: string) {
 }
 
 export async function getAllFilesFrontMatter(folder: string) {
-  const prefixPaths = path.join(root, 'contents', folder)
+  const prefixPaths = path.join(root, contentsDir, folder)
   const files = getAllFilesRecursively(prefixPaths)
   const allFrontMatter = [] as BlogFrontmatter[]
   files.forEach((file: string) => {
@@ -132,8 +125,10 @@ export async function getAllFilesFrontMatter(folder: string) {
       return
     }
     const source = fs.readFileSync(file, 'utf8')
-    const matterResult = matter(source)
+    const matterResult = matter(source) as unknown as { data: BlogFrontmatter }
     allFrontMatter.push({
+      ...matterResult.data,
+      language: matterResult.data.language,
       title: matterResult.data.title,
       date: matterResult.data.date,
       tags: matterResult.data.tags,
@@ -142,6 +137,5 @@ export async function getAllFilesFrontMatter(folder: string) {
       slug: formatSlug(fileName),
     })
   })
-
   return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))
 }

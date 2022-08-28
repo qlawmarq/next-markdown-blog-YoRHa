@@ -1,6 +1,7 @@
 import React from 'react'
 import { PostLayoutStyle } from './style'
-import { H1, Anchor, Paragraph } from '@/components/atoms/Typography'
+import { H1, Paragraph } from '@/components/atoms/Typography'
+import { Anchor } from '@/components/atoms/Anchor'
 import { Figure } from '@/components/molecules/Figure'
 import { UnorderedList } from '@/components/molecules/UnorderedList'
 import Tag from '@/components/molecules/Tag'
