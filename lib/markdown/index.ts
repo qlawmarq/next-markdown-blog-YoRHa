@@ -3,7 +3,7 @@ import { bundleMDX } from 'mdx-bundler'
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
-import getAllFilesRecursively from '../utils/getAllFilesRecursively'
+import getAllFiles from '../utils/getAllFiles'
 // Remark packages
 import remarkGfm from 'remark-gfm'
 import remarkFootnotes from 'remark-footnotes'
@@ -115,7 +115,7 @@ export async function getMdxFrontMatterBySlug(folder: string, slug: string) {
 
 export async function getAllFilesFrontMatter(folder: string) {
   const prefixPaths = path.join(root, contentsDir, folder)
-  const files = getAllFilesRecursively(prefixPaths)
+  const files = getAllFiles(prefixPaths)
   const allFrontMatter = [] as BlogFrontmatter[]
   files.forEach((file: string) => {
     // Replace is needed to work on Windows
