@@ -47,9 +47,6 @@ const Tag: React.FC<PropsType> = ({ posts, tag }) => {
     return posts?.filter((post) => post.language == router.locale)
   }, [router.locale, posts])
 
-  // Capitalize first letter and convert space to dash
-  const title = tag ? tag.toUpperCase() + tag.split(' ').join('-').slice(1) : ''
-
   useEffect(() => {
     if (!posts || !tag) {
       router.push('/404')
@@ -58,7 +55,7 @@ const Tag: React.FC<PropsType> = ({ posts, tag }) => {
   return (
     <>
       <NextSeo title={tag} description={tag} noindex />
-      <PostListingLayout posts={localizedPosts} title={title} onClickListItem={handleClick} />
+      <PostListingLayout posts={localizedPosts} title={`Tag - ${tag}`} onClickListItem={handleClick} />
     </>
   )
 }
