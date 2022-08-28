@@ -53,15 +53,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 const Blog: React.FC<PropsType> = ({ post, relatedPosts }) => {
-  if(!post){
-    return null
-  }
+
   const router = useRouter()
   useEffect(() => {
-    if (post.frontMatter.draft) {
+    if (!post || post.frontMatter.draft) {
       router.push('/404')
     }
   }, [])
+  if(!post){
+    return null
+  }
   return (
     <>
       <NextSeo title={post.frontMatter.title} description={post.frontMatter.description} />

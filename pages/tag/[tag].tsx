@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import PostListingLayout from '@/components/templates/layouts/PostListingLayout'
 import { getAllFilesFrontMatter } from '@/lib/markdown'
@@ -36,6 +36,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 const Tag: React.FC<PropsType> = ({ posts, tag }) => {
+  if(!posts || !tag){
+    return null
+  }
   const router = useRouter()
   const handleClick = (href: string) => {
     router.push(`/${href}`)
@@ -46,6 +49,12 @@ const Tag: React.FC<PropsType> = ({ posts, tag }) => {
 
   // Capitalize first letter and convert space to dash
   const title = tag ? tag.toUpperCase() + tag.split(' ').join('-').slice(1) : ''
+
+  useEffect(() => {
+    if (!posts || !tag) {
+      router.push('/404')
+    }
+  }, [])
   return (
     <>
       <NextSeo title={tag} description={tag} noindex />
