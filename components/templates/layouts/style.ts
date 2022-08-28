@@ -7,11 +7,11 @@ import {
   H2Style,
   H3Style,
   H4Style,
-  AnchorStyle,
   BlockquoteStyle,
   ParagraphStyle,
 } from '@/components/atoms/Typography'
-import { CardStyle } from '@/components/molecules/Card'
+import { AnchorStyle } from '@/components/atoms/Anchor'
+import { CardStyle } from '@/components/atoms/Card'
 
 const fadeIn = keyframes`
   0% {
