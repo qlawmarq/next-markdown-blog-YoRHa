@@ -14,7 +14,7 @@ type PropsType = {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const tags = await getAllTags('')
+  const tags = await getAllTags('blog')
   const originalPaths = tags.map((tag) => ({
     params: {
       tag,
@@ -27,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const allPosts = await getAllFilesFrontMatter('')
+  const allPosts = await getAllFilesFrontMatter('blog')
   const filteredPosts = allPosts?.filter(
     (post) => !post.draft && post.tags?.map((t) => kebabCase(t)).includes(params?.tag as string)
   )
@@ -55,7 +55,7 @@ const Tag: React.FC<PropsType> = ({ posts, tag }) => {
   return (
     <>
       <NextSeo title={tag} description={tag} noindex />
-      <PostListingLayout posts={localizedPosts} title={`Tag - ${tag}`} onClickListItem={handleClick} />
+      <PostListingLayout posts={localizedPosts} title={`Tag - ${tag.toUpperCase()}`} onClickListItem={handleClick} />
     </>
   )
 }

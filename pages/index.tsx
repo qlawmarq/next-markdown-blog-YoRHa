@@ -13,7 +13,7 @@ type PropsType = {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = await getAllFilesFrontMatter('')
+  const allPosts = await getAllFilesFrontMatter('blog')
   const posts = allPosts.filter((post) => !post.draft)
   return {
     props: { posts },
@@ -27,7 +27,7 @@ const Index: React.FC<PropsType> = ({ posts }) => {
     return posts.filter((post) => post.language == router.locale)
   }, [router.locale, posts])
   const handleClick = (href: string) => {
-    router.push(`/${href}`)
+    router.push(`/blog/${href}`)
   }
   return (
     <>
