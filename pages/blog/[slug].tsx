@@ -53,7 +53,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 const Blog: React.FC<PropsType> = ({ post, relatedPosts }) => {
-
   const router = useRouter()
   useEffect(() => {
     if (!post || post.frontMatter.draft) {

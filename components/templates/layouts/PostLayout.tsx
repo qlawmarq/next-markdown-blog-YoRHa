@@ -49,7 +49,7 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, relatedPosts, children }
           <Figure figcaption={'Related Posts'}>
             <UnorderedList
               items={relatedPosts.map((rPost, idx) => (
-                <Anchor key={idx} href={`/${rPost.slug}`}>
+                <Anchor key={idx} href={`/blog/${rPost.slug}`}>
                   {rPost.title}
                 </Anchor>
               ))}

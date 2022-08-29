@@ -41,7 +41,7 @@ const Tag: React.FC<PropsType> = ({ posts, tag }) => {
   }
   const router = useRouter()
   const handleClick = (href: string) => {
-    router.push(`/${href}`)
+    router.push(`/blog/${href}`)
   }
   const localizedPosts = useMemo(() => {
     return posts?.filter((post) => post.language == router.locale)
