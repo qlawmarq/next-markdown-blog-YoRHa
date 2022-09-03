@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Tag from '@/components/molecules/Tag'
 import { useState } from 'react'
-import { Card } from '@/components/atoms/Card'
+import { Card } from '@/components/molecules/Card'
 import formatDateString from '@/lib/utils/formatDateString'
 import { H1, H2, Paragraph } from '@/components/atoms/Typography'
 // import { Anchor } from '@/components/atoms/Anchor'
@@ -24,9 +24,9 @@ const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onC
   const [filteredPosts, setFilteredPosts] = useState<BlogFrontmatter[]>()
 
   useEffect(() => {
-    const filteredPosts = posts?.filter((frontMatter) => {
+    const filteredPosts = posts?.filter((frontmatter) => {
       const searchContent =
-        frontMatter.title + frontMatter.description + frontMatter.tags?.join(' ')
+        frontmatter.title + frontmatter.description + frontmatter.tags?.join(' ')
       return searchContent.toLowerCase().includes(searchValue.toLowerCase())
     })
     setFilteredPosts(filteredPosts)
@@ -66,8 +66,8 @@ const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onC
               {!filteredPosts?.length && <Paragraph>No posts found.</Paragraph>}
             </div>
             <ul>
-              {filteredPosts?.map((frontMatter) => {
-                const { slug, date, title, description, tags } = frontMatter
+              {filteredPosts?.map((frontmatter) => {
+                const { slug, date, title, description, tags } = frontmatter
                 return (
                   <li key={slug}>
                     <Card onClick={() => onClickListItem(slug)}>

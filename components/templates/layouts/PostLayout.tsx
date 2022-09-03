@@ -3,19 +3,19 @@ import { PostLayoutStyle } from './style'
 import { H1, Paragraph } from '@/components/atoms/Typography'
 import { Anchor } from '@/components/atoms/Anchor'
 import { Figure } from '@/components/molecules/Figure'
-import { UnorderedList } from '@/components/molecules/UnorderedList'
+import { UnorderedList, ListItem } from '@/components/atoms/List'
 import Tag from '@/components/molecules/Tag'
 import { BlogFrontmatter } from '@/types/blog'
 import formatDateString from '@/lib/utils/formatDateString'
 
 type PropsType = {
-  frontMatter: BlogFrontmatter
+  frontmatter: BlogFrontmatter
   relatedPosts?: BlogFrontmatter[]
   children: React.ReactNode
 }
 
-const PostLayout: React.FC<PropsType> = ({ frontMatter, relatedPosts, children }) => {
-  const { date, title, tags } = frontMatter
+const PostLayout: React.FC<PropsType> = ({ frontmatter, relatedPosts, children }) => {
+  const { date, title, tags } = frontmatter
 
   return (
     <div css={PostLayoutStyle}>
@@ -47,13 +47,15 @@ const PostLayout: React.FC<PropsType> = ({ frontMatter, relatedPosts, children }
         )}
         {!!relatedPosts?.length && (
           <Figure figcaption={'Related Posts'}>
-            <UnorderedList
-              items={relatedPosts.map((rPost, idx) => (
-                <Anchor key={idx} href={`/blog/${rPost.slug}`}>
-                  {rPost.title}
-                </Anchor>
+            <UnorderedList>
+              {relatedPosts.map((rPost, idx) => (
+                <ListItem>
+                  <Anchor key={idx} href={`/blog/${rPost.slug}`}>
+                    {rPost.title}
+                  </Anchor>
+                </ListItem>
               ))}
-            />
+            </UnorderedList>
           </Figure>
         )}
         <div>
