@@ -1,19 +1,17 @@
 import React, { useEffect } from 'react'
-import { MDXLayoutRenderer } from '@/components/templates/layouts/MDXLayout'
-import {
-  getAllFilesFrontMatter,
-  getMdxFrontMatterBySlug,
-} from '@/lib/markdown'
+import { getAllFilesFrontMatter, getMdxFrontMatterBySlug } from '@/lib/markdown'
 import { BlogFrontmatter } from '@/types/blog'
 import { NextSeo } from 'next-seo'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { Blockquote, H1, H2, H3, H4, Paragraph } from '@/components/atoms/Typography'
+import { Anchor } from '@/components/atoms/Anchor'
+import { Pre } from '@/components/molecules/Pre'
+import PostLayout from '@/components/templates/layouts/PostLayout'
 
 type PropsType = {
-  post?: {
-    mdxSource: string
-    frontMatter: BlogFrontmatter
-  }
+  post?: MDXRemoteSerializeResult<Record<string, string>, BlogFrontmatter>
   relatedPosts?: BlogFrontmatter[]
 }
 
@@ -33,21 +31,24 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allPosts = await getAllFilesFrontMatter('blog')
   const post = await getMdxFrontMatterBySlug('blog', params?.slug as string)
+  if(!post.frontmatter){
+    throw new Error(`${params?.slug}`);
+  }
   const relatedPosts = allPosts?.filter((p) => {
-    let searchResult: boolean = false
-    if (p.slug === post.frontMatter.slug) {
-      return searchResult
+    let isRelatedPost: boolean = false
+    if (p.slug === post.frontmatter?.slug) {
+      return isRelatedPost
     }
     !p.draft &&
       p.tags?.forEach((tag) => {
-        p.language == post.frontMatter.language &&
-          post.frontMatter.tags?.forEach((pt) => {
+        p.language == post.frontmatter?.language &&
+          post.frontmatter.tags?.forEach((pt) => {
             if (tag == pt) {
-              searchResult = true
+              isRelatedPost = true
             }
           })
       })
-    return searchResult
+    return isRelatedPost
   })
   return { props: { post, relatedPosts }, revalidate: 10 }
 }
@@ -55,21 +56,31 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 const Blog: React.FC<PropsType> = ({ post, relatedPosts }) => {
   const router = useRouter()
   useEffect(() => {
-    if (!post || post.frontMatter.draft) {
+    if (!post || post?.frontmatter?.draft) {
       router.push('/404')
     }
   }, [])
-  if(!post){
+  if (!post || !post?.frontmatter || post?.frontmatter?.draft) {
     return null
   }
   return (
     <>
-      <NextSeo title={post.frontMatter.title} description={post.frontMatter.description} />
-      <MDXLayoutRenderer
-        mdxSource={post.mdxSource}
-        frontMatter={post.frontMatter}
-        relatedPosts={relatedPosts}
-      />
+      <NextSeo title={post.frontmatter.title} description={post.frontmatter.description} />
+      <PostLayout frontmatter={post.frontmatter} relatedPosts={relatedPosts}>
+        <MDXRemote
+          compiledSource={post.compiledSource}
+          components={{
+            h1: H1,
+            h2: H2,
+            h3: H3,
+            h4: H4,
+            p: Paragraph,
+            a: Anchor,
+            pre: Pre,
+            blockquote: Blockquote,
+          }}
+        />
+      </PostLayout>
     </>
   )
 }

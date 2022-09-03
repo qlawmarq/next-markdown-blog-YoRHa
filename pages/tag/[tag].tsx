@@ -36,7 +36,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 const Tag: React.FC<PropsType> = ({ posts, tag }) => {
-  if(!posts || !tag){
+  if (!posts || !tag) {
     return null
   }
   const router = useRouter()
@@ -55,7 +55,11 @@ const Tag: React.FC<PropsType> = ({ posts, tag }) => {
   return (
     <>
       <NextSeo title={tag} description={tag} noindex />
-      <PostListingLayout posts={localizedPosts} title={`Tag - ${tag.toUpperCase()}`} onClickListItem={handleClick} />
+      <PostListingLayout
+        posts={localizedPosts}
+        title={`Tag - ${tag.toUpperCase()}`}
+        onClickListItem={handleClick}
+      />
     </>
   )
 }

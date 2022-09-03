@@ -2,10 +2,9 @@ import { css } from '@emotion/react'
 import { theme } from '@/theme/theme'
 
 export const style = css`
-  font-size: ${theme.fontSizes.M};
+  font-size: ${theme.fontSizes.L};
   font-weight: bold;
   padding-left: 0.5rem;
-  padding-top: 1rem;
-  margin-bottom: 0.5rem;
+  margin: 1rem 0;
   letter-spacing: 0.15rem;
 `

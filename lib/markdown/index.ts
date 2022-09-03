@@ -1,9 +1,8 @@
 import { BlogFrontmatter } from '@/types/blog'
-import { bundleMDX } from 'mdx-bundler'
 import fs from 'fs'
-import matter from 'gray-matter'
 import path from 'path'
 import getAllFiles from '../utils/getAllFiles'
+import { serialize } from 'next-mdx-remote/serialize'
 // Remark packages
 import remarkGfm from 'remark-gfm'
 import remarkFootnotes from 'remark-footnotes'
@@ -12,6 +11,7 @@ import remarkMath from 'remark-math'
 import rehypeSlug from 'rehype-slug'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypeToc from '@jsdevtools/rehype-toc'
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 const root = process.cwd()
 const contentsDir = 'contents'
@@ -35,107 +35,44 @@ export async function getMdxFrontMatterBySlug(folder: string, slug: string) {
     ? fs.readFileSync(mdPath, 'utf8')
     : undefined
 
+  // Warn unexpected files
   if (source === undefined) {
-    return {
-      mdxSource: '',
-      frontMatter: {
-        draft: true,
-        slug: slug,
-      } as BlogFrontmatter,
-    }
+    throw new Error(`Detected non-markdown format files: ${mdxPath}`)
   }
-
-  // https://github.com/kentcdodds/mdx-bundler#nextjs-esbuild-enoent
-  if (process.platform === 'win32') {
-    process.env.ESBUILD_BINARY_PATH = path.join(
-      process.cwd(),
-      'node_modules',
-      'esbuild',
-      'esbuild.exe'
-    )
-  } else {
-    process.env.ESBUILD_BINARY_PATH = path.join(
-      process.cwd(),
-      'node_modules',
-      'esbuild',
-      'bin',
-      'esbuild'
-    )
-  }
-
-  const { frontmatter, code } = await bundleMDX({
-    source: source,
-    // mdx imports can be automatically source from the components directory
-    cwd: path.join(process.cwd(), 'components'),
-    mdxOptions(options) {
-      // this is the recommended way to add custom remark/rehype plugins:
-      // The syntax might look weird, but it protects you in case we add/remove
-      // plugins in the future.
-      options.remarkPlugins = [
-        ...(options.remarkPlugins ?? []),
-        remarkGfm,
-        [remarkFootnotes, { inlineNotes: true }],
-        remarkMath,
-      ]
-      options.rehypePlugins = [
-        ...(options.rehypePlugins ?? []),
-        [rehypePrismPlus, { ignoreMissing: true }],
-        rehypeSlug,
-        [
-          rehypeToc,
-          {
-            headings: ['h2'],
-            cssClasses: {
-              toc: 'table-of-contents',
-              link: 'page-link',
-            },
-          },
-        ],
-      ]
-      return options
+  const mdxSource = (await serialize(source, {
+    parseFrontmatter: true,
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeSlug, rehypePrismPlus, rehypeToc],
     },
-    esbuildOptions: (options) => {
-      options.loader = {
-        ...options.loader,
-        '.ts': 'tsx',
-      }
-      return options
-    },
-  })
-
-  return {
-    mdxSource: code,
-    frontMatter: {
-      ...frontmatter,
-      slug: slug,
-      date: frontmatter.date,
-    } as BlogFrontmatter,
+  })) as unknown as MDXRemoteSerializeResult<unknown, BlogFrontmatter>
+  if(!mdxSource.frontmatter){
+    throw new Error(`Cannot find the frontmatter in your file: ${mdxPath}`)
   }
+  return mdxSource
 }
 
 export async function getAllFilesFrontMatter(folder: string) {
   const prefixPaths = path.join(root, contentsDir, folder)
   const files = getAllFiles(prefixPaths)
-  const allFrontMatter = [] as BlogFrontmatter[]
-  files.forEach((file: string) => {
-    // Replace is needed to work on Windows
-    const fileName = file.slice(prefixPaths.length + 1).replace(/\\/g, '/')
-    // Remove Unexpected File
-    if (path.extname(fileName) !== '.md' && path.extname(fileName) !== '.mdx') {
-      return
-    }
-    const source = fs.readFileSync(file, 'utf8')
-    const matterResult = matter(source) as unknown as { data: BlogFrontmatter }
-    allFrontMatter.push({
-      ...matterResult.data,
-      language: matterResult.data.language,
-      title: matterResult.data.title,
-      date: matterResult.data.date,
-      tags: matterResult.data.tags,
-      draft: matterResult.data.draft,
-      description: matterResult.data.description,
-      slug: formatSlug(fileName),
+  const allFrontMatter = await Promise.all(
+    files.map(async (file: string) => {
+      // Convert absolute to relative
+      const fileName = file.slice(prefixPaths.length + 1).replace(/\\/g, '/')
+      // Warn unexpected files
+      if (path.extname(fileName) !== '.md' && path.extname(fileName) !== '.mdx') {
+        throw new Error(`Detected non-markdown format files: ${fileName}`)
+      }
+      const source = fs.readFileSync(file, 'utf8')
+      const results = await serialize(source, { parseFrontmatter: true })
+      if(!results.frontmatter){
+        throw new Error(`Cannot find the frontmatter in your file: ${fileName}`)
+      }
+      return {
+        slug: formatSlug(fileName),
+        ...results.frontmatter,
+      } as BlogFrontmatter
     })
-  })
-  return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))
+  )
+  return allFrontMatter
 }

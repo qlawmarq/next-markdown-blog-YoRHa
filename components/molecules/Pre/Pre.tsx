@@ -1,11 +1,7 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, HtmlHTMLAttributes } from 'react'
 import { Button } from '@/components/atoms/Button'
 
-type PropsType = {
-  children: React.ReactNode
-}
-
-export const Pre: React.FC<PropsType> = (props) => {
+export const Pre: React.FC<HtmlHTMLAttributes<HTMLPreElement>> = (props) => {
   const textInput = useRef<any>(null)
   const [hovered, setHovered] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -43,7 +39,7 @@ export const Pre: React.FC<PropsType> = (props) => {
         </Button>
       )}
 
-      <pre>{props.children}</pre>
+      <pre {...props}>{props.children}</pre>
     </div>
   )
 }

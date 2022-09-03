@@ -2,15 +2,6 @@ import { css, keyframes } from '@emotion/react'
 import { theme, breakpoints } from '@/theme/index'
 import { unorderedListStyle } from '@/components/molecules/UnorderedList'
 import { orderedListStyle } from '@/components/molecules/OrderedList'
-import {
-  H1Style,
-  H2Style,
-  H3Style,
-  H4Style,
-  BlockquoteStyle,
-  ParagraphStyle,
-} from '@/components/atoms/Typography'
-import { AnchorStyle } from '@/components/atoms/Anchor'
 import { CardStyle } from '@/components/atoms/Card'
 
 const fadeIn = keyframes`
@@ -48,7 +39,7 @@ export const PostLayoutStyle = css`
     }
   }
 
-  .post-contents .table-of-contents {
+  .post-contents .toc {
     margin: 1rem 0;
     ${CardStyle}
   }
@@ -58,30 +49,6 @@ export const PostLayoutStyle = css`
     display: flex;
   }
 
-  .post-contents p {
-    ${ParagraphStyle}
-  }
-
-  .post-contents h1 {
-    ${H1Style}
-  }
-
-  .post-contents h2 {
-    ${H2Style}
-  }
-
-  .post-contents h3 {
-    ${H3Style}
-  }
-
-  .post-contents h4 {
-    ${H4Style}
-  }
-
-  .post-contents a {
-    ${AnchorStyle}
-  }
-
   .post-contents code {
     background-color: ${theme.colors.primaryColor};
     padding: 0.25rem;
@@ -89,10 +56,6 @@ export const PostLayoutStyle = css`
 
   .post-contents strong {
     font-weight: bold;
-  }
-
-  .post-contents blockquote {
-    ${BlockquoteStyle}
   }
 
   .post-contents ul {

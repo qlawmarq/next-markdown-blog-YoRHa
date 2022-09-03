@@ -9,13 +9,13 @@ import { BlogFrontmatter } from '@/types/blog'
 import formatDateString from '@/lib/utils/formatDateString'
 
 type PropsType = {
-  frontMatter: BlogFrontmatter
+  frontmatter: BlogFrontmatter
   relatedPosts?: BlogFrontmatter[]
   children: React.ReactNode
 }
 
-const PostLayout: React.FC<PropsType> = ({ frontMatter, relatedPosts, children }) => {
-  const { date, title, tags } = frontMatter
+const PostLayout: React.FC<PropsType> = ({ frontmatter, relatedPosts, children }) => {
+  const { date, title, tags } = frontmatter
 
   return (
     <div css={PostLayoutStyle}>

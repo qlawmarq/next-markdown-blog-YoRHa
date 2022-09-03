@@ -1,5 +1,5 @@
 export const DEFAULT_SEO = {
-  titleTemplate: 'Next.js Blog | %s',
+  titleTemplate: '%s | Next.js Blog',
   defaultTitle: 'Next.js Blog',
   description: 'Blog template with Next.js.',
   canonical: 'https://next-playground.vercel.app/',
