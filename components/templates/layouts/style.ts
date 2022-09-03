@@ -1,7 +1,5 @@
 import { css, keyframes } from '@emotion/react'
 import { theme, breakpoints } from '@/theme/index'
-import { unorderedListStyle } from '@/components/molecules/UnorderedList'
-import { orderedListStyle } from '@/components/molecules/OrderedList'
 import { CardStyle } from '@/components/atoms/Card'
 
 const fadeIn = keyframes`
@@ -56,14 +54,6 @@ export const PostLayoutStyle = css`
 
   .post-contents strong {
     font-weight: bold;
-  }
-
-  .post-contents ul {
-    ${unorderedListStyle}
-  }
-
-  .post-contents ol {
-    ${orderedListStyle}
   }
 
   .post-contents table {

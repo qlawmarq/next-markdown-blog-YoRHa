@@ -1,7 +1,5 @@
 import { getAllFilesFrontMatter } from '../markdown'
 
-const root = process.cwd()
-
 export async function getAllTags(folder: string) {
   const frontMatters = await getAllFilesFrontMatter(folder)
   let tags: string[] = []

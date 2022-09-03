@@ -8,8 +8,6 @@ type OptionType = {
 
 type SelectCustomProps = {
   options?: OptionType[] | string[]
-  iconleft?: React.ReactNode // 14x14
-  // iconright?: React.ReactNode; // 14x14
 }
 export const Select: React.FC<SelectHTMLAttributes<HTMLSelectElement> & SelectCustomProps> = (
   props

@@ -4,7 +4,7 @@ const formatDateString = (dateString: string) =>
   new Date(dateString).toLocaleDateString(DEFAULT_SEO.openGraph?.locale, {
     weekday: 'short',
     year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric',
   })
 

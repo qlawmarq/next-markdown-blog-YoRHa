@@ -34,7 +34,6 @@ export async function getMdxFrontMatterBySlug(folder: string, slug: string) {
     : fs.existsSync(mdPath)
     ? fs.readFileSync(mdPath, 'utf8')
     : undefined
-
   // Warn unexpected files
   if (source === undefined) {
     throw new Error(`Detected non-markdown format files: ${mdxPath}`)
@@ -42,11 +41,11 @@ export async function getMdxFrontMatterBySlug(folder: string, slug: string) {
   const mdxSource = (await serialize(source, {
     parseFrontmatter: true,
     mdxOptions: {
-      remarkPlugins: [remarkGfm],
+      remarkPlugins: [remarkGfm, remarkFootnotes, remarkMath],
       rehypePlugins: [rehypeSlug, rehypePrismPlus, rehypeToc],
     },
-  })) as unknown as MDXRemoteSerializeResult<unknown, BlogFrontmatter>
-  if(!mdxSource.frontmatter){
+  })) as unknown as MDXRemoteSerializeResult<Record<string, string>, BlogFrontmatter>
+  if (!mdxSource.frontmatter) {
     throw new Error(`Cannot find the frontmatter in your file: ${mdxPath}`)
   }
   return mdxSource
@@ -65,7 +64,7 @@ export async function getAllFilesFrontMatter(folder: string) {
       }
       const source = fs.readFileSync(file, 'utf8')
       const results = await serialize(source, { parseFrontmatter: true })
-      if(!results.frontmatter){
+      if (!results.frontmatter) {
         throw new Error(`Cannot find the frontmatter in your file: ${fileName}`)
       }
       return {
@@ -74,5 +73,5 @@ export async function getAllFilesFrontMatter(folder: string) {
       } as BlogFrontmatter
     })
   )
-  return allFrontMatter
+  return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))
 }
