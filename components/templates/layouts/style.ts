@@ -1,6 +1,6 @@
 import { css, keyframes } from '@emotion/react'
 import { theme, breakpoints } from '@/theme/index'
-import { CardStyle } from '@/components/atoms/Card'
+import { CardStyle } from '@/components/molecules/Card'
 
 const fadeIn = keyframes`
   0% {

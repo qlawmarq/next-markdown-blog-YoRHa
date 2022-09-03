@@ -3,11 +3,10 @@ import { PostLayoutStyle } from './style'
 import { H1, Paragraph } from '@/components/atoms/Typography'
 import { Anchor } from '@/components/atoms/Anchor'
 import { Figure } from '@/components/molecules/Figure'
-import { UnorderedList } from '@/components/atoms/List/UnorderedList'
+import { UnorderedList, ListItem } from '@/components/atoms/List'
 import Tag from '@/components/molecules/Tag'
 import { BlogFrontmatter } from '@/types/blog'
 import formatDateString from '@/lib/utils/formatDateString'
-import { List } from '@/components/atoms/List'
 
 type PropsType = {
   frontmatter: BlogFrontmatter
@@ -50,11 +49,11 @@ const PostLayout: React.FC<PropsType> = ({ frontmatter, relatedPosts, children }
           <Figure figcaption={'Related Posts'}>
             <UnorderedList>
               {relatedPosts.map((rPost, idx) => (
-                <List>
+                <ListItem>
                   <Anchor key={idx} href={`/blog/${rPost.slug}`}>
                     {rPost.title}
                   </Anchor>
-                </List>
+                </ListItem>
               ))}
             </UnorderedList>
           </Figure>

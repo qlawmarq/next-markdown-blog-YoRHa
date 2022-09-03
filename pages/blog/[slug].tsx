@@ -9,9 +9,7 @@ import { Blockquote, H1, H2, H3, H4, Paragraph } from '@/components/atoms/Typogr
 import { Anchor } from '@/components/atoms/Anchor'
 import { Pre } from '@/components/molecules/Pre'
 import PostLayout from '@/components/templates/layouts/PostLayout'
-import { UnorderedList } from '@/components/atoms/List/UnorderedList'
-import { OrderedList } from '@/components/atoms/List/OrderedList'
-import { List } from '@/components/atoms/List'
+import { UnorderedList, OrderedList, ListItem } from '@/components/atoms/List'
 
 type PropsType = {
   post?: MDXRemoteSerializeResult<Record<string, string>, BlogFrontmatter>
@@ -81,7 +79,7 @@ const Blog: React.FC<PropsType> = ({ post, relatedPosts }) => {
             a: Anchor,
             pre: Pre,
             blockquote: Blockquote,
-            li: List,
+            li: ListItem,
             ul: UnorderedList,
             ol: OrderedList,
           }}
