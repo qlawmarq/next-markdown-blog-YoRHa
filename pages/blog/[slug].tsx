@@ -5,7 +5,7 @@ import { NextSeo } from 'next-seo'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { Blockquote, H1, H2, H3, H4, Paragraph } from '@/components/atoms/Typography'
+import { Blockquote, H1, H2, H3, H4, Paragraph, Code, Strong } from '@/components/atoms/Typography'
 import { Anchor } from '@/components/atoms/Anchor'
 import { Pre } from '@/components/molecules/Pre'
 import PostLayout from '@/components/templates/layouts/PostLayout'
@@ -77,11 +77,13 @@ const Blog: React.FC<PropsType> = ({ post, relatedPosts }) => {
             h4: H4,
             p: Paragraph,
             a: Anchor,
+            code: Code,
             pre: Pre,
             blockquote: Blockquote,
             li: ListItem,
             ul: UnorderedList,
             ol: OrderedList,
+            strong: Strong,
           }}
         />
       </PostLayout>

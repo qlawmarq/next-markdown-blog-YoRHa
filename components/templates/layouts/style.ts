@@ -47,15 +47,6 @@ export const PostLayoutStyle = css`
     display: flex;
   }
 
-  .post-contents code {
-    background-color: ${theme.colors.primaryColor};
-    padding: 0.25rem;
-  }
-
-  .post-contents strong {
-    font-weight: bold;
-  }
-
   .post-contents table {
     width: 100%;
     border-collapse: collapse;
