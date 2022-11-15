@@ -12,6 +12,13 @@ const slideIn = keyframes`
     }
 `
 
+export const hoverStyle = css`
+  &:hover:before {
+    border: solid ${theme.colors.tertiaryColor};
+    border-width: 0 0.2rem 0 0.6rem;
+  }
+`
+
 export const style = css`
   position: relative;
   flex-direction: column;
@@ -32,9 +39,5 @@ export const style = css`
     border: solid ${theme.colors.secondaryColor};
     border-width: 0 0.2rem 0 0.6rem;
     transition: all 0.2s ease-out;
-  }
-  &:hover:before {
-    border: solid ${theme.colors.tertiaryColor};
-    border-width: 0 0.2rem 0 0.6rem;
   }
 `
