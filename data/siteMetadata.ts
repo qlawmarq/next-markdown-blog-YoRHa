@@ -1,21 +1,21 @@
 export const DEFAULT_SEO = {
-  titleTemplate: '%s | Next.js Blog',
-  defaultTitle: 'Next.js Blog',
+  titleTemplate: '%s | NieR:Automata YoRHa Next.js Blog',
+  defaultTitle: 'NieR:Automata YoRHa Next.js Blog',
   description: 'Blog template with Next.js.',
   canonical: 'https://next-playground.vercel.app/',
   openGraph: {
     type: 'website',
     locale: 'en',
     url: 'https://next-playground.vercel.app/',
-    title: 'Next.js Blog',
+    title: 'NieR:Automata YoRHa Next.js Blog',
     description: 'Blog template with Next.js.',
-    site_name: 'Next.js Blog',
+    site_name: 'NieR:Automata YoRHa Next.js Blog',
     images: [
       {
         url: 'https://next-playground.vercel.app/static/images/logo.png',
         width: 800,
         height: 600,
-        alt: 'Og Image',
+        alt: 'Logo',
       },
     ],
   },

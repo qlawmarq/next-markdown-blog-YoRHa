@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Tag from '@/components/molecules/Tag'
 import { useState } from 'react'
-import { Card } from '@/components/molecules/Card'
+import { PostCard } from '@/components/molecules/Card'
 import formatDateString from '@/lib/utils/formatDateString'
 import { H1, H2, Paragraph } from '@/components/atoms/Typography'
 // import { Anchor } from '@/components/atoms/Anchor'
@@ -70,7 +70,7 @@ const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onC
                 const { slug, date, title, description, tags } = frontmatter
                 return (
                   <li key={slug}>
-                    <Card onClick={() => onClickListItem(slug)}>
+                    <PostCard onClick={() => onClickListItem(slug)}>
                       <H2>{title}</H2>
                       <Paragraph>
                         <time dateTime={date}>{formatDateString(date)}</time>
@@ -79,7 +79,7 @@ const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onC
                         <Tag key={tag} text={tag} />
                       ))}
                       <Paragraph>{description}</Paragraph>
-                    </Card>
+                    </PostCard>
                   </li>
                 )
               })}
