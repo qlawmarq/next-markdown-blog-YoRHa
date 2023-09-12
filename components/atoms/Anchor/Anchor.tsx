@@ -12,11 +12,11 @@ export const Anchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
 
   if (isInternalLink) {
     return (
-      <Link href={href}>
-        <a css={style} {...rest}>
+        <a css={style} {...rest} suppressHydrationWarning={true}>
+          <Link href={href}>
           {children}
+          </Link>
         </a>
-      </Link>
     )
   }
 
