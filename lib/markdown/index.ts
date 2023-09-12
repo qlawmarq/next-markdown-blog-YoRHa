@@ -41,6 +41,7 @@ export async function getMdxFrontMatterBySlug(folder: string, slug: string) {
   const mdxSource = (await serialize(source, {
     parseFrontmatter: true,
     mdxOptions: {
+      development: false,
       remarkPlugins: [remarkGfm, remarkFootnotes, remarkMath],
       rehypePlugins: [rehypeSlug, rehypePrismPlus, rehypeToc],
     },

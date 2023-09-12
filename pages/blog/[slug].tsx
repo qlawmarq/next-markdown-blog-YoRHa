@@ -60,7 +60,7 @@ const Blog: React.FC<PropsType> = ({ post, relatedPosts }) => {
     if (!post || post?.frontmatter?.draft) {
       router.push('/404')
     }
-  }, [])
+  }, [post, router])
   if (!post || !post?.frontmatter || post?.frontmatter?.draft) {
     return null
   }
