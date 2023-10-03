@@ -23,7 +23,7 @@
     "next": "13.4.19",
     "next-mdx-remote": "4.1.0",
     "next-seo": "6.1.0",
-    "postcss": "8.4.16",
+    "postcss": "8.4.31",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rehype-prism-plus": "1.5.0",
