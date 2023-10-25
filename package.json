@@ -20,7 +20,7 @@
     "@emotion/babel-preset-css-prop": "11.11.0",
     "@emotion/react": "11.11.1",
     "github-slugger": "1.4.0",
-    "next": "13.4.19",
+    "next": "13.5.0",
     "next-mdx-remote": "4.1.0",
     "next-seo": "6.1.0",
     "postcss": "8.4.31",
