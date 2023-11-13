@@ -36,4 +36,4 @@ https://www.markdownguide.org/cheat-sheet/
 
 ## Wanna use?
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fcymagix%2Fnext-markdown-blog-YoRHa)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fqlawmarq%2Fnext-markdown-blog-YoRHa)

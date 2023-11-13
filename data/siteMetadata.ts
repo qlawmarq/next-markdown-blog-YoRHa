@@ -20,10 +20,10 @@ export const DEFAULT_SEO = {
     ],
   },
   twitter: {
-    handle: '@cymagix',
+    handle: '@qlawmarq',
     cardType: 'summary',
   },
   profile: {
-    username: 'cymagix',
+    username: 'Masaki Yoshiiwa',
   },
 }
