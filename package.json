@@ -14,7 +14,8 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^11.11.0",
@@ -47,8 +48,8 @@
     "eslint-config-next": "^14.0.2",
     "eslint-config-prettier": "^9.0.0",
     "file-loader": "6.2.0",
-    "husky": "8.0.1",
-    "lint-staged": "13.0.3",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
