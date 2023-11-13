@@ -49,7 +49,7 @@ export async function getMdxFrontMatterBySlug(folder: string, slug: string) {
   if (!mdxSource.frontmatter) {
     throw new Error(`Cannot find the frontmatter in your file: ${mdxPath}`)
   }
-  return mdxSource
+  return { ...mdxSource, frontmatter: { ...mdxSource.frontmatter, slug: formatSlug(slug) } }
 }
 
 export async function getAllFilesFrontMatter(folder: string) {
