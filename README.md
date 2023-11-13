@@ -12,17 +12,33 @@ https://next-playground.vercel.app
 
 ## Development
 
-### Setup
+### Setup (Node.js)
 
-Please install Node.js in your local.
+Please install Node.js first.
+
+After installation is complete, follow the steps below:
 
 ```bash
-# Install dependecies
-$ npm i
+npm i
 
-# Start develop server
-$ npm run dev
+npm run dev
 ```
+
+Access following link to check the app is working:
+
+http://localhost:3000/
+
+### Setup (Docker)
+
+Please install Node.js first.
+
+After installation is complete, execute the command below:
+
+```bash
+docker-compose up
+```
+
+After a while, access following link to check the app is working:
 
 http://localhost:3000/
 
