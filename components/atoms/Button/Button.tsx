@@ -1,9 +1,9 @@
 import React, { ButtonHTMLAttributes } from 'react'
-import { style } from './style'
+import { ButtonStyle } from './style'
 
 export const Button: React.FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({ ...props }) => {
   return (
-    <button css={style} {...props}>
+    <button css={ButtonStyle} {...props}>
       {props.children}
     </button>
   )

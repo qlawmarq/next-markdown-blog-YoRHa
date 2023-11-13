@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import { theme } from '@/theme/index'
 
-export const style = css`
+export const ButtonStyle = css`
   &:disabled {
     padding: 0.5rem;
     font-size: 1em;
@@ -30,7 +30,7 @@ export const style = css`
     letter-spacing: inherit;
     font-weight: inherit;
     cursor: pointer;
-    transition-duration: 0.2s;
+    transition-duration: 0.5s;
     transition-property: color, background-color, box-shadow;
     position: relative;
     z-index: 1;
@@ -38,7 +38,7 @@ export const style = css`
   &:not(:disabled):before,
   :before {
     content: '';
-    transition: all 0.2s;
+    transition: all 0.5s;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -48,7 +48,7 @@ export const style = css`
   &:not(:disabled):after,
   :after {
     content: '';
-    transition: all 0.2s;
+    transition: all 0.5s;
     transition-timing-function: ease-out;
     position: absolute;
     top: 0;

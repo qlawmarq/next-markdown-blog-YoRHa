@@ -12,13 +12,6 @@ const slideIn = keyframes`
     }
 `
 
-export const hoverStyle = css`
-  &:hover:before {
-    border: solid ${theme.colors.tertiaryColor};
-    border-width: 0 0.2rem 0 0.6rem;
-  }
-`
-
 export const style = css`
   position: relative;
   flex-direction: column;
@@ -38,6 +31,58 @@ export const style = css`
     padding: 0.15rem;
     border: solid ${theme.colors.secondaryColor};
     border-width: 0 0.2rem 0 0.6rem;
-    transition: all 0.2s ease-out;
+  }
+`
+export const hoverStyle = css`
+  &:not(:disabled):before,
+  :before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0.3rem;
+    padding: 0.15rem;
+    border: solid ${theme.colors.secondaryColor};
+    border-width: 0 0.2rem 0 0.6rem;
+    transition: all 0.25s ease-out;
+  }
+  &:not(:disabled):after,
+  :after {
+    content: '';
+    transition: all 0.5s;
+    transition-timing-function: ease-out;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    background-color: ${theme.colors.secondaryColor};
+    z-index: -1;
+  }
+  &:not(:disabled):hover,
+  :hover {
+    background-color: transparent;
+    color: ${theme.colors.primaryColor};
+  }
+  &:not(:disabled):hover:before,
+  :hover:before {
+    width: 100%;
+    top: -0.2rem;
+    bottom: -0.2rem;
+    border: solid ${theme.colors.secondaryColor};
+    border-width: 0.1rem 0;
+  }
+  &:not(:disabled):hover:after,
+  :hover:after {
+    width: 100%;
+  }
+  &:not(:disabled):active,
+  :active {
+    color: ${theme.colors.secondaryColor};
+  }
+  &:not(:disabled):active:after,
+  :active:after {
+    background-color: ${theme.colors.primaryColor};
   }
 `
