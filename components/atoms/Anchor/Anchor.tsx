@@ -1,6 +1,7 @@
 import React, { AnchorHTMLAttributes } from 'react'
 import Link from 'next/link'
 import { style } from './style'
+import { useRouter } from 'next/router'
 
 export const Anchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
   href,
@@ -9,14 +10,13 @@ export const Anchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
 }) => {
   const isInternalLink = href && href.startsWith('/')
   const isAnchorLink = href && href.startsWith('#')
+  const router = useRouter()
 
   if (isInternalLink) {
     return (
-        <a css={style} {...rest} suppressHydrationWarning={true}>
-          <Link href={href}>
-          {children}
-          </Link>
-        </a>
+      <a css={style} {...rest} onClick={() => router.push({ pathname: href })}>
+        {children}
+      </a>
     )
   }
 
