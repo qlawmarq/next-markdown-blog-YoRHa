@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext, GetStaticProps } from 'next'
+import { GetServerSidePropsContext } from 'next'
 import { getAllFilesFrontMatter } from '@/lib/markdown'
 import { DEFAULT_SEO } from '@/data/siteMetadata'
 
