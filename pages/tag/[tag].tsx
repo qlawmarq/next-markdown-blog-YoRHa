@@ -15,14 +15,22 @@ type PropsType = {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const tags = await getAllTags('blog')
+
+  const localizedPaths = tags.map((tag) => ({
+    params: {
+      tag,
+    },
+    locale: 'ja',
+  }))
   const originalPaths = tags.map((tag) => ({
     params: {
       tag,
     },
   }))
+  const paths = [...localizedPaths, ...originalPaths]
   return {
-    paths: [...originalPaths],
-    fallback: true,
+    paths: [...paths],
+    fallback: false,
   }
 }
 
@@ -32,7 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const filteredPosts = tag
     ? allPosts?.filter((post) => !post.draft && post.tags?.includes(tag))
     : allPosts.filter((post) => !post.draft)
-  return { props: { posts: filteredPosts, tag: tag }, revalidate: 10 }
+  return { props: { posts: filteredPosts, tag: tag } }
 }
 
 const Tag: React.FC<PropsType> = ({ posts, tag }) => {

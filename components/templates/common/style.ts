@@ -7,12 +7,17 @@ export const InnerStyle = css`
   max-width: 70%;
   min-height: calc(100vh - 12rem);
 
-  @media (${breakpoints.TABLET}) {
-    max-width: 500px;
+  @media (${breakpoints.LG}) {
+    max-width: 75%;
   }
-
-  @media (${breakpoints.SP}) {
-    max-width: 320px;
+  @media (${breakpoints.MD}) {
+    max-width: 85%;
+  }
+  @media (${breakpoints.SM}) {
+    max-width: 90%;
+  }
+  @media (${breakpoints.XS}) {
+    max-width: 97.5%;
   }
 `
 

@@ -26,7 +26,7 @@ export const PostLayoutStyle = css`
     width: 25%;
   }
 
-  @media (${breakpoints.TABLET}) {
+  @media (${breakpoints.MD}) {
     display: block;
     article {
       width: 100%;

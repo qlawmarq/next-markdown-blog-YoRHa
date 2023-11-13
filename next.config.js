@@ -2,6 +2,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
+// @ts-check
+/**
+ * @type {import('next').NextConfig}
+ **/
 module.exports = withBundleAnalyzer({
   i18n: {
     locales: ['en', 'ja'],
@@ -15,7 +19,7 @@ module.exports = withBundleAnalyzer({
   experimental: { esmExternals: true },
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
-      test: /\.(png|jpe?g|gif|mp4)$/i,
+      test: /\.(png|jpe?g|gif|svg)$/i,
       use: [
         {
           loader: 'file-loader',
@@ -25,11 +29,6 @@ module.exports = withBundleAnalyzer({
           },
         },
       ],
-    })
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack'],
     })
     return config
   },

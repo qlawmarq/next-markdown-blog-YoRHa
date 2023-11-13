@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { Suspense, useMemo } from 'react'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { DEFAULT_SEO } from '@/data/siteMetadata'
@@ -7,6 +7,7 @@ import { BlogFrontmatter } from '@/types/blog'
 import PostListingLayout from '@/components/templates/layouts/PostListingLayout'
 import { NextSeo } from 'next-seo'
 import { getAllFilesFrontMatter } from '@/lib/markdown'
+import { Spiner } from '@/components/molecules/Spiner'
 
 type PropsType = {
   posts: BlogFrontmatter[]
@@ -17,7 +18,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const posts = allPosts.filter((post) => !post.draft)
   return {
     props: { posts },
-    revalidate: 10,
   }
 }
 
@@ -32,12 +32,14 @@ const Index: React.FC<PropsType> = ({ posts }) => {
   return (
     <>
       <NextSeo />
-      <PostListingLayout
-        posts={localizedPosts}
-        title={DEFAULT_SEO.defaultTitle}
-        description={DEFAULT_SEO.description}
-        onClickListItem={handleClick}
-      />
+      <Suspense fallback={<Spiner />}>
+        <PostListingLayout
+          posts={localizedPosts}
+          title={DEFAULT_SEO.defaultTitle}
+          description={DEFAULT_SEO.description}
+          onClickListItem={handleClick}
+        />
+      </Suspense>
     </>
   )
 }

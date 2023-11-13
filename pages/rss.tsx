@@ -33,7 +33,7 @@ const generateFeedXml = async (posts: BlogFrontmatter[]) => {
       title: String(post?.title),
       description: String(post?.description),
       date: new Date(String(post?.date)),
-      url: `${DEFAULT_SEO.openGraph.url}/${post?.slug}`,
+      url: new URL(`/blog/${post?.slug}`, DEFAULT_SEO.openGraph.url).toString(),
     })
   })
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { getAllFilesFrontMatter, getMdxFrontMatterBySlug } from '@/lib/markdown'
 import { BlogFrontmatter } from '@/types/blog'
 import { NextSeo } from 'next-seo'
@@ -10,6 +10,7 @@ import { Anchor } from '@/components/atoms/Anchor'
 import { Pre } from '@/components/molecules/Pre'
 import PostLayout from '@/components/templates/layouts/PostLayout'
 import { UnorderedList, OrderedList, ListItem } from '@/components/atoms/List'
+import { Spiner } from '@/components/molecules/Spiner'
 
 type PropsType = {
   post?: MDXRemoteSerializeResult<Record<string, string>, BlogFrontmatter>
@@ -26,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = [...localizedPaths, ...originalPaths]
   return {
     paths: paths,
-    fallback: true,
+    fallback: false,
   }
 }
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -53,7 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       })
     return isRelatedPost
   })
-  return { props: { post, relatedPosts }, revalidate: 10 }
+  return { props: { post, relatedPosts } }
 }
 
 const Blog: React.FC<PropsType> = ({ post, relatedPosts }) => {
@@ -69,26 +70,28 @@ const Blog: React.FC<PropsType> = ({ post, relatedPosts }) => {
   return (
     <>
       <NextSeo title={post.frontmatter.title} description={post.frontmatter.description} />
-      <PostLayout frontmatter={post.frontmatter} relatedPosts={relatedPosts}>
-        <MDXRemote
-          compiledSource={post.compiledSource}
-          components={{
-            h1: H1,
-            h2: H2,
-            h3: H3,
-            h4: H4,
-            p: Paragraph,
-            a: Anchor,
-            code: Code,
-            pre: Pre,
-            blockquote: Blockquote,
-            li: ListItem,
-            ul: UnorderedList,
-            ol: OrderedList,
-            strong: Strong,
-          }}
-        />
-      </PostLayout>
+      <Suspense fallback={<Spiner />}>
+        <PostLayout frontmatter={post.frontmatter} relatedPosts={relatedPosts}>
+          <MDXRemote
+            compiledSource={post.compiledSource}
+            components={{
+              h1: H1,
+              h2: H2,
+              h3: H3,
+              h4: H4,
+              p: Paragraph,
+              a: Anchor,
+              code: Code,
+              pre: Pre,
+              blockquote: Blockquote,
+              li: ListItem,
+              ul: UnorderedList,
+              ol: OrderedList,
+              strong: Strong,
+            }}
+          />
+        </PostLayout>
+      </Suspense>
     </>
   )
 }
