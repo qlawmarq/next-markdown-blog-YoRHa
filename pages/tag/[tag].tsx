@@ -15,13 +15,21 @@ type PropsType = {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const tags = await getAllTags('blog')
+
+  const localizedPaths = tags.map((tag) => ({
+    params: {
+      tag,
+    },
+    locale: 'ja',
+  }))
   const originalPaths = tags.map((tag) => ({
     params: {
       tag,
     },
   }))
+  const paths = [...localizedPaths, ...originalPaths]
   return {
-    paths: [...originalPaths],
+    paths: [...paths],
     fallback: false,
   }
 }
