@@ -1,16 +1,4 @@
-import { css, keyframes } from '@emotion/react'
-import { breakpoints } from '@/theme/index'
-
-const expand = keyframes`
-    0% {
-        opacity: 0;
-        width: 0%;
-    }
-    100% {
-        opacity: 1;
-        width: 100%;
-    }
-`
+import { css } from '@emotion/react'
 
 export const HeaderStyle = css`
   position: relative;
@@ -23,9 +11,12 @@ export const HeaderStyle = css`
   width: 100%;
 `
 
-export const borderStyle = css`
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  align-items: center;
+export const HeaderLogoStyle = css`
+  height: 6rem;
+  width: 6rem;
+  cursor: pointer;
+  background-image: url(/static/images/logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 `

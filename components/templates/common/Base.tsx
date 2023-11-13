@@ -1,9 +1,7 @@
 import React from 'react'
 import { Header } from '@/components/organisms/Header'
 import { Footer } from '@/components/organisms/Footer'
-import { InnerStyle, OuterStyle, UpLeftCircleStyle, DownRightCircleStyle } from './style'
-import DownRightCircle from './svg/down_right_circle.svg'
-import UpLeftCircle from './svg/up_left_circle.svg'
+import { BottomRightCircleStyle, InnerStyle, OuterStyle, UpLeftCircleStyle } from './style'
 
 type PropsType = {
   children: React.ReactNode
@@ -13,8 +11,8 @@ type PropsType = {
 const BaseLayout: React.FC<PropsType> = ({ children, onClickMenuItem }) => {
   return (
     <div css={OuterStyle}>
-      <UpLeftCircle css={UpLeftCircleStyle} />
-      <DownRightCircle css={DownRightCircleStyle} />
+      <div css={UpLeftCircleStyle} />
+      <div css={BottomRightCircleStyle} />
       <Header onClickMenuItem={onClickMenuItem} />
       <main css={InnerStyle}>{children}</main>
       <Footer />

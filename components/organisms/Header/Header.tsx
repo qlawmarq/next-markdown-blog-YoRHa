@@ -1,9 +1,7 @@
 import React from 'react'
-// import { Menu } from '@/components/molecules/Menu'
-// import headerNavLinks from '@/data/headerNavLinks'
-import { HeaderStyle, borderStyle } from './style'
-import Logo from './header_logo.svg'
-import Line from '../line.svg'
+
+import { HeaderLogoStyle, HeaderStyle } from './style'
+import { Border } from '@/components/atoms/Border'
 
 type PropsType = {
   onClickMenuItem: (item: string) => void
@@ -12,13 +10,8 @@ type PropsType = {
 const Header: React.FC<PropsType> = ({ onClickMenuItem }) => {
   return (
     <header css={HeaderStyle}>
-      <Logo
-        onClick={() => onClickMenuItem('/')}
-        style={{ height: '4rem', marginBottom: '1rem', cursor: 'pointer' }}
-      />
-      <div css={borderStyle}>
-        <Line />
-      </div>
+      <div onClick={() => onClickMenuItem('/')} css={HeaderLogoStyle} />
+      <Border />
     </header>
   )
 }
