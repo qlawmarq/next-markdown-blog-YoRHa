@@ -1,7 +1,6 @@
 import React from 'react'
-import { H1, Paragraph } from '@/components/atoms/Typography'
-import { Anchor } from '@/components/atoms/Anchor'
 import { NextSeo } from 'next-seo'
+import NotFoundLayout from '@/components/templates/layouts/NotFoundLayout'
 
 const FourZeroFour: React.FC = () => {
   return (
@@ -11,15 +10,7 @@ const FourZeroFour: React.FC = () => {
         description={'The link you followed may be broken, or the page may have been removed.'}
         noindex
       />
-      <div>
-        <div>
-          <H1>404 NOT FOUND</H1>
-        </div>
-        <div>
-          <Paragraph>Sorry we couldn't find this page.</Paragraph>
-          <Anchor href="/">Back to Home</Anchor>
-        </div>
-      </div>
+      <NotFoundLayout />
     </>
   )
 }

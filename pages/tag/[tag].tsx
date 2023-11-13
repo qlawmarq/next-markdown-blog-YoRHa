@@ -5,8 +5,8 @@ import { getAllFilesFrontMatter } from '@/lib/markdown'
 import { getAllTags } from '@/lib/tags/tags'
 import { BlogFrontmatter } from '@/types/blog'
 import { NextSeo } from 'next-seo'
-import kebabCase from '@/lib/utils/kebabCase'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import NotFoundLayout from '@/components/templates/layouts/NotFoundLayout'
 
 type PropsType = {
   posts?: BlogFrontmatter[]
@@ -28,17 +28,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allPosts = await getAllFilesFrontMatter('blog')
-  const filteredPosts = allPosts?.filter(
-    (post) => !post.draft && post.tags?.map((t) => kebabCase(t)).includes(params?.tag as string)
-  )
-
-  return { props: { posts: filteredPosts, tag: params?.tag }, revalidate: 10 }
+  const tag = typeof params?.tag === 'string' ? params?.tag : undefined
+  const filteredPosts = tag
+    ? allPosts?.filter((post) => !post.draft && post.tags?.includes(tag))
+    : allPosts.filter((post) => !post.draft)
+  return { props: { posts: filteredPosts, tag: tag }, revalidate: 10 }
 }
 
 const Tag: React.FC<PropsType> = ({ posts, tag }) => {
-  if (!posts || !tag) {
-    return null
-  }
   const router = useRouter()
   const handleClick = (href: string) => {
     router.push(`/blog/${href}`)
@@ -51,15 +48,19 @@ const Tag: React.FC<PropsType> = ({ posts, tag }) => {
     if (!posts || !tag) {
       router.push('/404')
     }
-  }, [])
+  }, [posts, router, tag])
   return (
     <>
       <NextSeo title={tag} description={tag} noindex />
-      <PostListingLayout
-        posts={localizedPosts}
-        title={`Tag - ${tag.toUpperCase()}`}
-        onClickListItem={handleClick}
-      />
+      {localizedPosts && tag ? (
+        <PostListingLayout
+          posts={localizedPosts}
+          title={`Tag - ${tag.toUpperCase()}`}
+          onClickListItem={handleClick}
+        />
+      ) : (
+        <NotFoundLayout />
+      )}
     </>
   )
 }

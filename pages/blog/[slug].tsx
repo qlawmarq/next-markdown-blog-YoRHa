@@ -31,13 +31,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allPosts = await getAllFilesFrontMatter('blog')
+  const slug = typeof params?.slug == 'string' ? params?.slug : undefined
   const post = await getMdxFrontMatterBySlug('blog', params?.slug as string)
-  if (!post.frontmatter) {
-    throw new Error(`${params?.slug}`)
+
+  if (!post.frontmatter || !slug) {
+    throw new Error(`Invalid ${params?.slug}`)
   }
   const relatedPosts = allPosts?.filter((p) => {
     let isRelatedPost: boolean = false
-    if (p.slug === post.frontmatter?.slug) {
+    if (slug == post.frontmatter?.slug) {
       return isRelatedPost
     }
     !p.draft &&
