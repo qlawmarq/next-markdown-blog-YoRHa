@@ -22,7 +22,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }))
   return {
     paths: [...originalPaths],
-    fallback: true,
+    fallback: false,
   }
 }
 
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const filteredPosts = tag
     ? allPosts?.filter((post) => !post.draft && post.tags?.includes(tag))
     : allPosts.filter((post) => !post.draft)
-  return { props: { posts: filteredPosts, tag: tag }, revalidate: 10 }
+  return { props: { posts: filteredPosts, tag: tag } }
 }
 
 const Tag: React.FC<PropsType> = ({ posts, tag }) => {
