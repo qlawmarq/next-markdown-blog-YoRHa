@@ -17,6 +17,9 @@ export default defineConfig({
   retries: 1,
   // Artifacts folder where screenshots, videos, and traces are stored.
   outputDir: 'test-results/',
+  // Output `playwright-report` if running in CI, otherwise show `list` result:
+  // https://playwright.dev/docs/test-reporters
+  reporter: process.env.CI ? 'html' : 'list',
 
   // Run your local dev server before starting the tests:
   // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
