@@ -1,13 +1,16 @@
 import React from 'react'
 import { Anchor } from '@/components/atoms/Anchor'
-import { Label } from '@/components/atoms/Typography'
 import { style } from './style'
+import { Span } from '@/components/atoms/Typography'
 
 const Tag: React.FC<{ href?: string; text: string }> = ({ href, text }) => {
+  if (!href) {
+    return <Span css={style}>{text}</Span>
+  }
   return (
-    <Label css={style}>
+    <Span css={style}>
       <Anchor href={href}>{text}</Anchor>
-    </Label>
+    </Span>
   )
 }
 

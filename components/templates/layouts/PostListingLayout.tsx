@@ -48,6 +48,9 @@ const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onC
           <>
             <div>
               <Select
+                id="locale"
+                name="locale"
+                aria-label="Select language"
                 options={[
                   { value: 'en', text: 'EN' },
                   { value: 'ja', text: 'JP' },
@@ -58,6 +61,8 @@ const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onC
                 }
               />
               <Input
+                id="search"
+                name="search"
                 aria-label="Search articles"
                 type="text"
                 onChange={(e) => setSearchValue(e.target.value)}
@@ -75,9 +80,7 @@ const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onC
                       <Paragraph>
                         <time dateTime={date}>{formatDateString(date)}</time>
                       </Paragraph>
-                      {tags?.map((tag) => (
-                        <Tag key={tag} text={tag} />
-                      ))}
+                      {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                       <Paragraph>{description}</Paragraph>
                     </PostCard>
                   </li>
