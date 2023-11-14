@@ -1,13 +1,15 @@
 import React from 'react'
 import { Anchor } from '@/components/atoms/Anchor'
-import { Label } from '@/components/atoms/Typography'
 import { style } from './style'
 
 const Tag: React.FC<{ href?: string; text: string }> = ({ href, text }) => {
+  if (!href) {
+    return <span css={style}>{text}</span>
+  }
   return (
-    <Label css={style}>
+    <span css={style}>
       <Anchor href={href}>{text}</Anchor>
-    </Label>
+    </span>
   )
 }
 
