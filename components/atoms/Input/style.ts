@@ -44,7 +44,7 @@ export const style = css`
     letter-spacing: inherit;
     font-weight: inherit;
     cursor: pointer;
-    transition-duration: 0.5s;
+    transition-duration: 0.25s;
     transition-property: color, background-color, box-shadow;
   }
   &[type='submit']:not(:disabled):hover,
