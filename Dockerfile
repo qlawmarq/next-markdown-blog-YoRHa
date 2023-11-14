@@ -26,7 +26,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # This will do the trick, use the corresponding env file for each environment.
-RUN npm run build:prod
+RUN npm run build
 
 
 ##############################################################################################################
@@ -41,7 +41,9 @@ ENV NODE_ENV=development
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
-COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps --chown=nextjs:nodejs /app/node_modules ./node_modules
+RUN mkdir -p ./.next
+RUN chown nextjs:nodejs -R ./
 COPY --chown=nextjs:nodejs . .
 
 USER nextjs
