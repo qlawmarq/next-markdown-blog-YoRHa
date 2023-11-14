@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-test('Should navigate to the index page', async ({ page }) => {
+test('Snapshot index page', async ({ page }) => {
   await page.goto('/')
   await expect(page).toHaveScreenshot({ fullPage: true })
 })
