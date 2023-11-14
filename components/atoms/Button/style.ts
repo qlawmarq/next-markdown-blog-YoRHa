@@ -30,7 +30,7 @@ export const ButtonStyle = css`
     letter-spacing: inherit;
     font-weight: inherit;
     cursor: pointer;
-    transition-duration: 0.5s;
+    transition-duration: 0.25s;
     transition-property: color, background-color, box-shadow;
     position: relative;
     z-index: 1;
@@ -38,7 +38,7 @@ export const ButtonStyle = css`
   &:not(:disabled):before,
   :before {
     content: '';
-    transition: all 0.5s;
+    transition: all 0.25s;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -48,7 +48,7 @@ export const ButtonStyle = css`
   &:not(:disabled):after,
   :after {
     content: '';
-    transition: all 0.5s;
+    transition: all 0.25s;
     transition-timing-function: ease-out;
     position: absolute;
     top: 0;

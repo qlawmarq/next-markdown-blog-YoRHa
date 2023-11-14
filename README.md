@@ -10,15 +10,20 @@
 
 https://next-playground.vercel.app
 
+![Preview](./e2e-test/e2e-test.spec.ts-snapshots/Snapshot-index-page-1-Desktop-Chrome-darwin.png)
+
 ## Development
 
-### Setup (Node.js)
+There are two ways to set up a local development environment.
+Read below and choose the one you prefer.
+
+### Setup with Node.js
 
 Please install Node.js first.
 
 After installation is complete, follow the steps below:
 
-```bash
+```sh
 npm i
 
 npm run dev
@@ -28,13 +33,13 @@ Access following link to check the app is working:
 
 http://localhost:3000/
 
-### Setup (Docker)
+### Setup with Docker
 
 Please install Node.js first.
 
 After installation is complete, execute the command below:
 
-```bash
+```sh
 docker-compose up
 ```
 
@@ -42,14 +47,30 @@ After a while, access following link to check the app is working:
 
 http://localhost:3000/
 
-### Update or add your blog contents
+## E2E Testing
 
-To update your own blog content, you need to update `contents/blog`.
+The E2E testing is executed by [Playwright Test](https://playwright.dev/).
+
+Detailed in `playwright.config.ts` and `e2e-test/e2e-test.spec.ts`.
+
+To run the E2E test, do the following:
+
+```sh
+npx playwright test
+```
+
+Or
+
+```sh
+npm run test:e2e
+```
+
+See [Playwright Docs](https://playwright.dev/docs/intro) for more details.
+
+## Update or add your own contents
+
+To update the contents of your own blog, you can update the contents in `contents/blog`.
 
 You can write articles in markdown by referring to the following:
 
 https://www.markdownguide.org/cheat-sheet/
-
-## Wanna use?
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fqlawmarq%2Fnext-markdown-blog-YoRHa)
