@@ -1,6 +1,6 @@
 import React, { HtmlHTMLAttributes } from 'react'
 import { style } from './style'
-import { Button } from '@/components/atoms/Button'
+import { Anchor } from '@/components/atoms/Anchor'
 
 type PropsType = {
   Items: Item[]
@@ -18,16 +18,16 @@ export const Menu: React.FC<HtmlHTMLAttributes<HTMLElement> & PropsType> = ({
   ...props
 }) => {
   return (
-    <nav css={style} {...props}>
+    <menu css={style} {...props}>
       <ul>
         {Items.map((item, idx) => (
           <li key={idx}>
-            <Button className="nav_button" onClick={() => onClickItem(item.href)}>
+            <Anchor className="nav_button" onClick={() => onClickItem(item.href)} role="button">
               {item.title}
-            </Button>
+            </Anchor>
           </li>
         ))}
       </ul>
-    </nav>
+    </menu>
   )
 }

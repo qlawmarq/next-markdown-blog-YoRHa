@@ -1,16 +1,18 @@
 import React, { AnchorHTMLAttributes } from 'react'
-import Link from 'next/link'
-import { style } from './style'
+import { AnchorLinkStyle } from './style'
 import { useRouter } from 'next/router'
+import { ButtonStyle } from '../Button/style'
 
 export const Anchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
   href,
   children,
+  role,
   ...rest
 }) => {
   const isInternalLink = href && href.startsWith('/')
   const isAnchorLink = href && href.startsWith('#')
   const router = useRouter()
+  const style = role === 'button' ? ButtonStyle : AnchorLinkStyle
 
   if (isInternalLink) {
     return (

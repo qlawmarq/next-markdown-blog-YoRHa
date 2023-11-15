@@ -1,36 +1,41 @@
 import React, { useEffect } from 'react'
 import Tag from '@/components/molecules/Tag'
 import { useState } from 'react'
-import { PostCard } from '@/components/molecules/Card'
+import { Card } from '@/components/molecules/Card'
 import formatDateString from '@/lib/utils/formatDateString'
 import { H1, H2, Paragraph } from '@/components/atoms/Typography'
 // import { Anchor } from '@/components/atoms/Anchor'
 import { Input } from '@/components/atoms/Input'
 import { ListLayoutStyle } from './style'
-import { BlogFrontmatter } from '@/types/blog'
 import { Select } from '@/components/atoms/Select'
 import { useRouter } from 'next/router'
+import { ArticleFrontmatter } from '@/types/article'
 
 type PropsType = {
-  posts: BlogFrontmatter[]
+  articles: ArticleFrontmatter[]
   title: string
   description?: string
   onClickListItem: (item: string) => void
 }
 
-const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onClickListItem }) => {
+const ArticleListingLayout: React.FC<PropsType> = ({
+  articles,
+  title,
+  description,
+  onClickListItem,
+}) => {
   const router = useRouter()
   const [searchValue, setSearchValue] = useState('')
-  const [filteredPosts, setFilteredPosts] = useState<BlogFrontmatter[]>()
+  const [filteredArticles, setFilteredArticles] = useState<ArticleFrontmatter[]>()
 
   useEffect(() => {
-    const filteredPosts = posts?.filter((frontmatter) => {
+    const filteredArticles = articles?.filter((frontmatter) => {
       const searchContent =
         frontmatter.title + frontmatter.description + frontmatter.tags?.join(' ')
       return searchContent.toLowerCase().includes(searchValue.toLowerCase())
     })
-    setFilteredPosts(filteredPosts)
-  }, [posts, searchValue])
+    setFilteredArticles(filteredArticles)
+  }, [articles, searchValue])
 
   return (
     <>
@@ -39,12 +44,12 @@ const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onC
           <H1>{title}</H1>
           <Paragraph>{description}</Paragraph>
         </div>
-        {!posts?.length && (
+        {!articles?.length && (
           <>
             <Paragraph>Coming soon...</Paragraph>
           </>
         )}
-        {posts?.length > 0 && (
+        {articles?.length > 0 && (
           <>
             <div>
               <Select
@@ -68,21 +73,21 @@ const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onC
                 onChange={(e) => setSearchValue(e.target.value)}
                 placeholder="Search articles"
               />
-              {!filteredPosts?.length && <Paragraph>No posts found.</Paragraph>}
+              {!filteredArticles?.length && <Paragraph>No articles found.</Paragraph>}
             </div>
             <ul>
-              {filteredPosts?.map((frontmatter) => {
+              {filteredArticles?.map((frontmatter) => {
                 const { slug, date, title, description, tags } = frontmatter
                 return (
                   <li key={slug}>
-                    <PostCard onClick={() => onClickListItem(slug)}>
+                    <Card onClick={() => onClickListItem(slug)}>
                       <H2>{title}</H2>
                       <Paragraph>
                         <time dateTime={date}>{formatDateString(date)}</time>
                       </Paragraph>
                       {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                       <Paragraph>{description}</Paragraph>
-                    </PostCard>
+                    </Card>
                   </li>
                 )
               })}
@@ -94,4 +99,4 @@ const PostListingLayout: React.FC<PropsType> = ({ posts, title, description, onC
   )
 }
 
-export default PostListingLayout
+export default ArticleListingLayout

@@ -1,4 +1,4 @@
-export type BlogFrontmatter = {
+export type ArticleFrontmatter = {
   title: string
   date: string
   language: string

@@ -1,26 +1,26 @@
 import React from 'react'
-import { PostLayoutStyle } from './style'
+import { ArticleLayoutStyle } from './style'
 import { H1, Paragraph } from '@/components/atoms/Typography'
 import { Anchor } from '@/components/atoms/Anchor'
 import { Figure } from '@/components/molecules/Figure'
 import { UnorderedList, ListItem } from '@/components/atoms/List'
 import Tag from '@/components/molecules/Tag'
-import { BlogFrontmatter } from '@/types/blog'
+import { ArticleFrontmatter } from '@/types/article'
 import formatDateString from '@/lib/utils/formatDateString'
 
 type PropsType = {
-  frontmatter: BlogFrontmatter
-  relatedPosts?: BlogFrontmatter[]
+  frontmatter: ArticleFrontmatter
+  relatedArticles?: ArticleFrontmatter[]
   children: React.ReactNode
 }
 
-const PostLayout: React.FC<PropsType> = ({ frontmatter, relatedPosts, children }) => {
+const ArticleLayout: React.FC<PropsType> = ({ frontmatter, relatedArticles, children }) => {
   const { date, title, tags } = frontmatter
 
   return (
-    <div css={PostLayoutStyle}>
+    <div css={ArticleLayoutStyle}>
       <article>
-        <div className="post-contents">
+        <div className="article-contents">
           <div>
             <H1>{title}</H1>
           </div>
@@ -31,7 +31,7 @@ const PostLayout: React.FC<PropsType> = ({ frontmatter, relatedPosts, children }
           )}
           <hr />
           <div>
-            <div className="post-contents">{children}</div>
+            <div className="article-contents">{children}</div>
           </div>
         </div>
       </article>
@@ -45,14 +45,12 @@ const PostLayout: React.FC<PropsType> = ({ frontmatter, relatedPosts, children }
             </div>
           </Figure>
         )}
-        {!!relatedPosts?.length && (
-          <Figure figcaption={'Related Posts'}>
+        {!!relatedArticles?.length && (
+          <Figure figcaption={'Related Articles'}>
             <UnorderedList>
-              {relatedPosts.map((rPost, idx) => (
+              {relatedArticles.map((rArticle, idx) => (
                 <ListItem key={idx}>
-                  <Anchor href={`/blog/${rPost.slug}`}>
-                    {rPost.title}
-                  </Anchor>
+                  <Anchor href={`/article/${rArticle.slug}`}>{rArticle.title}</Anchor>
                 </ListItem>
               ))}
             </UnorderedList>
@@ -65,4 +63,4 @@ const PostLayout: React.FC<PropsType> = ({ frontmatter, relatedPosts, children }
     </div>
   )
 }
-export default PostLayout
+export default ArticleLayout
