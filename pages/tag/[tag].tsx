@@ -1,20 +1,20 @@
 import React, { useEffect, useMemo } from 'react'
 import { useRouter } from 'next/router'
-import PostListingLayout from '@/components/templates/layouts/PostListingLayout'
+import ArticleListingLayout from '@/components/templates/layouts/ArticleListingLayout'
 import { getAllFilesFrontMatter } from '@/lib/markdown'
 import { getAllTags } from '@/lib/tags/tags'
-import { BlogFrontmatter } from '@/types/blog'
+import { ArticleFrontmatter } from '@/types/article'
 import { NextSeo } from 'next-seo'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import NotFoundLayout from '@/components/templates/layouts/NotFoundLayout'
 
 type PropsType = {
-  posts?: BlogFrontmatter[]
+  articles?: ArticleFrontmatter[]
   tag?: string
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const tags = await getAllTags('blog')
+  const tags = await getAllTags('article')
 
   const localizedPaths = tags.map((tag) => ({
     params: {
@@ -35,34 +35,34 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const allPosts = await getAllFilesFrontMatter('blog')
+  const allArticles = await getAllFilesFrontMatter('article')
   const tag = typeof params?.tag === 'string' ? params?.tag : undefined
-  const filteredPosts = tag
-    ? allPosts?.filter((post) => !post.draft && post.tags?.includes(tag))
-    : allPosts.filter((post) => !post.draft)
-  return { props: { posts: filteredPosts, tag: tag } }
+  const filteredArticles = tag
+    ? allArticles?.filter((article) => !article.draft && article.tags?.includes(tag))
+    : allArticles.filter((article) => !article.draft)
+  return { props: { articles: filteredArticles, tag: tag } }
 }
 
-const Tag: React.FC<PropsType> = ({ posts, tag }) => {
+const Tag: React.FC<PropsType> = ({ articles, tag }) => {
   const router = useRouter()
   const handleClick = (href: string) => {
-    router.push(`/blog/${href}`)
+    router.push(`/article/${href}`)
   }
-  const localizedPosts = useMemo(() => {
-    return posts?.filter((post) => post.language == router.locale)
-  }, [router.locale, posts])
+  const localizedArticles = useMemo(() => {
+    return articles?.filter((article) => article.language == router.locale)
+  }, [router.locale, articles])
 
   useEffect(() => {
-    if (!posts || !tag) {
+    if (!articles || !tag) {
       router.push('/404')
     }
-  }, [posts, router, tag])
+  }, [articles, router, tag])
   return (
     <>
       <NextSeo title={tag} description={tag} noindex />
-      {localizedPosts && tag ? (
-        <PostListingLayout
-          posts={localizedPosts}
+      {localizedArticles && tag ? (
+        <ArticleListingLayout
+          articles={localizedArticles}
           title={`Tag - ${tag.toUpperCase()}`}
           onClickListItem={handleClick}
         />

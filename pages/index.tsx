@@ -3,38 +3,38 @@ import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { DEFAULT_SEO } from '@/data/siteMetadata'
 // import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
-import { BlogFrontmatter } from '@/types/blog'
-import PostListingLayout from '@/components/templates/layouts/PostListingLayout'
+import ArticleListingLayout from '@/components/templates/layouts/ArticleListingLayout'
 import { NextSeo } from 'next-seo'
 import { getAllFilesFrontMatter } from '@/lib/markdown'
 import { Spiner } from '@/components/molecules/Spiner'
+import { ArticleFrontmatter } from '@/types/article'
 
 type PropsType = {
-  posts: BlogFrontmatter[]
+  articles: ArticleFrontmatter[]
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPosts = await getAllFilesFrontMatter('blog')
-  const posts = allPosts.filter((post) => !post.draft)
+  const allArticles = await getAllFilesFrontMatter('article')
+  const articles = allArticles.filter((article) => !article.draft)
   return {
-    props: { posts },
+    props: { articles },
   }
 }
 
-const Index: React.FC<PropsType> = ({ posts }) => {
+const Index: React.FC<PropsType> = ({ articles }) => {
   const router = useRouter()
-  const localizedPosts = useMemo(() => {
-    return posts.filter((post) => post.language == router.locale)
-  }, [router.locale, posts])
+  const localizedArticles = useMemo(() => {
+    return articles.filter((article) => article.language == router.locale)
+  }, [router.locale, articles])
   const handleClick = (href: string) => {
-    router.push(`/blog/${href}`)
+    router.push(`/article/${href}`)
   }
   return (
     <>
       <NextSeo />
       <Suspense fallback={<Spiner />}>
-        <PostListingLayout
-          posts={localizedPosts}
+        <ArticleListingLayout
+          articles={localizedArticles}
           title={DEFAULT_SEO.defaultTitle}
           description={DEFAULT_SEO.description}
           onClickListItem={handleClick}

@@ -1,4 +1,4 @@
-import { BlogFrontmatter } from '@/types/blog'
+import { ArticleFrontmatter } from '@/types/article'
 import fs from 'fs'
 import path from 'path'
 import getAllFiles from '../utils/getAllFiles'
@@ -32,8 +32,8 @@ export async function getMdxFrontMatterBySlug(folder: string, slug: string) {
   const source = fs.existsSync(mdxPath)
     ? fs.readFileSync(mdxPath, 'utf8')
     : fs.existsSync(mdPath)
-    ? fs.readFileSync(mdPath, 'utf8')
-    : undefined
+      ? fs.readFileSync(mdPath, 'utf8')
+      : undefined
   // Warn unexpected files
   if (source === undefined) {
     throw new Error(`Detected non-markdown format files: ${mdxPath}`)
@@ -45,7 +45,7 @@ export async function getMdxFrontMatterBySlug(folder: string, slug: string) {
       remarkPlugins: [remarkGfm, remarkFootnotes, remarkMath],
       rehypePlugins: [rehypeSlug, rehypePrismPlus, rehypeToc],
     },
-  })) as unknown as MDXRemoteSerializeResult<Record<string, string>, BlogFrontmatter>
+  })) as unknown as MDXRemoteSerializeResult<Record<string, string>, ArticleFrontmatter>
   if (!mdxSource.frontmatter) {
     throw new Error(`Cannot find the frontmatter in your file: ${mdxPath}`)
   }
@@ -71,7 +71,7 @@ export async function getAllFilesFrontMatter(folder: string) {
       return {
         slug: formatSlug(fileName),
         ...results.frontmatter,
-      } as BlogFrontmatter
+      } as ArticleFrontmatter
     })
   )
   return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))
