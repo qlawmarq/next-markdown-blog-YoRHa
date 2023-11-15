@@ -19,7 +19,8 @@
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'",
     "typecheck": "tsc",
     "prepare": "husky install",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "update:e2e": "playwright test -u"
   },
   "dependencies": {
     "@emotion/babel-preset-css-prop": "^11.11.0",

@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return { props: { article, relatedArticles } }
 }
 
-const Blog: React.FC<PropsType> = ({ article, relatedArticles }) => {
+const Article: React.FC<PropsType> = ({ article, relatedArticles }) => {
   const router = useRouter()
   useEffect(() => {
     if (!article || article?.frontmatter?.draft) {
@@ -95,4 +95,4 @@ const Blog: React.FC<PropsType> = ({ article, relatedArticles }) => {
     </>
   )
 }
-export default Blog
+export default Article
