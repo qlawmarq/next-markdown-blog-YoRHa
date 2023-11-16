@@ -24,8 +24,7 @@ const ArticleLayout: React.FC<PropsType> = ({ frontmatter, relatedArticles, chil
         <div className="article-contents">
           <Breadcrumbs />
           <div>
-            <H1>{title}</H1>
-          </div>
+          <H1>{title}</H1>
           {date && (
             <Paragraph>
               <time dateTime={date}>{formatDateString(String(date))}</time>
