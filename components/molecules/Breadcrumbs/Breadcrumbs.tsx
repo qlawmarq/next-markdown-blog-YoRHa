@@ -27,12 +27,15 @@ export const Breadcrumbs: React.FC<HTMLAttributes<HTMLElement>> = ({ ...props })
           <meta itemProp="position" content="1" />
         </ListItem>
         {pathNames.map((link, index) => {
-          const href = `/${pathNames.slice(0, index + 1).join('/')}`
+          const href = `/${pathNames
+            .slice(0, index + 1)
+            .map(encodeURIComponent)
+            .join('/')}`
           const itemLink = link.charAt(0).toUpperCase() + link.slice(1)
           const isLast = index + 1 === pathNames.length
           return (
             <ListItem
-              key={index}
+              key={href}
               className="breadcrumb__list"
               itemProp="itemListElement"
               itemScope
