@@ -23,7 +23,6 @@ const ArticleLayout: React.FC<PropsType> = ({ frontmatter, relatedArticles, chil
       <article>
         <div className="article-contents">
           <Breadcrumbs />
-          <div>
           <H1>{title}</H1>
           {date && (
             <Paragraph>
