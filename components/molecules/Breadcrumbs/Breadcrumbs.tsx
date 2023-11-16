@@ -48,7 +48,7 @@ export const Breadcrumbs: React.FC<HTMLAttributes<HTMLElement>> = ({ ...props })
                 </Anchor>
               )}
 
-              <meta itemProp="position" content={index + 2} />
+              <meta itemProp="position" content={`${index + 2}`} />
             </ListItem>
           )
         })}
