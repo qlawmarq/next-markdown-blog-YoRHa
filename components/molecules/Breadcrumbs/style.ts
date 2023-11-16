@@ -7,7 +7,7 @@ export const BreadcrumbsStyle = css`
     flex-wrap: wrap;
     list-style: none;
     color: ${theme.colors.secondaryColor};
-    font-size: ${theme.fontSizes.M};
+    font-size: ${theme.fontSizes.S};
   }
   .breadcrumb__list:not(:last-of-type)::after {
     content: '>';
