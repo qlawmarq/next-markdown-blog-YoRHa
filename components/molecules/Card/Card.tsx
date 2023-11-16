@@ -17,7 +17,8 @@ export const Card: React.FC<HTMLAttributes<HTMLElement>> = ({ onClick, ...props 
       onClick={onClick}
       {...props}
       style={{ cursor: cursor }}
-      aria-hidden="true"
+      role={onClick ? 'button' : undefined}
+      aria-hidden={onClick ? undefined : "true"}
     >
       <div>{props.children}</div>
     </section>
