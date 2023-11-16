@@ -7,6 +7,7 @@ import { UnorderedList, ListItem } from '@/components/atoms/List'
 import Tag from '@/components/molecules/Tag'
 import { ArticleFrontmatter } from '@/types/article'
 import formatDateString from '@/lib/utils/formatDateString'
+import { Breadcrumbs } from '@/components/molecules/Breadcrumbs'
 
 type PropsType = {
   frontmatter: ArticleFrontmatter
@@ -21,6 +22,7 @@ const ArticleLayout: React.FC<PropsType> = ({ frontmatter, relatedArticles, chil
     <div css={ArticleLayoutStyle}>
       <article>
         <div className="article-contents">
+          <Breadcrumbs />
           <div>
             <H1>{title}</H1>
           </div>

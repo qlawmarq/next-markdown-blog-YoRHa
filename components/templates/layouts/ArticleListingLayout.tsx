@@ -10,6 +10,7 @@ import { ListLayoutStyle } from './style'
 import { Select } from '@/components/atoms/Select'
 import { useRouter } from 'next/router'
 import { ArticleFrontmatter } from '@/types/article'
+import { Breadcrumbs } from '@/components/molecules/Breadcrumbs'
 
 type PropsType = {
   articles: ArticleFrontmatter[]
@@ -40,6 +41,7 @@ const ArticleListingLayout: React.FC<PropsType> = ({
   return (
     <>
       <div css={ListLayoutStyle}>
+        <Breadcrumbs />
         <div>
           <H1>{title}</H1>
           <Paragraph>{description}</Paragraph>
