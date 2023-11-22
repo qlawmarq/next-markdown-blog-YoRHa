@@ -29,6 +29,7 @@ export const style = css`
           background-color: ${theme.colors.secondaryColor};
           &:before {
             content: '';
+            top: -0.5rem;
             bottom: -0.5rem;
             border: solid ${theme.colors.secondaryColor};
             border-width: 0.1rem 0;
