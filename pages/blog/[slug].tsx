@@ -9,6 +9,7 @@ import { Pre } from '@/components/molecules/Pre'
 import BlogLayout from '@/components/templates/layouts/BlogLayout'
 import { UnorderedList, OrderedList, ListItem } from '@/components/atoms/List'
 import { BlogFrontmatter } from '@/types/blog'
+import NotFoundLayout from '@/components/templates/layouts/NotFoundLayout'
 
 type PropsType = {
   blog?: MDXRemoteSerializeResult<Record<string, string>, BlogFrontmatter>
@@ -63,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const Blog: React.FC<PropsType> = ({ blog, relatedBlogs }) => {
   if (!blog || !blog?.frontmatter || blog?.frontmatter?.draft) {
-    return null
+    return <NotFoundLayout />
   }
   return (
     <>

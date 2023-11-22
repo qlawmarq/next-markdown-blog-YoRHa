@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { useRouter } from 'next/router'
 import BlogListingLayout from '@/components/templates/layouts/BlogListingLayout'
 import { getAllFilesFrontMatter } from '@/lib/markdown'
@@ -55,18 +55,17 @@ const Tag: React.FC<PropsType> = ({ blogs, tag }) => {
   const localizedBlogs = useMemo(() => {
     return blogs?.filter((blog) => blog.language == router.locale)
   }, [router.locale, blogs])
+  if (!localizedBlogs || !tag) {
+    return <NotFoundLayout />
+  }
   return (
     <>
       <NextSeo title={tag} description={tag} noindex />
-      {localizedBlogs && tag ? (
-        <BlogListingLayout
-          blogs={localizedBlogs}
-          title={`Tag - ${tag.toUpperCase()}`}
-          onClickListItem={handleClick}
-        />
-      ) : (
-        <NotFoundLayout />
-      )}
+      <BlogListingLayout
+        blogs={localizedBlogs}
+        title={`Tag - ${tag.toUpperCase()}`}
+        onClickListItem={handleClick}
+      />
     </>
   )
 }
