@@ -43,6 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       : allBlogs.filter((blog) => !blog.draft)
     return { props: { blogs: filteredBlogs, tag: tag } }
   } catch (error) {
+    console.error('Error in getStaticProps', error)
     return { notFound: true }
   }
 }

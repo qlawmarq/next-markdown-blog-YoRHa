@@ -27,6 +27,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     }
     return { props: { blog } }
   } catch (error) {
+    console.error('Error in getStaticProps', error)
     return { notFound: true }
   }
 }

@@ -58,6 +58,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     })
     return { props: { blog, relatedBlogs } }
   } catch (error) {
+    console.error('Error in getStaticProps', error)
     return { notFound: true }
   }
 }
