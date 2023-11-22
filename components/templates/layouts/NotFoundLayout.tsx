@@ -8,13 +8,9 @@ const NotFoundLayout: React.FC = () => {
     <>
       <NextSeo title="404 NOT FOUND" noindex nofollow />
       <div>
-        <div>
-          <H1>404 NOT FOUND</H1>
-        </div>
-        <div>
-          <Paragraph>Sorry we couldn&apos;t find this page.</Paragraph>
-          <Anchor href="/">Back to Home</Anchor>
-        </div>
+        <H1>404 NOT FOUND</H1>
+        <Paragraph>Sorry we couldn&apos;t find this page.</Paragraph>
+        <Anchor href="/">Back to Home</Anchor>
       </div>
     </>
   )

@@ -37,10 +37,8 @@ const BlogListingLayout: React.FC<PropsType> = ({ blogs, title, description, onC
     <>
       <div css={ListLayoutStyle}>
         <Breadcrumbs />
-        <div>
-          <H1>{title}</H1>
-          <Paragraph>{description}</Paragraph>
-        </div>
+        <H1>{title}</H1>
+        <Paragraph>{description}</Paragraph>
         {!blogs?.length && (
           <>
             <Paragraph>Coming soon...</Paragraph>
