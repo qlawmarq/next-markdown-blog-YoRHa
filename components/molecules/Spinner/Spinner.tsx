@@ -1,9 +1,9 @@
 import React from 'react'
-import { SpinerStyle } from './style'
+import { SpinnerStyle } from './style'
 
-export const Spiner: React.FC = () => {
+export const Spinner: React.FC = () => {
   return (
-    <div css={SpinerStyle}>
+    <div css={SpinnerStyle}>
       <div className="loading">
         <div></div>
         <div></div>

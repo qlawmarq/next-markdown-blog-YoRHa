@@ -37,32 +37,32 @@ export const BlogLayoutStyle = css`
     }
   }
 
-  .blog-contents .toc {
+  .blog_content__inner .toc {
     margin: 1rem 0;
     ${CardStyle}
   }
 
-  .blog-contents img {
+  .blog_content__inner img {
     margin: auto;
     display: flex;
   }
 
-  .blog-contents table {
+  .blog_content__inner table {
     width: 100%;
     border-collapse: collapse;
   }
 
-  .blog-contents table th {
+  .blog_content__inner table th {
     font-weight: normal;
     border-bottom: 0.1rem solid ${theme.colors.secondaryColor};
   }
 
-  .blog-contents table th,
-  .blog-contents table td {
+  .blog_content__inner table th,
+  .blog_content__inner table td {
     padding: 0.5rem;
   }
 
-  .blog-contents hr {
+  .blog_content__inner hr {
     margin: 1rem 0;
     border-top: solid ${theme.colors.tertiaryColor};
     border-width: 0.1rem 0 0 0;

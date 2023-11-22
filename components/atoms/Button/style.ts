@@ -28,8 +28,7 @@ export const ButtonStyle = css`
   }
   &:not(:disabled):after {
     content: '';
-    transition: all 0.25s;
-    transition-timing-function: ease-out;
+    transition: all 0.25s ease-out;
     position: absolute;
     top: 0;
     bottom: 0;

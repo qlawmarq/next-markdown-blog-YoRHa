@@ -28,6 +28,7 @@ export const style = css`
           color: ${theme.colors.primaryColor};
           background-color: ${theme.colors.secondaryColor};
           &:before {
+            content: '';
             bottom: -0.5rem;
             border: solid ${theme.colors.secondaryColor};
             border-width: 0.1rem 0;

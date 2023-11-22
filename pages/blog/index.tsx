@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import BlogListingLayout from '@/components/templates/layouts/BlogListingLayout'
 import { NextSeo } from 'next-seo'
 import { getAllFilesFrontMatter } from '@/lib/markdown'
-import { Spiner } from '@/components/molecules/Spiner'
+import { Spinner } from '@/components/molecules/Spinner'
 import { BlogFrontmatter } from '@/types/blog'
 
 type PropsType = {
@@ -30,7 +30,7 @@ const Index: React.FC<PropsType> = ({ blogs }) => {
   return (
     <>
       <NextSeo />
-      <Suspense fallback={<Spiner />}>
+      <Suspense fallback={<Spinner />}>
         <BlogListingLayout blogs={localizedBlogs} title={'Blogs'} onClickListItem={handleClick} />
       </Suspense>
     </>

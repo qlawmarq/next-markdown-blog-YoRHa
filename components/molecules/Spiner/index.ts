@@ -1,1 +1,0 @@
-export { Spiner } from './Spiner'

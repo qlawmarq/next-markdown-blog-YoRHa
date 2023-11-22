@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 
 type PropsType = {
   items: MenuItem[]
-  onClickItem: (href: string) => void
+  onClickMenuItem: (href: string) => void
 }
 
 export interface MenuItem {
@@ -16,18 +16,18 @@ export interface MenuItem {
 
 export const Menu: React.FC<HtmlHTMLAttributes<HTMLElement> & PropsType> = ({
   items,
-  onClickItem,
+  onClickMenuItem,
   ...props
 }) => {
-  const paths = usePathname()
+  const path = usePathname()
   return (
     <menu css={style} {...props}>
       <UnorderedList>
-        {items.map((item, idx) => (
-          <ListItem key={idx}>
+        {items.map((item) => (
+          <ListItem key={item.href}>
             <Anchor
-              className={paths == item.href ? 'nav_button active' : 'nav_button'}
-              onClick={() => onClickItem(item.href)}
+              className={path === item.href ? 'nav_button active' : 'nav_button'}
+              onClick={() => onClickMenuItem(item.href)}
               role="button"
             >
               {item.label}

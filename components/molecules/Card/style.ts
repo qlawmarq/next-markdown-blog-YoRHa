@@ -48,8 +48,7 @@ export const hoverStyle = css`
   }
   &:not(:disabled):after {
     content: '';
-    transition: all 0.5s;
-    transition-timing-function: ease-out;
+    transition: all 0.5s ease-out;
     position: absolute;
     top: 0;
     bottom: 0;

@@ -9,7 +9,7 @@ import { Anchor } from '@/components/atoms/Anchor'
 import { Pre } from '@/components/molecules/Pre'
 import BlogLayout from '@/components/templates/layouts/BlogLayout'
 import { UnorderedList, OrderedList, ListItem } from '@/components/atoms/List'
-import { Spiner } from '@/components/molecules/Spiner'
+import { Spinner } from '@/components/molecules/Spinner'
 import { BlogFrontmatter } from '@/types/blog'
 
 type PropsType = {
@@ -73,7 +73,7 @@ const Blog: React.FC<PropsType> = ({ blog, relatedBlogs }) => {
   return (
     <>
       <NextSeo title={blog.frontmatter.title} description={blog.frontmatter.description} />
-      <Suspense fallback={<Spiner />}>
+      <Suspense fallback={<Spinner />}>
         <BlogLayout frontmatter={blog.frontmatter} relatedBlogs={relatedBlogs}>
           <MDXRemote
             compiledSource={blog.compiledSource}

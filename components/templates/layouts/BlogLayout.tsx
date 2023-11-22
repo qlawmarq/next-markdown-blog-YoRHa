@@ -21,7 +21,7 @@ const BlogLayout: React.FC<PropsType> = ({ frontmatter, relatedBlogs, children }
   return (
     <div css={BlogLayoutStyle}>
       <article>
-        <div className="blog-contents">
+        <div className="blog_content__inner">
           <Breadcrumbs />
           <H1>{title}</H1>
           {date && (
@@ -31,7 +31,7 @@ const BlogLayout: React.FC<PropsType> = ({ frontmatter, relatedBlogs, children }
           )}
           <hr />
           <div>
-            <div className="blog-contents">{children}</div>
+            <div className="blog_content__inner">{children}</div>
           </div>
         </div>
       </article>
@@ -48,8 +48,8 @@ const BlogLayout: React.FC<PropsType> = ({ frontmatter, relatedBlogs, children }
         {!!relatedBlogs?.length && (
           <Figure figcaption={'Related Blogs'}>
             <UnorderedList>
-              {relatedBlogs.map((rBlog, idx) => (
-                <ListItem key={idx}>
+              {relatedBlogs.map((rBlog) => (
+                <ListItem key={rBlog.slug}>
                   <Anchor href={`/blog/${rBlog.slug}`}>{rBlog.title}</Anchor>
                 </ListItem>
               ))}

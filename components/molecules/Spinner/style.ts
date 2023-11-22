@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import { theme } from '@/theme/index'
-export const SpinerStyle = css`
+export const SpinnerStyle = css`
   .loading {
     display: inline-block;
     position: relative;
