@@ -41,22 +41,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     if (blog.frontmatter.draft) {
       return { notFound: true }
     }
-    const relatedBlogs = allBlogs?.filter((p) => {
-      let isRelated: boolean = false
-      if (slug == blog.frontmatter?.slug) {
-        return isRelated
-      }
-      !p.draft &&
-        p.tags?.forEach((tag) => {
-          p.language == blog.frontmatter?.language &&
-            blog.frontmatter.tags?.forEach((pt) => {
-              if (tag == pt) {
-                isRelated = true
-              }
-            })
-        })
-      return isRelated
-    })
+    const relatedBlogs = allBlogs.filter(
+      (p) =>
+        p.slug !== slug &&
+        !p.draft &&
+        p.language === blog.frontmatter.language &&
+        p.tags &&
+        p.tags.some((tag) => blog.frontmatter.tags && blog.frontmatter.tags.includes(tag))
+    )
     return { props: { blog, relatedBlogs } }
   } catch (error) {
     console.error('Error in getStaticProps', error)

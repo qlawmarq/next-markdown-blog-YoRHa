@@ -13,7 +13,6 @@ import NotFoundLayout from '@/components/templates/layouts/NotFoundLayout'
 
 type PropsType = {
   blog?: MDXRemoteSerializeResult<Record<string, string>, BlogFrontmatter>
-  relatedBlogs?: BlogFrontmatter[]
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
