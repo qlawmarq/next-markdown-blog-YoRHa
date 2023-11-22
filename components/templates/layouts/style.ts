@@ -18,7 +18,7 @@ export const commonLayoutStyle = css`
 export const BlogLayoutStyle = css`
   ${commonLayoutStyle}
   display: flex;
-  blog {
+  article {
     width: 75%;
   }
   aside {
@@ -27,7 +27,7 @@ export const BlogLayoutStyle = css`
   }
   @media (${breakpoints.MD}) {
     display: block;
-    blog {
+    article {
       width: 100%;
     }
     aside {
