@@ -18,11 +18,12 @@ type PropsType = {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allBlogs = await getAllFilesFrontMatter('blog')
-  const localizedPaths = allBlogs.map((blog) => ({
+  const blogs = allBlogs.filter((blog) => !blog.draft)
+  const localizedPaths = blogs.map((blog) => ({
     params: { slug: blog.slug },
     locale: blog.language,
   }))
-  const originalPaths = allBlogs.map((blog) => ({ params: { slug: blog.slug } }))
+  const originalPaths = blogs.map((blog) => ({ params: { slug: blog.slug } }))
   const paths = [...localizedPaths, ...originalPaths]
   return {
     paths: paths,
@@ -64,7 +65,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 const Blog: React.FC<PropsType> = ({ blog, relatedBlogs }) => {
-  if (!blog || !blog?.frontmatter || blog?.frontmatter?.draft) {
+  if (!blog || !blog?.frontmatter) {
     return <NotFoundLayout />
   }
   return (

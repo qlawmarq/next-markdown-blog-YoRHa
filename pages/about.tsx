@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 }
 
 const Blog: React.FC<PropsType> = ({ blog }) => {
-  if (!blog || !blog?.frontmatter || blog?.frontmatter?.draft) {
+  if (!blog || !blog?.frontmatter) {
     return <NotFoundLayout />
   }
   return (
