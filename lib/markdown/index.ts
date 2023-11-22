@@ -1,4 +1,4 @@
-import { ArticleFrontmatter } from '@/types/article'
+import { BlogFrontmatter } from '@/types/blog'
 import fs from 'fs'
 import path from 'path'
 import getAllFiles from '../utils/getAllFiles'
@@ -45,7 +45,7 @@ export async function getMdxFrontMatterBySlug(folder: string, slug: string) {
       remarkPlugins: [remarkGfm, remarkFootnotes, remarkMath],
       rehypePlugins: [rehypeSlug, rehypePrismPlus, rehypeToc],
     },
-  })) as unknown as MDXRemoteSerializeResult<Record<string, string>, ArticleFrontmatter>
+  })) as unknown as MDXRemoteSerializeResult<Record<string, string>, BlogFrontmatter>
   if (!mdxSource.frontmatter) {
     throw new Error(`Cannot find the frontmatter in your file: ${mdxPath}`)
   }
@@ -71,7 +71,7 @@ export async function getAllFilesFrontMatter(folder: string) {
       return {
         slug: formatSlug(fileName),
         ...results.frontmatter,
-      } as ArticleFrontmatter
+      } as BlogFrontmatter
     })
   )
   return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))

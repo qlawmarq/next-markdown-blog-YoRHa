@@ -28,7 +28,6 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#d1cdb7" />
           <meta name="theme-color" content="#ffffff" />
           <link rel="alternate" type="application/rss+xml" href="/rss" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         </Head>
         <body>
           <Main />

@@ -15,10 +15,10 @@ export const commonLayoutStyle = css`
   animation: ${fadeIn} 0.5s ease-in-out 0s 1 normal;
 `
 
-export const ArticleLayoutStyle = css`
+export const BlogLayoutStyle = css`
   ${commonLayoutStyle}
   display: flex;
-  article {
+  blog {
     width: 75%;
   }
   aside {
@@ -28,7 +28,7 @@ export const ArticleLayoutStyle = css`
 
   @media (${breakpoints.MD}) {
     display: block;
-    article {
+    blog {
       width: 100%;
     }
     aside {
@@ -37,32 +37,32 @@ export const ArticleLayoutStyle = css`
     }
   }
 
-  .article-contents .toc {
+  .blog-contents .toc {
     margin: 1rem 0;
     ${CardStyle}
   }
 
-  .article-contents img {
+  .blog-contents img {
     margin: auto;
     display: flex;
   }
 
-  .article-contents table {
+  .blog-contents table {
     width: 100%;
     border-collapse: collapse;
   }
 
-  .article-contents table th {
+  .blog-contents table th {
     font-weight: normal;
     border-bottom: 0.1rem solid ${theme.colors.secondaryColor};
   }
 
-  .article-contents table th,
-  .article-contents table td {
+  .blog-contents table th,
+  .blog-contents table td {
     padding: 0.5rem;
   }
 
-  .article-contents hr {
+  .blog-contents hr {
     margin: 1rem 0;
     border-top: solid ${theme.colors.tertiaryColor};
     border-width: 0.1rem 0 0 0;

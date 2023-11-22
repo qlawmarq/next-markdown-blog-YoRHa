@@ -9,34 +9,29 @@ import { Input } from '@/components/atoms/Input'
 import { ListLayoutStyle } from './style'
 import { Select } from '@/components/atoms/Select'
 import { useRouter } from 'next/router'
-import { ArticleFrontmatter } from '@/types/article'
+import { BlogFrontmatter } from '@/types/blog'
 import { Breadcrumbs } from '@/components/molecules/Breadcrumbs'
 
 type PropsType = {
-  articles: ArticleFrontmatter[]
+  blogs: BlogFrontmatter[]
   title: string
   description?: string
   onClickListItem: (item: string) => void
 }
 
-const ArticleListingLayout: React.FC<PropsType> = ({
-  articles,
-  title,
-  description,
-  onClickListItem,
-}) => {
+const BlogListingLayout: React.FC<PropsType> = ({ blogs, title, description, onClickListItem }) => {
   const router = useRouter()
   const [searchValue, setSearchValue] = useState('')
-  const [filteredArticles, setFilteredArticles] = useState<ArticleFrontmatter[]>()
+  const [filteredBlogs, setFilteredBlogs] = useState<BlogFrontmatter[]>()
 
   useEffect(() => {
-    const filteredArticles = articles?.filter((frontmatter) => {
+    const filteredBlogs = blogs?.filter((frontmatter) => {
       const searchContent =
         frontmatter.title + frontmatter.description + frontmatter.tags?.join(' ')
       return searchContent.toLowerCase().includes(searchValue.toLowerCase())
     })
-    setFilteredArticles(filteredArticles)
-  }, [articles, searchValue])
+    setFilteredBlogs(filteredBlogs)
+  }, [blogs, searchValue])
 
   return (
     <>
@@ -46,12 +41,12 @@ const ArticleListingLayout: React.FC<PropsType> = ({
           <H1>{title}</H1>
           <Paragraph>{description}</Paragraph>
         </div>
-        {!articles?.length && (
+        {!blogs?.length && (
           <>
             <Paragraph>Coming soon...</Paragraph>
           </>
         )}
-        {articles?.length > 0 && (
+        {blogs?.length > 0 && (
           <>
             <div>
               <Select
@@ -70,15 +65,15 @@ const ArticleListingLayout: React.FC<PropsType> = ({
               <Input
                 id="search"
                 name="search"
-                aria-label="Search articles"
+                aria-label="Search blogs"
                 type="text"
                 onChange={(e) => setSearchValue(e.target.value)}
-                placeholder="Search articles"
+                placeholder="Search blogs"
               />
-              {!filteredArticles?.length && <Paragraph>No articles found.</Paragraph>}
+              {!filteredBlogs?.length && <Paragraph>No blogs found.</Paragraph>}
             </div>
             <ul>
-              {filteredArticles?.map((frontmatter) => {
+              {filteredBlogs?.map((frontmatter) => {
                 const { slug, date, title, description, tags } = frontmatter
                 return (
                   <li key={slug}>
@@ -101,4 +96,4 @@ const ArticleListingLayout: React.FC<PropsType> = ({
   )
 }
 
-export default ArticleListingLayout
+export default BlogListingLayout

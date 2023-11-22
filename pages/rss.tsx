@@ -1,13 +1,13 @@
 import { GetServerSidePropsContext } from 'next'
 import { getAllFilesFrontMatter } from '@/lib/markdown'
-import { DEFAULT_SEO } from '@/data/siteMetadata'
+import { DEFAULT_SEO } from '@/constants/siteMetadata'
 
 import RSS from 'rss'
-import { ArticleFrontmatter } from '@/types/article'
+import { BlogFrontmatter } from '@/types/blog'
 
 export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
-  const articles = await getAllFilesFrontMatter('article')
-  const xml = await generateFeedXml(articles)
+  const blogs = await getAllFilesFrontMatter('blog')
+  const xml = await generateFeedXml(blogs)
   res.statusCode = 200
   res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate')
   res.setHeader('Content-Type', 'text/xml')
@@ -20,7 +20,7 @@ export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => 
 const Page = () => null
 export default Page
 
-const generateFeedXml = async (articles: ArticleFrontmatter[]) => {
+const generateFeedXml = async (blogs: BlogFrontmatter[]) => {
   const feed = new RSS({
     title: DEFAULT_SEO.defaultTitle,
     description: DEFAULT_SEO.description,
@@ -28,12 +28,12 @@ const generateFeedXml = async (articles: ArticleFrontmatter[]) => {
     feed_url: '/rss',
     language: DEFAULT_SEO.openGraph.locale,
   })
-  articles?.forEach((article) => {
+  blogs?.forEach((blog) => {
     feed.item({
-      title: String(article?.title),
-      description: String(article?.description),
-      date: new Date(String(article?.date)),
-      url: new URL(`/article/${article?.slug}`, DEFAULT_SEO.openGraph.url).toString(),
+      title: String(blog?.title),
+      description: String(blog?.description),
+      date: new Date(String(blog?.date)),
+      url: new URL(`/blog/${blog?.slug}`, DEFAULT_SEO.openGraph.url).toString(),
     })
   })
 

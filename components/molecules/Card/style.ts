@@ -34,8 +34,7 @@ export const style = css`
   }
 `
 export const hoverStyle = css`
-  &:not(:disabled):before,
-  :before {
+  &:not(:disabled):before {
     content: '';
     position: absolute;
     top: 0;
@@ -47,8 +46,7 @@ export const hoverStyle = css`
     border-width: 0 0.2rem 0 0.6rem;
     transition: all 0.25s ease-out;
   }
-  &:not(:disabled):after,
-  :after {
+  &:not(:disabled):after {
     content: '';
     transition: all 0.5s;
     transition-timing-function: ease-out;
@@ -60,29 +58,24 @@ export const hoverStyle = css`
     background-color: ${theme.colors.secondaryColor};
     z-index: -1;
   }
-  &:not(:disabled):hover,
-  :hover {
+  &:not(:disabled):hover {
     background-color: transparent;
     color: ${theme.colors.primaryColor};
   }
-  &:not(:disabled):hover:before,
-  :hover:before {
+  &:not(:disabled):hover:before {
     width: 100%;
     top: -0.2rem;
     bottom: -0.2rem;
     border: solid ${theme.colors.secondaryColor};
     border-width: 0.1rem 0;
   }
-  &:not(:disabled):hover:after,
-  :hover:after {
+  &:not(:disabled):hover:after {
     width: 100%;
   }
-  &:not(:disabled):active,
-  :active {
+  &:not(:disabled):active {
     color: ${theme.colors.secondaryColor};
   }
-  &:not(:disabled):active:after,
-  :active:after {
+  &:not(:disabled):active:after {
     background-color: ${theme.colors.primaryColor};
   }
 `

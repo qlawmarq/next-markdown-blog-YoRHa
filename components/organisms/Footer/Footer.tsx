@@ -1,7 +1,7 @@
 import React from 'react'
 import { Span } from '@/components/atoms/Typography'
 import { FooterStyle } from './style'
-import { DEFAULT_SEO } from '@/data/siteMetadata'
+import { DEFAULT_SEO } from '@/constants/siteMetadata'
 import { Border } from '@/components/atoms/Border'
 
 const Footer: React.FC = () => {

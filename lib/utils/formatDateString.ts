@@ -1,4 +1,4 @@
-import { DEFAULT_SEO } from '@/data/siteMetadata'
+import { DEFAULT_SEO } from '@/constants/siteMetadata'
 
 const formatDateString = (dateString: string) =>
   new Date(dateString).toLocaleDateString(DEFAULT_SEO.openGraph?.locale, {

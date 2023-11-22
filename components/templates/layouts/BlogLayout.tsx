@@ -1,27 +1,27 @@
 import React from 'react'
-import { ArticleLayoutStyle } from './style'
+import { BlogLayoutStyle } from './style'
 import { H1, Paragraph } from '@/components/atoms/Typography'
 import { Anchor } from '@/components/atoms/Anchor'
 import { Figure } from '@/components/molecules/Figure'
 import { UnorderedList, ListItem } from '@/components/atoms/List'
 import Tag from '@/components/molecules/Tag'
-import { ArticleFrontmatter } from '@/types/article'
+import { BlogFrontmatter } from '@/types/blog'
 import formatDateString from '@/lib/utils/formatDateString'
 import { Breadcrumbs } from '@/components/molecules/Breadcrumbs'
 
 type PropsType = {
-  frontmatter: ArticleFrontmatter
-  relatedArticles?: ArticleFrontmatter[]
+  frontmatter: BlogFrontmatter
+  relatedBlogs?: BlogFrontmatter[]
   children: React.ReactNode
 }
 
-const ArticleLayout: React.FC<PropsType> = ({ frontmatter, relatedArticles, children }) => {
+const BlogLayout: React.FC<PropsType> = ({ frontmatter, relatedBlogs, children }) => {
   const { date, title, tags } = frontmatter
 
   return (
-    <div css={ArticleLayoutStyle}>
+    <div css={BlogLayoutStyle}>
       <article>
-        <div className="article-contents">
+        <div className="blog-contents">
           <Breadcrumbs />
           <H1>{title}</H1>
           {date && (
@@ -31,7 +31,7 @@ const ArticleLayout: React.FC<PropsType> = ({ frontmatter, relatedArticles, chil
           )}
           <hr />
           <div>
-            <div className="article-contents">{children}</div>
+            <div className="blog-contents">{children}</div>
           </div>
         </div>
       </article>
@@ -45,12 +45,12 @@ const ArticleLayout: React.FC<PropsType> = ({ frontmatter, relatedArticles, chil
             </div>
           </Figure>
         )}
-        {!!relatedArticles?.length && (
-          <Figure figcaption={'Related Articles'}>
+        {!!relatedBlogs?.length && (
+          <Figure figcaption={'Related Blogs'}>
             <UnorderedList>
-              {relatedArticles.map((rArticle, idx) => (
+              {relatedBlogs.map((rBlog, idx) => (
                 <ListItem key={idx}>
-                  <Anchor href={`/article/${rArticle.slug}`}>{rArticle.title}</Anchor>
+                  <Anchor href={`/blog/${rBlog.slug}`}>{rBlog.title}</Anchor>
                 </ListItem>
               ))}
             </UnorderedList>
@@ -63,4 +63,4 @@ const ArticleLayout: React.FC<PropsType> = ({ frontmatter, relatedArticles, chil
     </div>
   )
 }
-export default ArticleLayout
+export default BlogLayout

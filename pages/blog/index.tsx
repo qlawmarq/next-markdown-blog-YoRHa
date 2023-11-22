@@ -1,8 +1,6 @@
 import React, { Suspense, useMemo } from 'react'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import { DEFAULT_SEO } from 'constants/siteMetadata'
-// import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
 import BlogListingLayout from '@/components/templates/layouts/BlogListingLayout'
 import { NextSeo } from 'next-seo'
 import { getAllFilesFrontMatter } from '@/lib/markdown'
@@ -14,14 +12,10 @@ type PropsType = {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  try {
-    const allBlogs = await getAllFilesFrontMatter('blog')
-    const blogs = allBlogs.filter((blog) => !blog.draft)
-    return {
-      props: { blogs },
-    }
-  } catch (error) {
-    return { notFound: true }
+  const allBlogs = await getAllFilesFrontMatter('blog')
+  const blogs = allBlogs.filter((blog) => !blog.draft)
+  return {
+    props: { blogs },
   }
 }
 
@@ -37,12 +31,7 @@ const Index: React.FC<PropsType> = ({ blogs }) => {
     <>
       <NextSeo />
       <Suspense fallback={<Spiner />}>
-        <BlogListingLayout
-          blogs={localizedBlogs}
-          title={DEFAULT_SEO.defaultTitle}
-          description={DEFAULT_SEO.description}
-          onClickListItem={handleClick}
-        />
+        <BlogListingLayout blogs={localizedBlogs} title={'Blogs'} onClickListItem={handleClick} />
       </Suspense>
     </>
   )
