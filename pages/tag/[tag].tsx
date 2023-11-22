@@ -55,12 +55,6 @@ const Tag: React.FC<PropsType> = ({ blogs, tag }) => {
   const localizedBlogs = useMemo(() => {
     return blogs?.filter((blog) => blog.language == router.locale)
   }, [router.locale, blogs])
-
-  useEffect(() => {
-    if (!blogs || !tag) {
-      router.push('/404')
-    }
-  }, [blogs, router, tag])
   return (
     <>
       <NextSeo title={tag} description={tag} noindex />

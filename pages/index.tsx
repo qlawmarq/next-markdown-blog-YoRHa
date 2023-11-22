@@ -1,12 +1,10 @@
-import React, { Suspense, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { DEFAULT_SEO } from 'constants/siteMetadata'
-// import { getAllFilesFrontMatter } from '@/lib/markdown/mdx'
 import BlogListingLayout from '@/components/templates/layouts/BlogListingLayout'
 import { NextSeo } from 'next-seo'
 import { getAllFilesFrontMatter } from '@/lib/markdown'
-import { Spinner } from '@/components/molecules/Spinner'
 import { BlogFrontmatter } from '@/types/blog'
 
 type PropsType = {
@@ -36,14 +34,12 @@ const Index: React.FC<PropsType> = ({ blogs }) => {
   return (
     <>
       <NextSeo />
-      <Suspense fallback={<Spinner />}>
-        <BlogListingLayout
-          blogs={localizedBlogs}
-          title={DEFAULT_SEO.defaultTitle}
-          description={DEFAULT_SEO.description}
-          onClickListItem={handleClick}
-        />
-      </Suspense>
+      <BlogListingLayout
+        blogs={localizedBlogs}
+        title={DEFAULT_SEO.defaultTitle}
+        description={DEFAULT_SEO.description}
+        onClickListItem={handleClick}
+      />
     </>
   )
 }

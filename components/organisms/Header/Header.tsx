@@ -1,9 +1,8 @@
 import React from 'react'
-
-import { HeaderLogoStyle, HeaderStyle } from './style'
+import { HeaderStyle } from './style'
 import { Border } from '@/components/atoms/Border'
 import { Menu } from '@/components/molecules/Menu'
-import { menuItems } from '@/constants/menu'
+import { menuItems as items } from '@/constants/menu'
 
 type PropsType = {
   onClickMenuItem: (item: string) => void
@@ -12,7 +11,7 @@ type PropsType = {
 const Header: React.FC<PropsType> = ({ onClickMenuItem }) => {
   return (
     <header css={HeaderStyle}>
-      <Menu onClickMenuItem={onClickMenuItem} items={menuItems} />
+      <Menu onClickMenuItem={onClickMenuItem} items={items} />
       <Border />
     </header>
   )

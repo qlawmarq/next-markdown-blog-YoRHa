@@ -15,14 +15,10 @@ const PageLayout: React.FC<PropsType> = ({ frontmatter, children }) => {
   return (
     <div css={BlogLayoutStyle}>
       <article>
-        <div className="blog_content__inner">
-          <Breadcrumbs />
-          <H1>{title}</H1>
-          <hr />
-          <div>
-            <div className="blog_content__inner">{children}</div>
-          </div>
-        </div>
+        <Breadcrumbs />
+        <H1>{title}</H1>
+        <hr />
+        <div className="blog_content__inner">{children}</div>
       </article>
     </div>
   )

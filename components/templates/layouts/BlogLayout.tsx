@@ -21,19 +21,15 @@ const BlogLayout: React.FC<PropsType> = ({ frontmatter, relatedBlogs, children }
   return (
     <div css={BlogLayoutStyle}>
       <article>
-        <div className="blog_content__inner">
-          <Breadcrumbs />
-          <H1>{title}</H1>
-          {date && (
-            <Paragraph>
-              <time dateTime={date}>{formatDateString(String(date))}</time>
-            </Paragraph>
-          )}
-          <hr />
-          <div>
-            <div className="blog_content__inner">{children}</div>
-          </div>
-        </div>
+        <Breadcrumbs />
+        <H1>{title}</H1>
+        {date && (
+          <Paragraph>
+            <time dateTime={date}>{formatDateString(String(date))}</time>
+          </Paragraph>
+        )}
+        <hr />
+        <div className="blog_content__inner">{children}</div>
       </article>
       <aside>
         {!!tags?.length && (
