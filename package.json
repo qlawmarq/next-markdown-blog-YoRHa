@@ -36,7 +36,7 @@
     "rehype-toc": "3.0.2",
     "remark-footnotes": "4.0.1",
     "remark-gfm": "3.0.1",
-    "remark-math": "5.1.1",
+    "remark-math": "6.0.0",
     "rss": "1.2.2"
   },
   "devDependencies": {
