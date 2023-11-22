@@ -34,62 +34,60 @@ const BlogListingLayout: React.FC<PropsType> = ({ blogs, title, description, onC
   }, [blogs, searchValue])
 
   return (
-    <>
-      <div css={ListLayoutStyle}>
-        <Breadcrumbs />
-        <H1>{title}</H1>
-        <Paragraph>{description}</Paragraph>
-        {blogs?.length > 0 ? (
-          <>
-            <div>
-              <Select
-                id="locale"
-                name="locale"
-                aria-label="Select language"
-                options={[
-                  { value: 'en', text: 'EN' },
-                  { value: 'ja', text: 'JP' },
-                ]}
-                value={router.locale}
-                onChange={(e) =>
-                  router.push(router.pathname, router.asPath, { locale: e.target.value })
-                }
-              />
-              <Input
-                id="search"
-                name="search"
-                aria-label="Search blogs"
-                type="text"
-                onChange={(e) => setSearchValue(e.target.value)}
-                placeholder="Search blogs"
-              />
-              {!filteredBlogs?.length && <Paragraph>No blogs found.</Paragraph>}
-            </div>
-            <ul>
-              {filteredBlogs?.map((frontmatter) => {
-                const { slug, date, title, description, tags } = frontmatter
-                return (
-                  <li key={slug}>
-                    <Card onClick={() => onClickListItem(slug)}>
-                      <H2>{title}</H2>
-                      <Paragraph>
-                        <time dateTime={date}>{formatDateString(date)}</time>
-                      </Paragraph>
-                      {tags?.map((tag) => <Tag key={tag} text={tag} />)}
-                      <Paragraph>{description}</Paragraph>
-                    </Card>
-                  </li>
-                )
-              })}
-            </ul>
-          </>
-        ) : (
-          <>
-            <Paragraph>Coming soon...</Paragraph>
-          </>
-        )}
-      </div>
-    </>
+    <div css={ListLayoutStyle}>
+      <Breadcrumbs />
+      <H1>{title}</H1>
+      <Paragraph>{description}</Paragraph>
+      {blogs?.length > 0 ? (
+        <>
+          <div>
+            <Select
+              id="locale"
+              name="locale"
+              aria-label="Select language"
+              options={[
+                { value: 'en', text: 'EN' },
+                { value: 'ja', text: 'JP' },
+              ]}
+              value={router.locale}
+              onChange={(e) =>
+                router.push(router.pathname, router.asPath, { locale: e.target.value })
+              }
+            />
+            <Input
+              id="search"
+              name="search"
+              aria-label="Search blogs"
+              type="text"
+              onChange={(e) => setSearchValue(e.target.value)}
+              placeholder="Search blogs"
+            />
+            {!filteredBlogs?.length && <Paragraph>No blogs found.</Paragraph>}
+          </div>
+          <ul>
+            {filteredBlogs?.map((frontmatter) => {
+              const { slug, date, title, description, tags } = frontmatter
+              return (
+                <li key={slug}>
+                  <Card onClick={() => onClickListItem(slug)}>
+                    <H2>{title}</H2>
+                    <Paragraph>
+                      <time dateTime={date}>{formatDateString(date)}</time>
+                    </Paragraph>
+                    {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                    <Paragraph>{description}</Paragraph>
+                  </Card>
+                </li>
+              )
+            })}
+          </ul>
+        </>
+      ) : (
+        <>
+          <Paragraph>Coming soon...</Paragraph>
+        </>
+      )}
+    </div>
   )
 }
 

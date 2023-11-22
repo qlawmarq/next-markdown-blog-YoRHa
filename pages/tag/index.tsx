@@ -10,11 +10,11 @@ type PropsType = {
 
 export const getStaticProps: GetStaticProps = async () => {
   const allBlogs = await getAllFilesFrontMatter('blog')
-  const tags = allBlogs
+  let tags = allBlogs
     .filter((blog) => !blog.draft)
     .map((blog) => blog.tags)
     .flat()
-    .filter((tags, index, self) => self.indexOf(tags) === index)
+  tags = Array.from(new Set(tags))
   return {
     props: { tags },
   }

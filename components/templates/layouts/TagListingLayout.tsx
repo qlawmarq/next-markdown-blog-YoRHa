@@ -21,18 +21,16 @@ type PropsType = {
 
 const TagListingLayout: React.FC<PropsType> = ({ tags, title, description }) => {
   return (
-    <>
-      <div css={ListLayoutStyle}>
-        <Breadcrumbs />
-        <H1>{title}</H1>
-        <Paragraph>{description}</Paragraph>
-        <div>
-          {tags.map((tag) => (
-            <Tag key={tag} href={`/tag/${tag}`} text={tag} />
-          ))}
-        </div>
+    <div css={ListLayoutStyle}>
+      <Breadcrumbs />
+      <H1>{title}</H1>
+      <Paragraph>{description}</Paragraph>
+      <div>
+        {tags.map((tag) => (
+          <Tag key={tag} href={`/tag/${tag}`} text={tag} />
+        ))}
       </div>
-    </>
+    </div>
   )
 }
 
