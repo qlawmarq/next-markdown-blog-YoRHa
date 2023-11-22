@@ -39,12 +39,7 @@ const BlogListingLayout: React.FC<PropsType> = ({ blogs, title, description, onC
         <Breadcrumbs />
         <H1>{title}</H1>
         <Paragraph>{description}</Paragraph>
-        {!blogs?.length && (
-          <>
-            <Paragraph>Coming soon...</Paragraph>
-          </>
-        )}
-        {blogs?.length > 0 && (
+        {blogs?.length > 0 ? (
           <>
             <div>
               <Select
@@ -87,6 +82,10 @@ const BlogListingLayout: React.FC<PropsType> = ({ blogs, title, description, onC
                 )
               })}
             </ul>
+          </>
+        ) : (
+          <>
+            <Paragraph>Coming soon...</Paragraph>
           </>
         )}
       </div>
