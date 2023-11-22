@@ -28,8 +28,8 @@ const Index: React.FC<PropsType> = ({ blogs }) => {
   }
   return (
     <>
-      <NextSeo title={'Blogs'} description={'List of blogs'} />
-      <BlogListingLayout blogs={localizedBlogs} title={'Blogs'} onClickListItem={handleClick} />
+      <NextSeo title={'Blog'} description={'List of written blog items'} />
+      <BlogListingLayout blogs={localizedBlogs} title={'Blog'} onClickListItem={handleClick} />
     </>
   )
 }
