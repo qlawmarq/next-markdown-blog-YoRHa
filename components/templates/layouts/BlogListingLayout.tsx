@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { Card } from '@/components/molecules/Card'
 import formatDateString from '@/lib/utils/formatDateString'
 import { H1, H2, Paragraph } from '@/components/atoms/Typography'
-// import { Anchor } from '@/components/atoms/Anchor'
 import { Input } from '@/components/atoms/Input'
 import { ListLayoutStyle } from './style'
 import { Select } from '@/components/atoms/Select'
@@ -22,7 +21,7 @@ type PropsType = {
 const BlogListingLayout: React.FC<PropsType> = ({ blogs, title, description, onClickListItem }) => {
   const router = useRouter()
   const [searchValue, setSearchValue] = useState('')
-  const [filteredBlogs, setFilteredBlogs] = useState<BlogFrontmatter[]>()
+  const [filteredBlogs, setFilteredBlogs] = useState<BlogFrontmatter[]>([])
 
   useEffect(() => {
     const filteredBlogs = blogs?.filter((frontmatter) => {
@@ -62,10 +61,10 @@ const BlogListingLayout: React.FC<PropsType> = ({ blogs, title, description, onC
               onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search blogs"
             />
-            {!filteredBlogs?.length && <Paragraph>No blogs found.</Paragraph>}
+            {!filteredBlogs.length && <Paragraph>No blogs found.</Paragraph>}
           </div>
           <ul>
-            {filteredBlogs?.map((frontmatter) => {
+            {filteredBlogs.map((frontmatter) => {
               const { slug, date, title, description, tags } = frontmatter
               return (
                 <li key={slug}>
@@ -84,7 +83,7 @@ const BlogListingLayout: React.FC<PropsType> = ({ blogs, title, description, onC
         </>
       ) : (
         <>
-          <Paragraph>Coming soon...</Paragraph>
+          <Paragraph>No blogs found.</Paragraph>
         </>
       )}
     </div>
