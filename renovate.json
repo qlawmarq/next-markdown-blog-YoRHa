@@ -1,4 +1,4 @@
 {
   "extends": ["config:base"],
-  "ignoreDeps": ["node.js", "next-mdx-remote", "remark-gfm"]
+  "ignoreDeps": ["node", "next-mdx-remote", "remark-gfm"]
 }

@@ -2,8 +2,8 @@ import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { ThemeProvider } from '@/theme/index'
 import Base from '@/components/templates/common/Base'
+import { DEFAULT_SEO } from '@/constants/siteMetadata'
 import { DefaultSeo } from 'next-seo'
-import { DEFAULT_SEO } from '@/data/siteMetadata'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()

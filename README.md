@@ -69,8 +69,8 @@ See [Playwright Docs](https://playwright.dev/docs/intro) for more details.
 
 ## Update or add your own contents
 
-To update the contents of your own article, you can update the contents in `contents/article`.
+To update the contents of your own blog, you can update the contents in `contents/blog`.
 
-You can write articles in markdown by referring to the following:
+You can write blogs in markdown by referring to the following:
 
 https://www.markdownguide.org/cheat-sheet/
