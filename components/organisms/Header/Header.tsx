@@ -6,8 +6,7 @@ import { menuItems as items } from '@/constants/menu'
 import { Container } from '@/components/atoms/Container'
 
 type PropsType = {
-  // eslint-disable-next-line no-unused-vars
-  onClickMenuItem: (item: string) => void
+  onClickMenuItem: (_item: string) => void
 }
 
 const Header: React.FC<PropsType> = ({ onClickMenuItem }) => {
