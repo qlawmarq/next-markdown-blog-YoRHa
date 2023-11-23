@@ -9,4 +9,10 @@ export const FooterStyle = css`
   align-items: center;
   flex-direction: column;
   position: relative;
+  .footer-text {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
 `
