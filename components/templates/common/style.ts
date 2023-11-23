@@ -1,24 +1,9 @@
 import { css } from '@emotion/react'
-import { breakpoints } from '@/theme/index'
+
 export const InnerStyle = css`
   position: relative;
   margin: auto;
-  padding: 1rem;
-  max-width: 70%;
   min-height: calc(100vh - 12rem);
-
-  @media (${breakpoints.LG}) {
-    max-width: 75%;
-  }
-  @media (${breakpoints.MD}) {
-    max-width: 85%;
-  }
-  @media (${breakpoints.SM}) {
-    max-width: 90%;
-  }
-  @media (${breakpoints.XS}) {
-    max-width: 97.5%;
-  }
 `
 
 export const OuterStyle = css`
