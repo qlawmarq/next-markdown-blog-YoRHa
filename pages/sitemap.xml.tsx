@@ -27,10 +27,9 @@ const generateSiteMap = (blogs: BlogFrontmatter[]) => {
     .flat()
   tags = Array.from(new Set(tags))
   return `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-      ${menuItems.
-        map((item) => {
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      ${menuItems
+        .map((item) => {
           return `
         <url>
             <loc>${new URL(item.href, DEFAULT_SEO.openGraph.url).toString()}</loc>
