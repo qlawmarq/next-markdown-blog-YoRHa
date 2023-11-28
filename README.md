@@ -12,7 +12,9 @@ https://next-playground.vercel.app
 
 ![Preview](./e2e-test/e2e-test.spec.ts-snapshots/Snapshot-index-page-1-Desktop-Chrome-darwin.png)
 
-## Development
+---
+
+# Development
 
 There are two ways to set up a local development environment.
 Read below and choose the one you prefer.
@@ -66,6 +68,16 @@ npm run test:e2e
 ```
 
 See [Playwright Docs](https://playwright.dev/docs/intro) for more details.
+
+---
+
+# Production
+
+## Update site metadata
+
+Update the following file, which contains the site name and other metadata.
+
+`constants/siteMetadata.ts`
 
 ## Update or add your own contents
 
