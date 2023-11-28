@@ -4,6 +4,7 @@ import { DEFAULT_SEO } from '@/constants/siteMetadata'
 
 import RSS from 'rss'
 import { BlogFrontmatter } from '@/types/blog'
+import { menuItems } from '@/constants/menu'
 
 export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
   const blogs = await getAllFilesFrontMatter('blog')
@@ -28,12 +29,18 @@ const generateFeedXml = async (blogs: BlogFrontmatter[]) => {
     feed_url: '/rss',
     language: DEFAULT_SEO.openGraph.locale,
   })
-  blogs?.forEach((blog) => {
+  menuItems.forEach((item) => {
     feed.item({
-      title: String(blog?.title),
-      description: String(blog?.description),
-      date: new Date(String(blog?.date)),
-      url: new URL(`/blog/${blog?.slug}`, DEFAULT_SEO.openGraph.url).toString(),
+      title: `${item.label} | ${DEFAULT_SEO.defaultTitle}`,
+      url: new URL(item.href, DEFAULT_SEO.openGraph.url).toString(),
+    })
+  })
+  blogs.filter((blog) => !blog.draft).forEach((blog) => {
+    feed.item({
+      title: String(blog.title),
+      description: String(blog.description),
+      date: new Date(String(blog.date)).toISOString(),
+      url: new URL(`/blog/${blog.slug}`, DEFAULT_SEO.openGraph.url).toString(),
     })
   })
 
