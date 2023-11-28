@@ -3,29 +3,31 @@ import { getAllFilesFrontMatter } from '@/lib/markdown'
 import { DEFAULT_SEO } from '@/constants/siteMetadata'
 import { BlogFrontmatter } from '@/types/blog'
 import { menuItems } from '@/constants/menu'
+import { getAllTags } from '@/lib/tags/tags'
 
 export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
-  const blogs = await getAllFilesFrontMatter('blog')
-  const sitemap = generateSiteMap(blogs)
-  res.statusCode = 200
-  res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate')
-  res.setHeader('Content-Type', 'text/xml')
-  // we send the XML to the browser
-  res.end(sitemap)
-  return {
-    props: {},
+  try {
+    const blogs = await getAllFilesFrontMatter('blog')
+    const tags = await getAllTags('blog')
+    const sitemap = generateSiteMap(blogs, tags)
+    res.statusCode = 200
+    res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate')
+    res.setHeader('Content-Type', 'text/xml')
+    // we send the XML to the browser
+    res.end(sitemap)
+    return {
+      props: {},
+    }
+  } catch (error) {
+    console.error('Error in getServerSideProps', error)
+    return { notFound: true }
   }
 }
 
 const Page = () => null
 export default Page
 
-const generateSiteMap = (blogs: BlogFrontmatter[]) => {
-  let tags = blogs
-    .filter((blog) => !blog.draft)
-    .map((blog) => blog.tags)
-    .flat()
-  tags = Array.from(new Set(tags))
+const generateSiteMap = (blogs: BlogFrontmatter[], tags: string[]) => {
   return `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       ${menuItems

@@ -1,22 +1,22 @@
 import React from 'react'
 import { GetStaticProps } from 'next'
 import { NextSeo } from 'next-seo'
-import { getAllFilesFrontMatter } from '@/lib/markdown'
 import TagListingLayout from '@/components/templates/layouts/TagListingLayout'
+import { getAllTags } from '@/lib/tags/tags'
 
 type PropsType = {
   tags: string[]
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allBlogs = await getAllFilesFrontMatter('blog')
-  let tags = allBlogs
-    .filter((blog) => !blog.draft)
-    .map((blog) => blog.tags)
-    .flat()
-  tags = Array.from(new Set(tags))
-  return {
-    props: { tags },
+  try {
+    const tags = await getAllTags('blog')
+    return {
+      props: { tags },
+    }
+  } catch (error) {
+    console.error('Error in getStaticProps', error)
+    return { notFound: true }
   }
 }
 

@@ -11,10 +11,15 @@ type PropsType = {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allBlogs = await getAllFilesFrontMatter('blog')
-  const blogs = allBlogs.filter((blog) => !blog.draft)
-  return {
-    props: { blogs },
+  try {
+    const allBlogs = await getAllFilesFrontMatter('blog')
+    const blogs = allBlogs.filter((blog) => !blog.draft)
+    return {
+      props: { blogs },
+    }
+  } catch (error) {
+    console.error('Error in getStaticProps', error)
+    return { notFound: true }
   }
 }
 

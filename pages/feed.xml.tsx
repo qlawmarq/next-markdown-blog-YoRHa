@@ -6,14 +6,19 @@ import RSS from 'rss'
 import { BlogFrontmatter } from '@/types/blog'
 
 export const getServerSideProps = async ({ res }: GetServerSidePropsContext) => {
-  const blogs = await getAllFilesFrontMatter('blog')
-  const xml = await generateFeedXml(blogs)
-  res.statusCode = 200
-  res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate')
-  res.setHeader('Content-Type', 'text/xml')
-  res.end(xml)
-  return {
-    props: {},
+  try {
+    const blogs = await getAllFilesFrontMatter('blog')
+    const xml = await generateFeedXml(blogs)
+    res.statusCode = 200
+    res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate')
+    res.setHeader('Content-Type', 'text/xml')
+    res.end(xml)
+    return {
+      props: {},
+    }
+  } catch (error) {
+    console.error('Error in getServerSideProps', error)
+    return { notFound: true }
   }
 }
 
