@@ -42,9 +42,7 @@ const generateSiteMap = (blogs: BlogFrontmatter[]) => {
          return `
        <url>
            <loc>${new URL(`/blog/${blog.slug}`, DEFAULT_SEO.openGraph.url).toString()}</loc>
-           <lastmod>${new Date(String(blog?.date))
-             .toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' })
-             .replaceAll('/', '-')}</lastmod>
+           <lastmod>${new Date(String(blog.date)).toISOString().slice(0, 10)}</lastmod>
        </url>
      `
        })
