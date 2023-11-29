@@ -61,10 +61,10 @@ const Tag: React.FC<PropsType> = ({ blogs, tag }) => {
   }
   return (
     <>
-      <NextSeo title={tag} description={tag} noindex />
+      <NextSeo title={`Tag - ${tag}`} description={tag} />
       <BlogListingLayout
         blogs={localizedBlogs}
-        title={`Tag - ${tag.toUpperCase()}`}
+        title={`Tag - ${tag}`}
         onClickListItem={handleClick}
       />
     </>

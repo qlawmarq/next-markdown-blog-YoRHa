@@ -5,7 +5,6 @@ export const DEFAULT_SEO = {
   canonical: 'https://next-playground.vercel.app/',
   openGraph: {
     type: 'website',
-    locale: 'en',
     url: 'https://next-playground.vercel.app/',
     title: 'NieR:Automata YoRHa Next.js Blog',
     description: 'Blog template with Next.js.',

@@ -1,7 +1,5 @@
-import { DEFAULT_SEO } from '@/constants/siteMetadata'
-
-const formatDateString = (dateString: string) =>
-  new Date(dateString).toLocaleDateString(DEFAULT_SEO.openGraph?.locale, {
+const formatDateString = (dateString: string, locale: Intl.LocalesArgument = 'en') =>
+  new Date(dateString).toLocaleDateString(locale, {
     weekday: 'short',
     year: 'numeric',
     month: 'short',
