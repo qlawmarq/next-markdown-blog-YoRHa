@@ -34,7 +34,7 @@ const generateSiteMap = (blogs: BlogFrontmatter[], tags: string[]) => {
         .map((item) => {
           return `
         <url>
-            <loc>${new URL(item.href, DEFAULT_SEO.openGraph.url).toString()}</loc>
+            <loc>${new URL(item.href, DEFAULT_SEO.canonical).toString()}</loc>
         </url>
       `
         })
@@ -43,20 +43,20 @@ const generateSiteMap = (blogs: BlogFrontmatter[], tags: string[]) => {
        .map((blog) => {
          return `
        <url>
-           <loc>${new URL(`/blog/${blog.slug}`, DEFAULT_SEO.openGraph.url).toString()}</loc>
+           <loc>${new URL(`/blog/${blog.slug}`, DEFAULT_SEO.canonical).toString()}</loc>
            <lastmod>${new Date(String(blog.date)).toISOString().slice(0, 10)}</lastmod>
        </url>
      `
        })
        .join('')}
     <url>
-      <loc>${new URL(`/tag`, DEFAULT_SEO.openGraph.url).toString()}</loc>
+      <loc>${new URL(`/tag`, DEFAULT_SEO.canonical).toString()}</loc>
     </url>
     ${tags
       .map((tag) => {
         return `
       <url>
-          <loc>${new URL(`/blog/${tag}`, DEFAULT_SEO.openGraph.url).toString()}</loc>
+          <loc>${new URL(`/blog/${tag}`, DEFAULT_SEO.canonical).toString()}</loc>
       </url>
     `
       })
