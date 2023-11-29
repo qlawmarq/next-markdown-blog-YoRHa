@@ -8,7 +8,6 @@
       "extensions": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"],
       "settings": {
         "files.encoding": "utf8",
-        "files.eol": "\n",
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
@@ -17,6 +16,5 @@
       }
     }
   },
-  "forwardPorts": [3000],
-  "remoteUser": "nextjs"
+  "forwardPorts": [3000]
 }
