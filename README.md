@@ -21,7 +21,7 @@ Read below and choose the one you prefer.
 
 ### Setup with Node.js
 
-Please install Node.js first.
+Please install Node.js (v18.x) first.
 
 After installation is complete, follow the steps below:
 
@@ -35,9 +35,9 @@ Access following link to check the app is working:
 
 http://localhost:3000/
 
-### Setup with Docker
+### Setup with Docker Compose
 
-Please install Node.js first.
+Please install Docker first.
 
 After installation is complete, execute the command below:
 
@@ -48,6 +48,14 @@ docker-compose up
 After a while, access following link to check the app is working:
 
 http://localhost:3000/
+
+The above methods can be used to set up a development environment with Docker, furthermore, I recommend using [VSCode devcontainer](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+Basically, all you have to do is "Open in container" using [the Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension.
+
+If interested, please see below for more details:
+
+https://code.visualstudio.com/docs/devcontainers/containers
 
 ## E2E Testing
 
