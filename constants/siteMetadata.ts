@@ -23,7 +23,4 @@ export const DEFAULT_SEO = {
     handle: '@qlawmarq',
     cardType: 'summary',
   },
-  profile: {
-    username: 'Masaki Yoshiiwa',
-  },
 }

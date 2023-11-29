@@ -29,8 +29,8 @@ const generateFeedXml = async (blogs: BlogFrontmatter[]) => {
   const feed = new RSS({
     title: DEFAULT_SEO.defaultTitle,
     description: DEFAULT_SEO.description,
-    site_url: DEFAULT_SEO.openGraph.url,
-    feed_url: new URL(`/feed.xml`, DEFAULT_SEO.openGraph.url).toString(),
+    site_url: DEFAULT_SEO.canonical,
+    feed_url: new URL(`/feed.xml`, DEFAULT_SEO.canonical).toString(),
   })
   blogs
     .filter((blog) => !blog.draft)
@@ -39,7 +39,7 @@ const generateFeedXml = async (blogs: BlogFrontmatter[]) => {
         title: String(blog.title),
         description: String(blog.description),
         date: new Date(String(blog.date)).toISOString(),
-        url: new URL(`/blog/${blog.slug}`, DEFAULT_SEO.openGraph.url).toString(),
+        url: new URL(`/blog/${blog.slug}`, DEFAULT_SEO.canonical).toString(),
       })
     })
 
