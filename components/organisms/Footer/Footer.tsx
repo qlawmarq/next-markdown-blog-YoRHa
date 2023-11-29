@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
       <Border />
       <Container>
         <Span className="footer-text">{`Copyright © ${new Date().getFullYear()} ${
-          DEFAULT_SEO.profile.username
+          DEFAULT_SEO.openGraph.profile.firstName + ' ' + DEFAULT_SEO.openGraph.profile.lastName
         }. All Rights Reserved.`}</Span>
       </Container>
     </footer>

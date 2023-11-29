@@ -18,6 +18,11 @@ export const DEFAULT_SEO = {
         alt: 'Logo',
       },
     ],
+    profile: {
+      firstName: 'Masaki',
+      lastName: 'Yoshiiwa',
+      username: 'qlawmarq',
+    },
   },
   twitter: {
     handle: '@qlawmarq',
