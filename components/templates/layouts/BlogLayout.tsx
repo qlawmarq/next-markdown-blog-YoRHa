@@ -16,7 +16,7 @@ type PropsType = {
 }
 
 const BlogLayout: React.FC<PropsType> = ({ frontmatter, relatedBlogs, children }) => {
-  const { date, title, tags } = frontmatter
+  const { date, title, tags, language } = frontmatter
 
   return (
     <div css={BlogLayoutStyle}>
@@ -25,7 +25,7 @@ const BlogLayout: React.FC<PropsType> = ({ frontmatter, relatedBlogs, children }
         <H1>{title}</H1>
         {date && (
           <Paragraph>
-            <time dateTime={date}>{formatDateString(String(date))}</time>
+            <time dateTime={date}>{formatDateString(date, language)}</time>
           </Paragraph>
         )}
         <hr />

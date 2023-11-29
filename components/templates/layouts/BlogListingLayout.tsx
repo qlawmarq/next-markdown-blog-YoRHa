@@ -65,13 +65,13 @@ const BlogListingLayout: React.FC<PropsType> = ({ blogs, title, description, onC
           </div>
           <ul>
             {filteredBlogs.map((frontmatter) => {
-              const { slug, date, title, description, tags } = frontmatter
+              const { slug, date, title, description, tags, language } = frontmatter
               return (
                 <li key={slug}>
                   <Card onClick={() => onClickListItem(slug)}>
                     <H2>{title}</H2>
                     <Paragraph>
-                      <time dateTime={date}>{formatDateString(date)}</time>
+                      <time dateTime={date}>{formatDateString(date, language)}</time>
                     </Paragraph>
                     {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                     <Paragraph>{description}</Paragraph>
