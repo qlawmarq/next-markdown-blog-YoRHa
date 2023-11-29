@@ -38,6 +38,8 @@ WORKDIR /app
 
 ENV NODE_ENV=development
 
+RUN apk add git
+
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
