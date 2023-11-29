@@ -34,7 +34,7 @@ const Index: React.FC<PropsType> = ({ blogs }) => {
   }
   return (
     <>
-      <NextSeo title={DEFAULT_SEO.defaultTitle} description={DEFAULT_SEO.description} />
+      <NextSeo description={DEFAULT_SEO.description} />
       <BlogListingLayout
         blogs={localizedBlogs}
         title={DEFAULT_SEO.defaultTitle}
