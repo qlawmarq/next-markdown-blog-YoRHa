@@ -7,4 +7,7 @@ export const style = css`
   font-weight: normal;
   letter-spacing: 0.5rem;
   text-shadow: 0.3rem 0.3rem 0 ${theme.colors.tertiaryColor};
+  :not(:first-of-type) {
+    margin-top: 3rem;
+  }
 `

@@ -7,4 +7,7 @@ export const style = css`
   padding-left: 0.5rem;
   margin: 1rem 0;
   letter-spacing: 0.15rem;
+  :not(:first-of-type) {
+    margin-top: 1.5rem;
+  }
 `
