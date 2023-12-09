@@ -13,6 +13,9 @@ const fadeIn = keyframes`
 
 export const commonLayoutStyle = css`
   animation: ${fadeIn} 0.5s ease-in-out 0s 1 normal;
+  .title {
+    margin: 1rem 0;
+  }
 `
 
 export const BlogLayoutStyle = css`

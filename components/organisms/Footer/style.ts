@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 export const FooterStyle = css`
   position: relative;
   margin: auto;
-  height: 4rem;
+  height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
