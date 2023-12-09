@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 export const InnerStyle = css`
   position: relative;
   margin: auto;
-  min-height: calc(100vh - 12rem);
+  min-height: calc(100vh - 10rem);
 `
 
 export const OuterStyle = css`

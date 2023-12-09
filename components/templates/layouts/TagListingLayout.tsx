@@ -14,8 +14,11 @@ const TagListingLayout: React.FC<PropsType> = ({ tags, title, description }) => 
   return (
     <div css={ListLayoutStyle}>
       <Breadcrumbs />
-      <H1>{title}</H1>
-      {description && <Paragraph>{description}</Paragraph>}
+      <div className="title">
+        <H1>{title}</H1>
+        {description && <Paragraph>{description}</Paragraph>}
+        <hr />
+      </div>
       <div>
         {tags.map((tag) => (
           <Tag key={tag} href={`/tag/${tag}`} text={tag} />

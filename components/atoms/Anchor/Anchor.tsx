@@ -31,7 +31,7 @@ export const Anchor: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({
   }
 
   return (
-    <a target="_blank" rel="noopener noreferrer" href={href} {...rest}>
+    <a target="_blank" rel="noopener noreferrer" href={href} {...rest} css={style}>
       {children}
     </a>
   )
