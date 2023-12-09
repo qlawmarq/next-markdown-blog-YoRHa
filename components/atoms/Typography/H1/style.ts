@@ -7,7 +7,7 @@ export const style = css`
   letter-spacing: 0.5rem;
   text-shadow: 0.3rem 0.3rem 0 ${theme.colors.tertiaryColor};
   margin-bottom: 1rem;
-  margin-top: 0;
+  margin-top: 1rem;
   :not(:first-of-type) {
     margin-top: 3rem;
   }

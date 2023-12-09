@@ -5,7 +5,7 @@ export const style = css`
   position: relative;
   cursor: pointer;
   display: inline-block;
-  margin: 0 0.5rem 0 0;
+  margin: 0.25rem;
   padding: 0.25rem 0.5rem;
   line-height: 1;
   text-decoration: none;

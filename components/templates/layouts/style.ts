@@ -35,30 +35,33 @@ export const BlogLayoutStyle = css`
       width: 100%;
     }
   }
-  .blog_content__inner .toc {
+  .blog_content__inner {
     margin: 1rem 0;
-    ${CardStyle}
-  }
-  .blog_content__inner img {
-    margin: auto;
-    display: flex;
-  }
-  .blog_content__inner table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  .blog_content__inner table th {
-    font-weight: normal;
-    border-bottom: 0.1rem solid ${theme.colors.secondaryColor};
-  }
-  .blog_content__inner table th,
-  .blog_content__inner table td {
-    padding: 0.5rem;
-  }
-  .blog_content__inner hr {
-    margin: 1rem 0;
-    border-top: solid ${theme.colors.tertiaryColor};
-    border-width: 0.1rem 0 0 0;
+    .toc {
+      margin: 1rem 0;
+      ${CardStyle}
+    }
+    img {
+      margin: auto;
+      display: flex;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table th {
+      font-weight: normal;
+      border-bottom: 0.1rem solid ${theme.colors.secondaryColor};
+    }
+    table th,
+    table td {
+      padding: 0.5rem;
+    }
+    hr {
+      margin: 1rem 0;
+      border-top: solid ${theme.colors.tertiaryColor};
+      border-width: 0.1rem 0 0 0;
+    }
   }
 `
 
