@@ -61,7 +61,6 @@ const BlogListingLayout: React.FC<PropsType> = ({ blogs, title, description, onC
           placeholder="Search blogs"
         />
       </div>
-      {!filteredBlogs.length && <Paragraph>No blogs found.</Paragraph>}
       {filteredBlogs?.length > 0 ? (
         <>
           <ul>
