@@ -38,7 +38,7 @@ WORKDIR /app
 
 ENV NODE_ENV=development
 
-RUN apk add git
+RUN apk add git openssh-client
 
 COPY --from=deps /app/node_modules ./node_modules
 RUN mkdir -p ./.next
