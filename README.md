@@ -49,13 +49,14 @@ After a while, access following link to check the app is working:
 
 http://localhost:3000/
 
-The above methods can be used to set up a development environment with Docker, furthermore, I recommend using [VSCode devcontainer](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+### Setup with devcontainer
 
-Basically, all you have to do is "Open in container" using [the Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension.
+The above setup can be used for development, but you can also setup dev env with using the [VS Code Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
 
-If interested, please see below for more details:
-
-https://code.visualstudio.com/docs/devcontainers/containers
+- Install VS code and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+- [Optional] To share git credential with the container, run `ssh-add $HOME/.ssh/your_ssh_rsa`. See following for more info: https://code.visualstudio.com/remote/advancedcontainers/sharing-git-credentials
+- Run the `Dev Containers: Open Folder in Container...` command from the Command Palette or quick actions Status bar item, and select the project folder.
+- Wait until the building of the application is finished, then access the application url
 
 ## E2E Testing
 
