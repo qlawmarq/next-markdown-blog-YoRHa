@@ -21,6 +21,7 @@
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'",
     "typecheck": "tsc",
     "prepare": "husky install",
+    "test": "vitest",
     "test:e2e": "playwright test",
     "update:e2e": "playwright test -u"
   },
@@ -59,7 +60,9 @@
     "lint-staged": "^15.1.0",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
-    "typescript": "^5.2.2"
+    "tree-kill": "^1.2.2",
+    "typescript": "^5.2.2",
+    "vitest": "^3.2.3"
   },
   "husky": {
     "hooks": {

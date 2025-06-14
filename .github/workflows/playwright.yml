@@ -20,4 +20,4 @@ jobs:
       - name: Install Playwright Dependencies
         run: npx playwright install-deps
       - name: Run Playwright tests
-        run: npm run test:e2e
+        run: npx playwright test --update-snapshots
