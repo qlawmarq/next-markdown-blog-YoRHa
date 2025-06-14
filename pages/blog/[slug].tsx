@@ -65,6 +65,8 @@ const Blog: React.FC<PropsType> = ({ blog, relatedBlogs }) => {
       <NextSeo title={blog.frontmatter.title} description={blog.frontmatter.description} />
       <BlogLayout frontmatter={blog.frontmatter} relatedBlogs={relatedBlogs}>
         <MDXRemote
+          scope={blog.scope}
+          frontmatter={blog.frontmatter}
           compiledSource={blog.compiledSource}
           components={{
             h1: H1,

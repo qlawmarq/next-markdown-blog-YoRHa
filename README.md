@@ -21,7 +21,7 @@ Read below and choose the one you prefer.
 
 ### Setup with Node.js
 
-Please install Node.js (v18.x) first.
+Please install Node.js (v22.x) first.
 
 After installation is complete, follow the steps below:
 
