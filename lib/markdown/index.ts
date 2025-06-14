@@ -5,7 +5,6 @@ import getAllFiles from '../utils/getAllFiles'
 import { serialize } from 'next-mdx-remote/serialize'
 // Remark packages
 import remarkGfm from 'remark-gfm'
-import remarkFootnotes from 'remark-footnotes'
 import remarkMath from 'remark-math'
 // Rehype packages
 import rehypeSlug from 'rehype-slug'
@@ -42,7 +41,7 @@ export async function getMdxFrontMatterBySlug(folder: string, slug: string) {
     parseFrontmatter: true,
     mdxOptions: {
       development: false,
-      remarkPlugins: [remarkGfm, remarkFootnotes, remarkMath],
+      remarkPlugins: [remarkGfm, remarkMath],
       rehypePlugins: [rehypeSlug, rehypePrismPlus, rehypeToc],
     },
   })) as unknown as MDXRemoteSerializeResult<Record<string, string>, BlogFrontmatter>

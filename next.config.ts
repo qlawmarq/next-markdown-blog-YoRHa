@@ -1,3 +1,4 @@
+import type { Configuration } from 'webpack'
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -17,8 +18,8 @@ module.exports = withBundleAnalyzer({
     dirs: ['*'],
   },
   experimental: { esmExternals: true },
-  webpack: (config, { dev, isServer }) => {
-    config.module.rules.push({
+  webpack: (config: Configuration) => {
+    config.module?.rules?.push({
       test: /\.(png|jpe?g|gif|svg)$/i,
       use: [
         {

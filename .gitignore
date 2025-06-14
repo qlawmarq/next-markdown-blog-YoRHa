@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+.yarn/install-state.gz
+
+.pnpm-store
 
 # testing
 /coverage
@@ -22,6 +25,7 @@ public/sitemap.xml
 
 # misc
 .DS_Store
+*.pem
 
 # debug
 *.log
@@ -35,3 +39,13 @@ tsconfig.tsbuildinfo
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# env
+.env
+.env.local
+.env.development
+.env.production
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
