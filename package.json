@@ -58,7 +58,7 @@
     "file-loader": "6.2.0",
     "husky": "^8.0.0",
     "lint-staged": "^15.1.0",
-    "postcss": "^8.4.31",
+    "postcss": "^8.5.10",
     "prettier": "^3.0.3",
     "tree-kill": "^1.2.2",
     "typescript": "^5.2.2",
